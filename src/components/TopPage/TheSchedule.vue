@@ -28,13 +28,13 @@
                         Địa điểm
                     </label>
                     <input type="text" id="location" placeholder="Tôi muốn xe ở."
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 hover:placeholder:text-amber-600">
                 </div>
                 <div>
                     <label for="seat" class="font-semibold text-lg">
                         Chỗ Ngồi
                     </label>
-                    <select id="seat" class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none">
+                    <select id="seat" class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
                         <option value="2">2</option>
                         <option value="4">4</option>
                         <option value="7">7</option>
@@ -46,13 +46,13 @@
                         Giá Tối Đa
                     </label>
                     <input type="number" id="max-price" placeholder="Ngân sách tôi muốn bỏ ra."
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 hover:placeholder:text-amber-600">
                 </div>
                 <div>
                     <label for="seat" class="font-semibold text-lg">
                         Ngày Đi
                     </label>
-                    <select id="seat" class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none">
+                    <select id="seat" class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
                         <option value="2">2</option>
                         <option value="4">4</option>
                         <option value="7">7</option>
@@ -63,7 +63,7 @@
                     <label for="seat" class="font-semibold text-lg">
                         Ngày Về
                     </label>
-                    <select id="seat" class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none">
+                    <select id="seat" class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
                         <option value="2">2</option>
                         <option value="4">4</option>
                         <option value="7">7</option>
@@ -71,7 +71,7 @@
                     </select>
                 </div>
                 <div class="flex items-center justify-end">
-                    <button class="bg-amber-100 text-amber-600 rounded-md px-10 py-4">Tìm</button>
+                    <button class="bg-amber-100 text-amber-600 rounded-md px-10 py-4 hover:bg-amber-600 hover:text-white duration-300 hover:font-bold">Tìm</button>
                 </div>
             </div>
         </div>

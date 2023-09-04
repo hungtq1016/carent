@@ -1,18 +1,14 @@
 <template>
-   <div class="rounded-md">
-    <Flicking :options="{ align: 'prev', circular: true }" :plugins="plugins">
-        <template v-for="car in cars" :key="car.id">
-            <div class=" flex items-center rounded-md flicking-panel" :style="{ backgroundColor: car.bgColor, }">
-                <img :src="car.image" :alt="car.name"
-                class="aspect-HD max-h-96">
-            </div>
-        </template>
+   <div>
+    <Flicking :options="{ align: 'prev', circular: true ,autoResize: true}" :plugins="plugins">
+        <ReviewItem v-for="car in cars" :key="car.id" :item="car"/>
     </Flicking>
    </div>
 </template>
 
 <script setup>
 import Flicking from "@egjs/vue3-flicking";
+import ReviewItem from './ReviewItem.vue';
 import { AutoPlay } from "@egjs/flicking-plugins";
 
 const plugins = [new AutoPlay({ duration: 3000, direction: "NEXT", stopOnHover: false })];
@@ -32,3 +28,9 @@ const cars = [
     }
 ]
 </script>
+
+<style scoped>
+.flicking-viewport{
+    @apply rounded-md
+}
+</style>
