@@ -25,6 +25,12 @@ const cars = [
         bgColor:'rgb(148,183,7,.2)',
         name:'random',
         image:'https://cdn.pixabay.com/photo/2020/11/25/16/09/car-5776306_1280.png'
+    },
+    {
+        id:3,
+        bgColor:'rgb(245,164,98,.2)',
+        name:'random',
+        image:'https://purepng.com/public/uploads/large/purepng.com-ford-edge-orange-carcarvehicletransportford-961524663681g54st.png'
     }
 ]
 </script>
