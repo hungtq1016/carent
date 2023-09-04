@@ -1,0 +1,19 @@
+<template>
+    <section class="pt-10 pb-40 bg-amber-50 relative">
+        <div class="max-w-screen-xl mx-auto">
+            <div class="grid grid-cols-2 justify-between">
+                <TheApp/>
+                <TheReview/>
+            </div>
+        </div>
+        <TheSchedule/>
+    </section>
+</template>
+
+<script setup>
+import TheApp from './TheApp.vue';
+import TheReview from './TheReview.vue';
+import TheSchedule from './TheSchedule.vue';
+
+
+</script>
