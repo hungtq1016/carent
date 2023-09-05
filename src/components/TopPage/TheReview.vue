@@ -6,7 +6,7 @@
    </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import Flicking from "@egjs/vue3-flicking";
 import ReviewItem from './ReviewItem.vue';
 import { AutoPlay } from "@egjs/flicking-plugins";

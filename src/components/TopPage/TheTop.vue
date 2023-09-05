@@ -10,10 +10,8 @@
     </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import TheApp from './TheApp.vue';
 import TheReview from './TheReview.vue';
 import TheSchedule from './TheSchedule.vue';
-
-
 </script>
