@@ -9,6 +9,7 @@ module.exports = {
       aspectRatio: {
         'HD': '17 / 10',
         '3/2': '3 / 2',
+        '3/5': '3 / 5',
       },
     }
   },

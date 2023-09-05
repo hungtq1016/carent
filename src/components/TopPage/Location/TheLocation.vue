@@ -1,41 +1,64 @@
 <template>
     <section class="py-10">
-        <div class="max-w-screen-lg mx-auto">
+        <div class="max-w-screen-xl mx-auto">
             <h3 class="text-4xl font-bold text-center">Địa Điểm</h3>
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Hệ thống phát triển toàn quốc.</div>
-            <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
-                <template  v-for="(province,index) in provinces" :key="index" >
-                    <div>
-                        <input type="radio" name="province" :id="province.codename" v-model="checkedProvince" :value="province">
-                    <TheProvince :province="province"/>
-                    </div>
-                   
-                </template>
-                  
+            <div class="py-5 relative">
+                <Flicking :options=optionProvince :plugins=pluginsProvince>
+                    <template v-for="(province, index) in provinces" :key="index">
+                        <div class="px-1 group">
+                            <input type="radio" name="province" class="peer hidden" :id="province.codename"
+                                v-model="checkedProvince" :value="province">
+                            <TheProvince :province="province" />
+                        </div>
+
+                    </template>
+                    <template #viewport>
+                        <div class="flex absolute z-[2] top-1/2 -translate-y-1/2 inset-x-1 justify-between">
+                            <button class="flicking-arrow-prev p-3 bg-amber-100 rounded-md border border-amber-100 hover:border-amber-600 duration-300  ">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                                stroke="currentColor" class="w-6 h-6 stroke-amber-600">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </button>
+                        <button class="flicking-arrow-next p-3 bg-amber-100 rounded-md border border-amber-100 hover:border-amber-600 duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                                stroke="currentColor" class="w-6 h-6 stroke-amber-600">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+
+                        </button>
+                        </div>
+                    </template>
                 </Flicking>
-                <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
-                <template  v-for="(province,index) in checkedProvince.districts" :key="index" >
-                    <div>
-                        <input type="radio" name="province" :id="province.codename" v-model="checkedProvince" :value="province">
-                    <TheProvince :province="province"/>
-                    </div>
-                   
-                </template>
-                  
-                </Flicking>
+            </div>
+            <TheDistricts :districts="checkedProvince.districts"/>
         </div>
     </section>
 </template>
 
 <script setup lang="ts">
 import Flicking from "@egjs/vue3-flicking";
-import { AutoPlay } from "@egjs/flicking-plugins";
+import { AutoPlay, Arrow } from "@egjs/flicking-plugins";
 import getAllProvinces from '@/lib/fetch/getAllProvinces';
+import TheDistricts from "./TheDistricts.vue";
 import TheProvince from "@/components/Card/TheProvince.vue";
-import { ref } from "vue";
+import {  ref } from "vue";
 
-const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true})];
-const {data:provinces,error,isFetching} = await getAllProvinces();
+const pluginsProvince = [new AutoPlay({ duration: 60000, direction: "NEXT", stopOnHover: true }), new Arrow()];
+const optionProvince = { align: 'center', circular: true, panelsPerView: 4, defaultIndex: 49, noPanelStyleOverride: true }
 
-const checkedProvince = ref(provinces.value[0])
+const { data: provinces, error, isFetching } = await getAllProvinces();
+
+const checkedProvince = ref(provinces.value[49])
 </script>
+
+<style scoped>
+.scroll-bar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    box-sizing: content-box; 
+}
+.scroll-bar::-webkit-scrollbar { width: 0 !important }
+
+</style>
