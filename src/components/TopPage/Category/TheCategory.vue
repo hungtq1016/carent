@@ -5,7 +5,7 @@
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Tìm hãng xe ưa thích của bạn.</div>
             <div class="py-10">
                 <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
-                    <RouterLink to="#" v-for="(brand,index) in brands" :key="index">
+                    <RouterLink :to="`/brand/${brand.name}`" v-for="(brand,index) in brands" :key="index">
                         <img  class="aspect-3/2 object-contain mix-blend-color-burn"
                         :src="brand.image" :alt="brand.name" >
                     </RouterLink>
