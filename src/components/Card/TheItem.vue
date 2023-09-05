@@ -1,5 +1,5 @@
 <template>
-    <RouterLink to="/rent" class="flex flex-col p-4 rounded-md bg-white border gap-y-2">
+    <RouterLink to="/rent" class="flex flex-col p-4 rounded-md bg-white border gap-y-2 hover:shadow duration-300">
         <div class="relative">
             <img :src="item.image" :alt="item.name" class="aspect-3/2 object-cover rounded-md min-h-[300px]">
             <div class="absolute top-1 left-1">

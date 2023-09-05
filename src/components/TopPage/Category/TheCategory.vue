@@ -18,7 +18,6 @@
 <script setup lang="ts">
 import Flicking from "@egjs/vue3-flicking";
 import { AutoPlay } from "@egjs/flicking-plugins";
-import {RouterLink} from 'vue-router';
 const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true})];
 
 const brands = [
