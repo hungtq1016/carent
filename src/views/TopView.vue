@@ -4,7 +4,12 @@
         <TheCategory/>
         <TheSuggest/>
         <TheStep/>
-        <TheLocation/>
+        <Suspense>
+            <TheLocation/>
+            <template #fallback>
+                <div>Loading...</div>
+            </template>
+        </Suspense>
     </main>
 </template>
 
