@@ -12,6 +12,8 @@
   "dependencies": {
     "@egjs/flicking-plugins": "^4.7.1",
     "@egjs/vue3-flicking": "^4.11.0",
+    "@headlessui/vue": "^1.7.16",
+    "@vuepic/vue-datepicker": "^6.0.3",
     "@vueuse/core": "^10.4.1",
     "pinia": "^2.1.6",
     "v-calendar": "^3.0.3",

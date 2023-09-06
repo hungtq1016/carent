@@ -9,19 +9,19 @@ const router = createRouter({
       component: () => import('../views/TopView.vue')
     },
     {
-      path: '/seat/:id',
-      name: 'seat',
-      component: () => import('../views/AboutView.vue')
+      path: '/find',
+      name: 'FindCars',
+      component: () => import('../views/FindView.vue')
     },
     {
-      path: '/brand/:id',
-      name: 'brand',
-      component: () => import('../views/AboutView.vue')
+      path: '/car/:id',
+      name: 'CarDetail',
+      component: () => import('../views/CarView.vue')
     },
     {
-      path: '/rent',
-      name: 'rent',
-      component: () => import('../views/AboutView.vue')
+      path: '/car',
+      name: 'Cars',
+      component: () => import('../views/FindView.vue')
     },
     {
       path: '/about-us',

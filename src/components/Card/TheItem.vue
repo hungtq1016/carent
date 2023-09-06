@@ -1,9 +1,9 @@
 <template>
-    <RouterLink to="/rent" class="flex flex-col p-4 rounded-md bg-white border gap-y-2 hover:shadow duration-300">
+    <RouterLink :to="`/car/${useSlug(item.name)}`" class="flex flex-col p-4 rounded-md bg-white border gap-y-2 hover:shadow duration-300">
         <div class="relative">
             <img :src="item.image" :alt="item.name" class="aspect-3/2 object-cover rounded-md min-h-[300px]">
             <div class="absolute top-1 left-1">
-                <RouterLink :to="`/seat/${item.seat}`" class="py-1 px-2 text-xs bg-white/60 rounded-full hover:bg-white duration-300">
+                <RouterLink :to="`/find?seat=${item.seat}`" class="py-1 px-2 text-xs bg-white/60 rounded-full hover:bg-white duration-300">
                     {{ item.seat }} chỗ
                 </RouterLink>
             </div>
@@ -69,6 +69,8 @@
 </template>
 
 <script setup lang="ts">
+import useSlug from '@/lib/hook/useSlug';
+
 
 const props = defineProps(['item'])
 const formatter = new Intl.NumberFormat('vi-VN', {
@@ -76,5 +78,8 @@ const formatter = new Intl.NumberFormat('vi-VN', {
   currency: 'VND',
 
 });
+
+
+
 </script>
 

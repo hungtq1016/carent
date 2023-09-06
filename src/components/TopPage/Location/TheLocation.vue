@@ -1,5 +1,5 @@
 <template>
-    <section class="py-10">
+    <section class="py-10 bg-gray-50">
         <div class="max-w-screen-xl mx-auto">
             <h3 class="text-4xl font-bold text-center">Địa Điểm</h3>
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Hệ thống phát triển toàn quốc.</div>
@@ -32,7 +32,7 @@
                     </template>
                 </Flicking>
             </div>
-            <TheDistricts :districts="checkedProvince.districts"/>
+            <TheDistricts :districts="checkedProvince.districts" :province="checkedProvince.codename"/>
         </div>
     </section>
 </template>

@@ -6,7 +6,12 @@
                 <TheReview/>
             </div>
         </div>
-        <TheSchedule/>
+        <Suspense>
+            <TheSchedule/>
+            <template #fallback>
+                Loading...
+            </template>
+        </Suspense>
     </section>
 </template>
 

@@ -1,6 +1,6 @@
 import './assets/main.css'
 import "@egjs/vue3-flicking/dist/flicking.css";
-// Or, if you have to support IE9
+import '@vuepic/vue-datepicker/dist/main.css';
 import "@egjs/vue3-flicking/dist/flicking-inline.css";
 
 import { createApp } from 'vue'
