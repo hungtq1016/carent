@@ -74,7 +74,6 @@ const filters = [
     }
 ]
 
-const cars = useCars()
 
 </script>
 
