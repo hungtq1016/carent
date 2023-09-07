@@ -3,7 +3,7 @@
         <div class="max-w-screen-xl mx-auto bg-white shadow rounded-md px-10 py-5 space-y-5 ">
             <div class="grid w-full gap-6 md:grid-cols-2">
                     <div>
-                        <input type="radio" id="by-self" v-model="rent" name="rent" value="bySelf" class="hidden peer"
+                        <input type="radio" id="by-self" v-model="cars.needDriver" name="needDriver" :value="false" class="hidden peer"
                             required>
                         <label for="by-self"
                             class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-amber-500 peer-checked:border-amber-600 peer-checked:text-amber-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
@@ -13,7 +13,7 @@
                         </label>
                     </div>
                     <div>
-                        <input type="radio" id="need-driver" v-model="rent" name="rent" value="needDriver" class="hidden peer">
+                        <input type="radio" id="need-driver" v-model="cars.needDriver" name="needDriver" :value="true" class="hidden peer">
                         <label for="need-driver"
                             class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-amber-500 peer-checked:border-amber-600 peer-checked:text-amber-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
                             <div class="block">
@@ -29,14 +29,14 @@
                     </label>
                     
                     <div class="grid grid-cols-2 gap-x-2">
-                        <select id="location"  v-model="selectedProvince"
+                        <select id="location"  v-model="cars.province"
                         class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
-                            <option v-for="province in provinces" :value="province">{{ province.name }}</option>
+                            <option v-for="province in provinceStore.provinces" :value="province">{{ province.name }}</option>
                     </select>
-                    <select id="district" v-model="selectedDistrict"
+                    <select id="district" v-model="cars.district"
                     class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
-                        <option value="all">Không</option>    
-                        <option v-for="district in selectedProvince.districts" :value="district.codename">{{ district.name }}</option>        
+                        <option value="all" selected>Không</option>    
+                        <option v-for="district in provinceStore.districts" :value="district.codename">{{ district.name }}</option>        
                     </select>
                     </div>
                 </div>
@@ -44,9 +44,9 @@
                     <label for="seat" class="font-semibold text-lg">
                         Chỗ Ngồi
                     </label>
-                    <select id="seat" v-model="selectedSeat"
+                    <select id="seat" v-model="cars.seat"
                     class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
-                        <option v-for="seat in seats" :value="seat">{{ seat }}</option>
+                        <option v-for="seat in seats" :value="seat == 0 ? 'all':seat">{{ seat == 0 ? 'Tất cả':seat }}</option>
                     </select>
                 </div>
                 <div class="col-span-3">
@@ -54,10 +54,10 @@
                         Giá
                     </label>
                     <div class="flex items-center gap-x-1">
-                        <input type="number" id="start-price" placeholder="Từ" v-model="startPrice"
+                        <input type="number" id="start-price" placeholder="Từ" v-model="cars.price[0]"
                         class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 hover:placeholder:text-amber-600">
                         -
-                        <input type="number" id="end-price" placeholder="Đến" v-model="endPrice"
+                        <input type="number" id="end-price" placeholder="Đến" v-model="cars.price[1]"
                         class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 hover:placeholder:text-amber-600">
                     </div>
                 </div>
@@ -65,12 +65,12 @@
                     <label for="date" class="font-semibold text-lg">
                         Ngày Đi - Ngày Về
                     </label>
-                    <VueDatePicker :enable-time-picker="false" cancelText="Hủy" selectText="Gửi" fixed-start min-range="1" format="dd-MM-yyyy"
-                    id="date" v-model="selectedDate" range :format-locale="vi"></VueDatePicker>
+                    <VueDatePicker class="schedule" :enable-time-picker="false" cancelText="Hủy" selectText="Gửi" fixed-start min-range="1" format="dd-MM-yyyy"
+                    id="date" v-model="cars.date" range :format-locale="vi"></VueDatePicker>
 
                 </div>
                 <div class="flex items-center justify-end">
-                    <button @click="submit"
+                    <button @click="cars.submit"
                     class="bg-amber-100 text-amber-600 rounded-md px-6 py-4 hover:bg-amber-600 hover:text-white duration-300 hover:font-bold">Tìm</button>
                 </div>
             </div>
@@ -78,7 +78,7 @@
     </div>
 </template>
 <style>
-.dp__input{
+.schedule .dp__input{
     @apply border-b border-t-0 border-x-0 rounded-none hover:text-amber-600 hover:border-amber-600 duration-200;
 }
 
@@ -100,42 +100,14 @@
 </style>
 
 <script setup lang="ts">
-import getAllProvinces from '@/lib/fetch/getAllProvinces';
-import { onMounted, ref } from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
-import { useRouter } from 'vue-router';
+import { useCars } from '@/stores/cars';
+import { useProvinces } from '@/stores/provinnces';
 
-const rent = ref('bySelf')
-const {data:provinces,error,isFetching} = await getAllProvinces()
-const seats = [2,4,5,7,9,16]
-const router = useRouter()
+const seats = [0,2,4,5,7,9,16]
 
-const selectedProvince =ref(provinces.value[49])
-const selectedDistrict =ref('all')
-const selectedSeat =ref('4')
-const selectedDate = ref();
-const startPrice = ref(500000);
-const endPrice = ref(10000000);
+const cars = useCars()
+const provinceStore = useProvinces()
 
-onMounted(() => {
-  const startDate = new Date();
-  const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
-  selectedDate.value = [startDate, endDate];
-})
-
-const submit = () => {
-    router.push({
-        name: 'FindCars',
-        query: {
-          province:selectedProvince.value.codename,
-          district:selectedDistrict.value,
-          seat:selectedSeat.value,
-          'starPrice':startPrice.value,
-          'endPrice':endPrice.value,
-          'starDate':selectedDate.value[0].toLocaleDateString('vi-VN'),
-          'endDate':selectedDate.value[1].toLocaleDateString('vi-VN'),
-        },
-      })
-}
 </script>

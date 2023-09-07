@@ -12,8 +12,9 @@
                     <div class="flex gap-x-2 border-l-2 border-amber-600 pl-2">
                         <FilterItem v-for="(filter,index) in filters" :key="index" :filter="filter"/>
                         <div>
-                            <VueDatePicker :enable-time-picker="false" cancelText="Hủy" selectText="Gửi" fixed-start min-range="1" format="dd-MM-yyyy"
-                        id="date" v-model="selectedDate" range :format-locale="vi"></VueDatePicker>
+                            <VueDatePicker class="date-find"
+                            :enable-time-picker="false" cancelText="Hủy" selectText="Gửi" fixed-start min-range="1" format="dd-MM-yyyy" :multi-calendars="{ solo: true }"
+                        id="date" v-model="selectedDate" range :format-locale="vi" ></VueDatePicker>
                         </div>
                     </div>
                 </div>
@@ -27,6 +28,7 @@ import FilterItem from "./FilterItem.vue";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { ref,onMounted } from 'vue';
 import { vi } from 'date-fns/locale';
+import { useCars } from '@/stores/cars';
 
 const selectedDate = ref();
 onMounted(() => {
@@ -71,11 +73,14 @@ const filters = [
         isFetch:false
     }
 ]
+
+const cars = useCars()
+
 </script>
 
-<style>
-.dp__input{
-    @apply hover:border-amber-600 rounded-md border-gray-600 py-1 pl-10 pr-5 
+<style >
+.date-find .dp__input{
+    @apply hover:!border-amber-600 !rounded-md !border-gray-600 !py-1 !pl-10 !pr-5 
 }
 .dp__input_wrap:hover input{
     @apply text-amber-600

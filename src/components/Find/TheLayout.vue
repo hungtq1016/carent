@@ -10,7 +10,12 @@
 
 <script setup lang="ts">
 import TheItem from '@/components/Card/TheItem.vue';
+import { useFetch } from '@vueuse/core';
 import { useCars } from '@/stores/cars';
+
+
+const car = useCars()
+const {data,error,isFetching}= await useFetch(`https://provinces.open-api.vn/api/?depth=1&seat=${car.seats}`, { refetch: true }).get().json()
 
 const cars = [
     {
@@ -118,6 +123,5 @@ const cars = [
         "isDelivery": 1
     }
 ]
-const box = useCars()
-box.cars = cars
+
 </script>
