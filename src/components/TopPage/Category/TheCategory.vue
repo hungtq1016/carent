@@ -3,12 +3,9 @@
         <div class="max-w-screen-xl mx-auto">
             <h3 class="text-4xl font-bold text-center">Hãng Xe</h3>
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Tìm hãng xe ưa thích của bạn.</div>
-            <div class="py-10">
+            <div class="py-10 min-h-[240px]">
                 <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
-                    <RouterLink :to="`/find?brand=${brand.codename}`" v-for="(brand,index) in brands" :key="index">
-                        <img  class="aspect-3/2 object-contain mix-blend-color-burn"
-                        :src="brand.image" :alt="brand.name" >
-                    </RouterLink>
+                    <ModelItem  v-for="(model,index) in modelStore.models" :key="index" :model="model"/>
                 </Flicking>
             </div>
         </div>
@@ -18,8 +15,11 @@
 <script setup lang="ts">
 import Flicking from "@egjs/vue3-flicking";
 import { AutoPlay } from "@egjs/flicking-plugins";
+import { useModels } from "@/stores/models";
+import  ModelItem from "./ModelItem.vue";
 const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true})];
 
+const modelStore = useModels()
 const brands = [
     {
         id:1,
@@ -77,3 +77,9 @@ const brands = [
     },
 ]
 </script>
+
+<style scoped>
+.flicking-viewport{
+    @apply !h-fit
+}
+</style>

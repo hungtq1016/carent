@@ -1,6 +1,11 @@
 <template>
     <TheTop />
-    <TheCategory />
+    <Suspense>
+        <TheCategory />
+        <template #fallback>
+            <div>Loading...</div>
+        </template>
+    </Suspense>
     <TheSuggest />
     <TheStep />
     <Suspense>

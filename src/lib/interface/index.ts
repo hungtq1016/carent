@@ -23,3 +23,17 @@ export interface IWard {
     codename: string,
     short_codename: string,
 }
+
+export interface ICarModel {
+    id: string,
+    name: string,
+    slug:string,
+    image_id:string,
+    image: IImage
+}
+
+export interface IImage{
+    id:string,
+    src:string,
+    local_src:string
+}
