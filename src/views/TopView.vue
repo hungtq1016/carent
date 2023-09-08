@@ -1,7 +1,7 @@
 <template>
     <TheTop />
     <Suspense>
-        <TheCategory />
+        <TheBrand />
         <template #fallback>
             <div>Loading...</div>
         </template>
@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import TheTop from '../components/TopPage/TheTop.vue'
-import TheCategory from '../components/TopPage/Category/TheCategory.vue'
+import TheBrand from '../components/TopPage/Brand/TheBrand.vue'
 import TheSuggest from '../components/TopPage/Suggest/TheSuggest.vue'
 import TheStep from '../components/TopPage/Step/TheStep.vue'
 import TheLocation from '../components/TopPage/Location/TheLocation.vue';

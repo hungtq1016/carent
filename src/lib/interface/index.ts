@@ -24,11 +24,11 @@ export interface IWard {
     short_codename: string,
 }
 
-export interface ICarModel {
+export interface IBrand {
     id: string,
     name: string,
     slug:string,
-    image_id:string,
+    image_id?:string,
     image: IImage
 }
 
