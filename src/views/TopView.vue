@@ -1,12 +1,12 @@
 <template>
     <TheTop />
+    <TheBrand />
     <Suspense>
-        <TheBrand />
+        <TheSuggest />
         <template #fallback>
             <div>Loading...</div>
         </template>
     </Suspense>
-    <TheSuggest />
     <TheStep />
     <Suspense>
         <TheLocation />

@@ -5,7 +5,7 @@
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Tìm hãng xe ưa thích của bạn.</div>
             <div class="py-10 min-h-[240px]">
                 <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
-                    <BrandItem  v-for="(brand,index) in brandStore.brands" :key="index" :brand="brand"/>
+                    <BrandItem  v-for="(brand,index) in brandStore.brands" :key="brand.id" :brand="brand"/>
                 </Flicking>
             </div>
         </div>

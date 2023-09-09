@@ -1,7 +1,7 @@
 import { useFetch } from '@vueuse/core'
 
-const getAllProvinces = async () =>{
-    const url = 'https://provinces.open-api.vn/api/?depth=2';
+const getCars = async () =>{
+    const url = 'http://localhost:8000/api/car';
     const { isFetching, error, data } = await useFetch(url).get().json()
 
     return {
@@ -10,4 +10,4 @@ const getAllProvinces = async () =>{
 
 }
 
-export default getAllProvinces;
+export default getCars;

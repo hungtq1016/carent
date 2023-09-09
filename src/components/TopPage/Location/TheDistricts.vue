@@ -1,12 +1,12 @@
 <template>
     <Flicking :options="{ circular: true, align: 'center' }" :plugins="plugins">
-        <RouterLink :to="`/find?province=${province}`" class="px-1">
+        <RouterLink :to="`/find?province=all`" class="px-1">
             <div class="px-4 py-2 bg-black/50 rounded-md whitespace-nowrap">
                 <div class="text-xl font-semibold text-white ">Tất Cả</div>
                 <div class="text-sm text-white invisible">0</div>
             </div>
         </RouterLink>
-        <TheDistrict :district="district" v-for="(district, index) in districts" :key="district.code" :province="province"/>
+        <TheDistrict :district="district" v-for="(district, index) in districts" :key="index" :province="province.codename"/>
         <template #viewport>
             <span class="flicking-arrow-prev"></span>
             <span class="flicking-arrow-next"></span>

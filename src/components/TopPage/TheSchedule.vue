@@ -35,8 +35,7 @@
                     </select>
                     <select id="district" v-model="cars.district"
                     class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200">
-                        <option value="all" selected>Không</option>    
-                        <option v-for="district in provinceStore.districts" :value="district.codename">{{ district.name }}</option>        
+                        <option v-for="district in provinceStore.districts" :value="district">{{ district.name }}</option>        
                     </select>
                     </div>
                 </div>
@@ -103,7 +102,7 @@
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
 import { useCars } from '@/stores/cars';
-import { useProvinces } from '@/stores/provinnces';
+import { useProvinces } from '@/stores/provinces';
 
 const seats = [0,2,4,5,7,9,16]
 
@@ -111,3 +110,4 @@ const cars = useCars()
 const provinceStore = useProvinces()
 
 </script>
+@/stores/provinces

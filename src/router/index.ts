@@ -21,7 +21,9 @@ const router = createRouter({
     {
       path: '/car',
       name: 'Cars',
-      component: () => import('../views/FindView.vue')
+      redirect: to => {
+        return { path: '/find', query: { cars: 'all' } }
+      },
     },
     {
       path: '/about-us',

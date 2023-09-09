@@ -16,8 +16,6 @@
 import { useImage } from '@vueuse/core';
 
 const props = defineProps(['brand'])
-const { isLoading ,error,isReady } = useImage({ src: `http://localhost:8000${props.brand.image.local_src}` })
+const { isLoading ,error,isReady } = useImage({ src: `http://localhost:8000${props.brand?.image?.local_src}` })
 
 </script>
-
-<style scoped></style>

@@ -5,10 +5,10 @@
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Hệ thống phát triển toàn quốc.</div>
             <div class="py-5 relative">
                 <Flicking :options=optionProvince :plugins=pluginsProvince>
-                    <template v-for="(province, index) in provinces" :key="index">
+                    <template v-for="(province, index) in provinceStore.provinces" :key="index">
                         <div class="px-1 group">
                             <input type="radio" name="province" class="peer hidden" :id="province.codename"
-                                v-model="checkedProvince" :value="province">
+                                v-model="carStore.province" :value="province">
                             <TheProvince :province="province" />
                         </div>
 
@@ -32,7 +32,7 @@
                     </template>
                 </Flicking>
             </div>
-            <TheDistricts :districts="checkedProvince.districts" :province="checkedProvince.codename"/>
+            <TheDistricts v-if="provinceStore.districts.length>1" :districts="provinceStore.districts" :province="carStore.province"/>
         </div>
     </section>
 </template>
@@ -40,17 +40,17 @@
 <script setup lang="ts">
 import Flicking from "@egjs/vue3-flicking";
 import { AutoPlay, Arrow } from "@egjs/flicking-plugins";
-import getAllProvinces from '@/lib/fetch/getAllProvinces';
 import TheDistricts from "./TheDistricts.vue";
 import TheProvince from "@/components/Card/TheProvince.vue";
-import {  ref } from "vue";
+import { useProvinces } from "@/stores/provinces";
+import { useCars } from "@/stores/cars";
+import { ref } from "vue";
 
 const pluginsProvince = [new AutoPlay({ duration: 60000, direction: "NEXT", stopOnHover: true }), new Arrow()];
 const optionProvince = { align: 'center', circular: true, panelsPerView: 4, defaultIndex: 49, noPanelStyleOverride: true }
 
-const { data: provinces, error, isFetching } = await getAllProvinces();
-
-const checkedProvince = ref(provinces.value[49])
+const provinceStore = useProvinces()
+const carStore = useCars()
 </script>
 
 <style scoped>
@@ -61,4 +61,4 @@ const checkedProvince = ref(provinces.value[49])
 }
 .scroll-bar::-webkit-scrollbar { width: 0 !important }
 
-</style>
+</style>@/lib/fetch/getCars@/stores/provinces
