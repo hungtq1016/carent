@@ -1,27 +1,27 @@
 export interface IProvince {
+    id:string,
     name: string,
+    slug: string,
     code: number,
-    division_type : string,
-    codename: string,
-    phone_code: number,
+    type : string,
     districts: Array<IDistrict>
 }
 
 export interface IDistrict {
+    id:string,
     name: string,
+    slug: string,
     code: number,
-    division_type : string,
-    codename: string,
-    short_codename: number,
+    type : string,
     wards:Array<IWard>
 }
 
 export interface IWard {
+    id:string,
     name: string,
+    slug: string,
     code: number,
-    division_type : string,
-    codename: string,
-    short_codename: string,
+    type : string,
 }
 
 export interface IBrand {

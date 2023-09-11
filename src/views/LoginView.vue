@@ -17,7 +17,7 @@ const test = async () => {
     }
     ).catch(err=>console.log(err)
     )
-    console.log(data.value);
+
     
     data.value.map(async (item:any)=>{
         let imgs:any[] =[]
@@ -38,6 +38,19 @@ const test = async () => {
     ).catch(err=>console.log(err)
     )
     })
+        // await axios.get('https://provinces.open-api.vn/api/?depth=3').then(res=>{
+    //     data.value = res.data
+    // }
+    // ).catch(err=>console.log(err)
+    // )
+    
+    // console.log(data.value);
+    //     await axios.post('http://localhost:8000/api/location',{provinces:data.value}).then(res=>{
+    //         console.log(res);
+            
+    // }
+    // ).catch(err=>console.log(err)
+    // )
     
 }
 test()

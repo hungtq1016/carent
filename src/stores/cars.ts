@@ -4,6 +4,7 @@ import { useProvinces } from './provinces'
 import type { ICar, IDistrict, IProvince } from '@/lib/interface'
 import { useRouter } from 'vue-router'
 import { useFetch } from '@vueuse/core'
+import { URL } from '@/lib/fetch'
 
 export const useCars = defineStore('cars', () => {
 
@@ -20,26 +21,28 @@ export const useCars = defineStore('cars', () => {
   const date = ref()
   const price = ref<Array<number>>([500000, 10000000])
   const router = useRouter()
-  const province = ref<IProvince>(provinceStore.provinces[49])
-  const district = ref<IDistrict>({codename:'all',code:-1,division_type:'',name:'Không',short_codename:-1,wards:[]})
+  const province = ref<IProvince>(provinceStore.provinces[0])
+  const district = ref<IDistrict>({id:'all',name:'Không',code:-1,slug:"all",type:"quan",wards:[]})
 
-  const selectedProvince = ref<string>(province.value?.codename)
-  const selectedDistrict = ref<string>(district.value?.codename)
+  const selectedProvince = ref<string>(province.value?.slug)
+  const selectedDistrict = ref<string>(district.value?.slug)
 
   onMounted(() => {
     date.value = [startDate, endDate];
-    province.value = provinceStore.provinces[49]
+    province.value = provinceStore.provinces[0]
     fetchCars()
   })
 
-  const url = ref<string>('http://localhost:8000/api/car');
+  const url = ref<string>(`${URL}/car`);
 
-  watch(province, (newProvince) => {
+  watch([province,district], ([newProvince,newDistrict]) => {
     provinceStore.districts = newProvince.districts
+    selectedProvince.value=newProvince.slug
+    selectedDistrict.value = newDistrict.slug
   })
 
   watch([date, price, seat,province,district], () => {
-    url.value = 'http://localhost:8000/api/car' +
+    url.value = `${URL}`+'/car' +
       `?province=${selectedProvince.value}` +
       `&district=${selectedDistrict.value}` +
       `&seat=${seat.value}` +
@@ -63,8 +66,8 @@ export const useCars = defineStore('cars', () => {
     router.push({
       name: 'FindCars',
       query: {
-        province: province.value?.codename,
-        district: district.value?.codename,
+        province: province.value?.slug,
+        district: district.value?.slug,
         seat: seat.value,
         'starPrice': price?.value[0],
         'endPrice': price?.value[1],

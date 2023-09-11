@@ -6,7 +6,7 @@
                 <div class="text-sm text-white invisible">0</div>
             </div>
         </RouterLink>
-        <TheDistrict :district="district" v-for="(district, index) in districts" :key="index" :province="province.codename"/>
+        <TheDistrict :district="district" v-for="(district, index) in districts" :key="index" :province="province.slug"/>
         <template #viewport>
             <span class="flicking-arrow-prev"></span>
             <span class="flicking-arrow-next"></span>

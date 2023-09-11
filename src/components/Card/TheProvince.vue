@@ -1,5 +1,5 @@
 <template>
-    <label :for="province.codename" class="peer-checked:border-4 peer-checked:border-amber-600 block rounded-md box-border hover:border-4 hover:border-gray-400">
+    <label :for="province.slug" class="peer-checked:border-4 peer-checked:border-amber-600 block rounded-md box-border hover:border-4 hover:border-gray-400">
        <div class="min-h-[384px] relative">
         <img :src="`https://picsum.photos/400/500?rand=${province.code}`" :alt="province.name"
         class="object-contain max-h-96 w-full rounded-md">

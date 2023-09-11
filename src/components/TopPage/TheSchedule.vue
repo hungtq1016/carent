@@ -110,4 +110,3 @@ const cars = useCars()
 const provinceStore = useProvinces()
 
 </script>
-@/stores/provinces

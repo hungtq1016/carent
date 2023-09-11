@@ -7,7 +7,7 @@
                 <Flicking :options=optionProvince :plugins=pluginsProvince>
                     <template v-for="(province, index) in provinceStore.provinces" :key="index">
                         <div class="px-1 group">
-                            <input type="radio" name="province" class="peer hidden" :id="province.codename"
+                            <input type="radio" name="province" class="peer hidden" :id="province.slug"
                                 v-model="carStore.province" :value="province">
                             <TheProvince :province="province" />
                         </div>
@@ -44,7 +44,6 @@ import TheDistricts from "./TheDistricts.vue";
 import TheProvince from "@/components/Card/TheProvince.vue";
 import { useProvinces } from "@/stores/provinces";
 import { useCars } from "@/stores/cars";
-import { ref } from "vue";
 
 const pluginsProvince = [new AutoPlay({ duration: 60000, direction: "NEXT", stopOnHover: true }), new Arrow()];
 const optionProvince = { align: 'center', circular: true, panelsPerView: 4, defaultIndex: 49, noPanelStyleOverride: true }
