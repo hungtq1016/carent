@@ -36,7 +36,7 @@
                 </div>
                 <div class="flex flex-col gap-y-1">
                     <div class="flex gap-x-2 items-center">
-                        <div class="text-lg font-semibold">{{ item.name }}</div>
+                        <div class="text-lg font-semibold capitalize">{{ item.name }}</div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                             stroke="currentColor" class="w-4 h-4 stroke-green-500">
                             <path strokeLinecap="round" strokeLinejoin="round"
