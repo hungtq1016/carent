@@ -48,27 +48,11 @@ const test = async () => {
             notes:car.notes
         }
             await axios.post('http://localhost:8000/api/car', payload)
-        .then(async (res) => {
+        .then( (res) => {
             console.log(res);
-            let parentid =null
-            let user = res.data.data.user;
-            for (let index = 0; index < 10; index++) {
-                await axios.post('http://localhost:8000/api/comment', {
-                    parant_id:parentid,
-                    content:'test',
-                    user_id: user[Math.floor(Math.random()*10)].id,
-                    post_id: res.data.data.post_id
-                }).then(res=>{
-                    console.log(res.data);
-                    parentid= res.data.data.id
-                }).catch(err=>console.log(err)
-                )
-            }
         })
         .catch(err => console.log(err))
-        // await setTimeout(async()=>{
-        
-        // },3000)
+       
         
     })
 
