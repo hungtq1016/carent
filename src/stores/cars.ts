@@ -30,7 +30,6 @@ export const useCars = defineStore('cars', () => {
   onMounted(() => {
     date.value = [startDate, endDate];
     province.value = provinceStore.provinces[0]
-    fetchCars()
   })
 
   const url = ref<string>(`${URL}/car`);
@@ -76,5 +75,5 @@ export const useCars = defineStore('cars', () => {
       },
     })
   }
-  return { cars, seat, province, district, date, brand, price, needDriver, submit,selectedProvince,selectedDistrict }
+  return { cars, seat, province, district, date, brand, price, needDriver, submit,selectedProvince,selectedDistrict,   fetchCars  }
 })

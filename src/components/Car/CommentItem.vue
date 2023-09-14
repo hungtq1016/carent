@@ -5,17 +5,15 @@
                 :alt="comment.user.name">
         </div>
         <div class="basis-[calc(100%-45px)]">
-            <div class="flex flex-col gap-y-1 bg-gray-100 rounded pl-3 pr-1 py-1 w-fit">
+            <div class="flex flex-col gap-y-1 bg-gray-100 rounded pl-3 pr-2 py-1 w-fit">
                 <div class="font-medium">{{ comment.user.name }}</div>
                 <div class="text-gray-700 text-sm">{{ comment.content }}</div>
             </div>
-            <div class="flex justify-between mt-0.5">
-                <div class="flex gap-x-2 ">
-                    <button class="text-sm font-bold text-gray-600">Thích</button>
-                    <button class="text-sm font-bold text-gray-600">Trả lời</button>
-                </div>
-                <div>
-                    
+            <div class="flex gap-x-2 mt-0.5">
+                <button class="text-sm font-bold text-gray-600">Thích</button>
+                <button class="text-sm font-bold text-gray-600">Trả lời</button>
+                <div class="text-sm text-gray-600 font-medium capitalize">
+                    {{ formatDistance(parseISO(comment.created_at), new Date(), { addSuffix: true,locale:vi }) }}
                 </div>
             </div>
             <CommentItem v-for="sub in comment.children" :comment="sub"/>
@@ -25,6 +23,8 @@
 </template>
 
 <script setup lang="ts">
+import { formatDistance, parseISO } from 'date-fns';
+import { vi } from 'date-fns/locale';
 
 const props = defineProps(['comment'])
 

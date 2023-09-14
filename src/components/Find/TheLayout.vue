@@ -28,6 +28,7 @@ const queryUrl = () =>{
 
 onMounted(()=>{
     queryUrl()
+    carsStore.fetchCars()
 })
 watch(()=>[route.query],()=>{
     queryUrl()

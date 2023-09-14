@@ -1,6 +1,6 @@
 <template>
     <TheTop />
-    <TheBrand />
+     <TheBrand />
     <Suspense>
         <TheSuggest />
         <template #fallback>

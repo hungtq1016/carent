@@ -73,6 +73,6 @@ const test = async () => {
     })
 
 }
-// test()
+test()
 
 </script>
