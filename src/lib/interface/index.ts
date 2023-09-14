@@ -61,19 +61,22 @@ export interface IComment{
         id:string,
     },
     hasChild:boolean,
-    children?:Array<IComment>
+    parent_id:string|null,
+    children:Array<IComment>,
+    left:number,
+    right:number
 }
 export interface ICar{
     id:string,
     name:string,
     slug:string,
     seats:number,
-    electric:boolean,
-    gear: number,
+    fuel_consumption:number,
+    fuel_type: number,
     brand:IBrand,
     model:IModel,
     version:IVersion,
-    images: Array<IImage>,
-    transmission: number,
+    image: IImage,
+    transmission_type: number,
     isDelivery: boolean
 }

@@ -4,7 +4,7 @@
         <div class="relative">
             <div>
                 <div v-if="isLoading"
-                    class="h-60 flex cars-center justify-center bg-gray-300 rounded-md mx-2 animate-pulse">
+                    class="h-60 flex items-center justify-center bg-gray-300 rounded-md mx-2 animate-pulse">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path
@@ -23,6 +23,15 @@
                     {{ car.seats }} chỗ
                 </RouterLink>
             </div>
+            <div class="absolute top-1 right-1 group " v-if="car.fuel_type==3">
+                <RouterLink :to="`/find?fuel_type=3`"
+                    class="p-px rounded-full border-yellow-600 border bg-yellow-100/80 block group-hover:bg-yellow-100 duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 stroke-yellow-600 group-hover:fill-yellow-600">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                    </svg>
+
+                </RouterLink>
+            </div>
         </div>
         <div class="flex flex-col gap-y-2 justify-between flex-auto">
             <div class="flex flex-col gap-y-2">
@@ -35,10 +44,10 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <div class="flex gap-x-2 cars-center">
+                    <div class="flex gap-x-2 items-center">
                         <div class="text-lg font-semibold capitalize">{{ car.info.name }}</div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                            stroke="currentColor" class="w-4 h-4 stroke-green-500">
+                            stroke="currentColor" class="w-6 h-6 stroke-green-700">
                             <path strokeLinecap="round" strokeLinejoin="round"
                                 d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -56,9 +65,9 @@
                 </div>
             </div>
             <div class="pt-2 border-t">
-                <div class="flex justify-between cars-center">
+                <div class="flex justify-between items-center">
                     <div class="flex flex-col gap-y-1">
-                        <div class="flex cars-center gap-x-1">
+                        <div class="flex items-center gap-x-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                                 stroke="currentColor" class="w-4 h-4 stroke-yellow-400">
                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -66,7 +75,7 @@
                             </svg>
                             <span class="text-xs text-gray-600">{{ Number(car.review).toFixed(1) }}</span>
                         </div>
-                        <div class="flex cars-center gap-x-1">
+                        <div class="flex items-center gap-x-1">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                                 stroke="currentColor" class="w-4 h-4">
                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -76,7 +85,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col gap-y-1">
-                        <div class="flex cars-center gap-x-1 flex-row-reverse">
+                        <div class="flex items-center gap-x-1 flex-row-reverse">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                                 stroke="currentColor" class="w-4 h-4 stroke-amber-600">
                                 <path strokeLinecap="round" strokeLinejoin="round"

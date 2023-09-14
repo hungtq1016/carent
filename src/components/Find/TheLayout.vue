@@ -2,7 +2,7 @@
     <section class="py-10">
         <div class="max-w-screen-xl mx-auto">
             <div class="grid grid-cols-4 gap-3">
-                <TheItem v-for="(car, index) in carsStore.cars" :item="car" :key="index" />
+                <TheItem v-for="(car, index) in carsStore.cars" :car="car" :key="index" />
             </div>
         </div>
     </section>

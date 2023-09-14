@@ -1,6 +1,10 @@
 <template>
    <div class="text">
-        <CommentItem v-for="comment in comments" :comment="comment" />
+        <CommentItem v-for="comment in comments" :comment="comment" :post_id="post_id"/>
+        <div class="font-medium text-gray-600 mt-3"
+        v-if="isFetch">Đang tải nội dung</div>
+        <button @click="fetchComments" v-if="isNext && !isFetch"
+        class="font-medium text-gray-600 mt-3">Xem thêm bình luận</button>
    </div>
 </template>
 
@@ -11,11 +15,24 @@ import { onMounted, ref } from 'vue';
 import CommentItem from './CommentItem.vue';
 const props = defineProps(['post_id'])
 const comments = ref<Array<IComment>>([])
+const isNext = ref(false)
+const nextPage = ref<number>(1)
+const isFetch = ref(false)
+onMounted( ()=>{
+     fetchComments()
+})  
 
-onMounted(async ()=>{
-    const {data,error,isFetching} = await useFetch(`http://localhost:8000/api/comment?post_id=${props.post_id}`).get().json()
-    comments.value = data.value.data    
-})
-
+const fetchComments = async () =>{
+    isFetch.value = true
+    const {data,error,isFetching} = await useFetch(`http://localhost:8000/api/comment?post_id=${props.post_id}&page=${nextPage.value}`).get().json()
+    comments.value = [...comments.value,...data.value.data]      
+    if (data.value.meta.current_page < data.value.meta.last_page) {
+        isNext.value =  true;
+        nextPage.value++;
+    }else{
+        isNext.value =  false
+    }
+    isFetch.value = false
+}
 
 </script>

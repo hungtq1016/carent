@@ -10,22 +10,50 @@
                 <div class="text-gray-700 text-sm">{{ comment.content }}</div>
             </div>
             <div class="flex gap-x-2 mt-0.5">
-                <button class="text-sm font-bold text-gray-600">Thích</button>
-                <button class="text-sm font-bold text-gray-600">Trả lời</button>
-                <div class="text-sm text-gray-600 font-medium capitalize">
+                <button @click="()=>Swal.fire( 'Tính năng đang cải tiến.', '','warning' )"
+                class="text-sm font-medium text-gray-600">Thích</button>
+                <button class="text-sm font-medium text-gray-600">Trả lời</button>
+                <div class="text-sm text-gray-600 font-medium">
                     {{ formatDistance(parseISO(comment.created_at), new Date(), { addSuffix: true,locale:vi }) }}
                 </div>
             </div>
-            <CommentItem v-for="sub in comment.children" :comment="sub"/>
+            <div class="text-sm text-gray-600"
+            v-if="isFetch">
+                Đang tải nội dung...
+            </div>
+            <template v-else>
+                <button @click="fetchChildren"
+                v-if="children.length == 0 && comment.hasChild" 
+                class="text-sm text-gray-600">Xem thêm {{ (comment.right - comment.left -1)/2 }} bình luận còn lại</button>
+                <template v-else>
+                    <CommentItem v-for="sub in children" :comment="sub"/>
+                </template>
+            </template>
+            
         </div>
         <div v-if="comment.hasChild" class="absolute top-10 bottom-1 left-5 w-5 -z-[1] border-l-2 border-b-2 rounded-bl-lg"></div>
     </div>
 </template>
 
 <script setup lang="ts">
+import type { IComment } from '@/lib/interface';
+import { useFetch } from '@vueuse/core';
 import { formatDistance, parseISO } from 'date-fns';
 import { vi } from 'date-fns/locale';
+import { ref } from 'vue';
+import Swal from 'sweetalert2'
 
-const props = defineProps(['comment'])
+const props = defineProps(['comment','post_id'])
+const children = ref<Array<IComment>>([])
+const isFetch = ref(false)
 
+children.value = props.comment.children
+const fetchChildren = async() =>{
+    isFetch.value = true
+    const {data,error,isFetching} = await useFetch(`http://localhost:8000/api/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()
+    children.value = data.value.data
+    isFetch.value =false    
+    console.log(props.comment.left,props.comment.right);
+        
+}
 </script>
