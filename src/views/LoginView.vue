@@ -9,7 +9,20 @@ import axios from 'axios';
 import { ref } from 'vue';
 import { v4 as uuid } from 'uuid';
 const data = ref()
+const loglocation = async () => {
+    // await axios.get('https://provinces.open-api.vn/api/?depth=3').then(async(res) => {
+    //     data.value = res.data
+    //     await axios.post('http://localhost:8000/api/location',{provinces:data.value }).then(res => {
+    //     console.log(res.data);
+        
+    // }
+    
+    // ).catch(err => console.log(err)
+    // )
+    // console.log(res.data);
 
+
+}
 const test = async () => {
 
     await axios.get('https://m-car.mioto.vn/homepage/sd').then(res => {
@@ -21,7 +34,8 @@ const test = async () => {
     )
 
 
-    data.value.map(async (item: any) => {
+   
+    data.value.map(async (item: any,index:number) => {
         
         const images:string[] = []
         let car :any
@@ -38,18 +52,20 @@ const test = async () => {
         let payload = {
             car_name: car.name,
             seats: car.seat,
-            electric: car.deliveryEnable,
-            gear: car.optionsTransmission,
+            fuel_type: car.optionsFuel,
+            isDelivery: car.deliveryEnable,
+            transmission_type: car.optionsTransmission,
             features: car.features,
             images: images,
             desc: car.desc,
             price: car.price,
             location:car.locationAddr,
-            notes:car.notes
+            notes:car.notes,
+            fuel_consumption:car.optionsFuelConsumption,
         }
             await axios.post('http://localhost:8000/api/car', payload)
         .then( (res) => {
-            console.log(res);
+            console.log(index, res);
         })
         .catch(err => console.log(err))
        
@@ -57,6 +73,6 @@ const test = async () => {
     })
 
 }
-test()
+// test()
 
 </script>

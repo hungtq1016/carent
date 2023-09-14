@@ -5,7 +5,7 @@
             <div class="font-normal text-lg text-gray-600 text-center mt-3">Hàng vạn lựa chọn phù hợp theo yêu cầu của bạn.
             </div>
             <div class="grid grid-cols-4 gap-3 py-5">
-                <TheItem v-for="(car, index) in cars.data" :item="car" :key="index" />
+                <TheItem v-for="(car, index) in cars.data" :car="car" :key="index" />
             </div>
         </div>
     </section>

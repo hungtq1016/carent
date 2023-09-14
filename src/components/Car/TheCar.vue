@@ -5,6 +5,13 @@
             <CarImages v-else :images="car.images"/>
             <div v-if="isFetch">Loading...</div>
             <CarDetail v-else :info="car"/>
+            <div v-if="isFetch">Loading...</div>
+            <template  v-else>
+                <Suspense>
+                    <CarComment :post_id="car.id"/>
+                    <template #fallback>Loading..</template>
+                </Suspense>
+            </template>
         </div>
     </section>
 </template>
@@ -18,12 +25,14 @@ import { useRoute } from 'vue-router';
 import CarImages from './CarImages.vue';
 import CarDetail from './CarDetail.vue';
 import ImageCarouselLoading from '@/components/Loading/ImageCarouselLoading.vue';
+import CarComment from './CarComment.vue';
 
 const car = ref()
-const carSlug = useRoute().params.id;
+const carSlug = useRoute().params.carSlug;
+const id = useRoute().params.id;
 const isFetch = ref<boolean>(true)
 onMounted(async ()=>{
-    const {data,error,isFetching} = await useFetch(`${URL}/car/${carSlug}`).get().json()
+    const {data,error,isFetching} = await useFetch(`${URL}/car/${id}`).get().json()
     car.value = data.value.data
     isFetch.value = false
     console.log(car.value);

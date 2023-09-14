@@ -52,7 +52,17 @@ export interface IImage{
     src:string,
     local_src:string
 }
-
+export interface IComment{
+    id:string,
+    content:string,
+    user:{
+        name:string,
+        emai:string,
+        id:string,
+    },
+    hasChild:boolean,
+    children?:Array<IComment>
+}
 export interface ICar{
     id:string,
     name:string,
