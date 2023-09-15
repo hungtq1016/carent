@@ -8,12 +8,12 @@
         </template>
     </Suspense>
     <TheStep />
-    <Suspense>
+    <!-- <Suspense>
         <TheLocation />
         <template #fallback>
             <div>Loading...</div>
         </template>
-    </Suspense>
+    </Suspense> -->
     <TheRegister />
     <TheBlog />
 </template>

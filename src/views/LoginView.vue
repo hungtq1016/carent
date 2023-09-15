@@ -25,8 +25,8 @@ const loglocation = async () => {
 }
 const test = async () => {
 
-    await axios.get('https://m-car.mioto.vn/homepage/sd').then(res => {
-        data.value = res.data.data.dealArounds
+    await axios.get('https://m-car.mioto.vn/car/detail?carId=K4U29N').then(res => {
+        data.value = res.data.data.cars
         console.log(data.value);
 
     }
@@ -60,7 +60,9 @@ const test = async () => {
             desc: car.desc,
             price: car.price,
             location:car.locationAddr,
-            notes:car.notes,
+            isInstant:car.instant,
+            isMortgages:!car.nonMortgage,
+            address:car.location.street,
             fuel_consumption:car.optionsFuelConsumption,
         }
             await axios.post('http://localhost:8000/api/car', payload)

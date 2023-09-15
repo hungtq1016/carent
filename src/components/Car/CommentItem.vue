@@ -8,11 +8,15 @@
             <div class="flex flex-col gap-y-1 bg-gray-100 rounded pl-3 pr-2 py-1 w-fit">
                 <div class="font-medium">{{ comment.user.name }}</div>
                 <div class="text-gray-700 text-sm">{{ comment.content }}</div>
+                
             </div>
             <div class="flex gap-x-2 mt-0.5">
                 <button @click="()=>Swal.fire( 'Tính năng đang cải tiến.', '','warning' )"
                 class="text-sm font-medium text-gray-600">Thích</button>
                 <button class="text-sm font-medium text-gray-600">Trả lời</button>
+                <div v-if="comment.like_count>0" class="text-sm font-medium text-gray-600">
+                    {{comment.like_count}} lượt thích
+                </div>
                 <div class="text-sm text-gray-600 font-medium">
                     {{ formatDistance(parseISO(comment.created_at), new Date(), { addSuffix: true,locale:vi }) }}
                 </div>
@@ -53,7 +57,7 @@ const fetchChildren = async() =>{
     const {data,error,isFetching} = await useFetch(`http://localhost:8000/api/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()
     children.value = data.value.data
     isFetch.value =false    
-    console.log(props.comment.left,props.comment.right);
+    console.log(props.comment);
         
 }
 </script>

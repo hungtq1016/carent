@@ -4,9 +4,10 @@
             <ImageCarouselLoading v-if="isFetch"/>
             <CarImages v-else :images="car.images"/>
             <div v-if="isFetch">Loading...</div>
-            <CarDetail v-else :car="car"/>
+            <CarDetail v-else :data="car.info"/>
         </div>
-        <CarPanel :car="car"/>
+        <div v-if="isFetch">Loading...</div>
+        <CarPanel v-else :tab="car.tab" :car_id="car.id"/>
     </section>
 </template>
 
@@ -29,7 +30,7 @@ onMounted(async ()=>{
     const {data,error,isFetching} = await useFetch(`${URL}/car/${id}`).get().json()
     car.value = data.value.data
     isFetch.value = false
-    console.log(car.value);
+    console.log(data.value.data);
 
 })
 

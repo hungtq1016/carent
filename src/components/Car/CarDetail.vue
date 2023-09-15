@@ -4,7 +4,7 @@
             <div class="flex flex-col gap-y-5 pb-5">
                 <div class="flex items-center justify-between">
                     <div class="flex gap-x-2 items-center">
-                        <div class="text-4xl font-semibold capitalize">{{ car.info.name }}</div>
+                        <div class="text-4xl font-semibold capitalize">{{ data.name }}</div>
                         <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                                 stroke="currentColor" class="w-8 h-8 stroke-green-500">
                                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -42,7 +42,7 @@
                             <path strokeLinecap="round" strokeLinejoin="round"
                                 d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                         </svg>
-                        <span class="text-gray-600">{{ Number(car.review).toFixed(1) }}</span>
+                        <span class="text-gray-600">{{ Number(data.rating.avg).toFixed(1) }}</span>
                     </div>
                     <div class="flex items-center gap-x-1">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -50,7 +50,7 @@
                             <path strokeLinecap="round" strokeLinejoin="round"
                                 d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                         </svg>
-                        <span class="text-gray-600">{{ car.total_review }}</span>
+                        <span class="text-gray-600">{{ data.like_count }}</span>
                     </div>
                     <div class="flex items-center gap-x-1">
 
@@ -76,7 +76,7 @@
                                 </g>
                             </g>
                         </svg>
-                        <span class="text-gray-600">{{ car.total_trip }}</span>
+                        <span class="text-gray-600">{{ data.total_trip }}</span>
                     </div>
                     <div class="flex items-center gap-x-2">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -85,23 +85,23 @@
                             <path strokeLinecap="round" strokeLinejoin="round"
                                 d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                         </svg>
-                        <RouterLink v-if="car.district"
-                            :to="`/find?district=${car.district.slug}&province=${car.province.slug}`"
-                            class="text-gray-900 text-lg font-semibold">{{ car?.district.name }}, </RouterLink>
-                        <RouterLink v-if="car.province" :to="`/find?province=${car.province.slug}`"
-                            class="text-gray-900 text-lg font-semibold">{{ car?.province.name }}</RouterLink>
+                        <RouterLink v-if="data.location.district"
+                            :to="`/find?district=${data.location.district.slug}&province=${data.location.province.slug}`"
+                            class="text-gray-900 text-lg font-semibold">{{ data?.location.district.name }}, </RouterLink>
+                        <RouterLink v-if="data.location.province" :to="`/find?province=${data.location.province.slug}`"
+                            class="text-gray-900 text-lg font-semibold">{{ data?.location.province.name }}</RouterLink>
                     </div>
                 </div>
                 <div class="flex gap-x-3">
                     <div class="bg-amber-100 px-3 py-2 rounded-md">
-                        {{ car.transmission_type == 1 ? 'Số tự động' : 'Số sàn' }}
+                        {{ data.transmission_type == 1 ? 'Số tự động' : 'Số sàn' }}
                     </div>
-                    <div v-if="car.isDelivery" class="bg-green-100 px-3 py-2 rounded-md">
+                    <div v-if="data.isDelivery" class="bg-green-100 px-3 py-2 rounded-md">
                         Giao tận nơi
                     </div>
                 </div>
                 <div>
-                    <template v-for="(rate, index) in car.rating">
+                    <template v-for="(rate, index) in data.rating.star">
                         <div class="flex items-center gap-x-1">
                             <div class="flex items-center gap-x-px w-8 justify-between">
                                 <span>{{ index + 1 }}</span>
@@ -114,13 +114,13 @@
 
                             </div>
                             <div class="w-80 h-2 rounded-full bg-gray-300">
-                                <div :style="{ width: `${(rate / car.total_review) * 100}%` }"
+                                <div :style="{ width: `${(rate / data.rating.total) * 100}%` }"
                                     class="h-2 bg-yellow-400 rounded-l-full"
-                                    :class="{ 'rounded-r-full': (rate / car.total_review) * 100 == 100 }"></div>
+                                    :class="{ 'rounded-r-full': (rate / data.rating.total) * 100 == 100 }"></div>
                             </div>
                             <div class="flex gap-x-px w-14 justify-end text-sm text-gray-600">
                                 <span>{{ rate }}</span> /
-                                <span>{{ car.total_review }}</span>
+                                <span>{{ data.rating.total }}</span>
                             </div>
                         </div>
                     </template>
@@ -151,7 +151,7 @@
 
                         <div class="flex flex-col gap-y-0.5">
                             <span class="text-lg font-bold">Hộp Số</span>
-                            <span class="text-gray-600">{{ car.transmission_type == 1 ? 'Số tự động' : 'Số sàn' }}</span>
+                            <span class="text-gray-600">{{ data.transmission_type == 1 ? 'Số tự động' : 'Số sàn' }}</span>
                         </div>
                     </div>
                     <div class="flex gap-x-2 items-center">
@@ -167,7 +167,7 @@
                         </div>
                         <div class="flex flex-col gap-y-0.5">
                             <span class="text-lg font-bold">Chỗ Ngồi</span>
-                            <span class="text-gray-600">{{ car.seats }} ghế</span>
+                            <span class="text-gray-600">{{ data.seats }} ghế</span>
                         </div>
                     </div>
                     <div class="flex gap-x-2 items-center">
@@ -185,7 +185,7 @@
                         </div>
                         <div class="flex flex-col gap-y-0.5">
                             <span class="text-lg font-bold">Nhiên Liệu</span>
-                            <span class="text-gray-600">{{ car.fuel_type == 3 ? 'Điện' : car.fuel_type == 2 ? 'Dầu'
+                            <span class="text-gray-600">{{ data.fuel_type == 3 ? 'Điện' : data.fuel_type == 2 ? 'Dầu'
                                 : 'Xăng' }}</span>
                         </div>
                     </div>
@@ -226,22 +226,22 @@
                         </div>
                         <div class="flex flex-col gap-y-0.5">
                             <span class="text-lg font-bold">Hao Phí</span>
-                            <span v-if="car.fuel_type == 3" class="text-gray-600">{{ car.fuel_consumption }} KM / Lần
+                            <span v-if="data.fuel_type == 3" class="text-gray-600">{{ data.fuel_consumption }} KM / Lần
                                 Sạc</span>
-                            <span v-else class="text-gray-600">{{ car.fuel_consumption }} Lít / 100KM</span>
+                            <span v-else class="text-gray-600">{{ data.fuel_consumption }} Lít / 100KM</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <CarFeature :features="car.features" />
+            <CarFeature :features="data.features" />
             <div class="py-5">
                 <div class="flex gap-x-2 items-center">
                     <h4 class="text-xl font-semibold py-2">Điều Khoản</h4>
                     <TheQuestion
                         answer="Người thuê có nhiệm vụ đúng với trách nhiệm dưới đây.<span class='text-red-600'>(Mọi thiệt hại người thuê phải chịu 100%)</span>" />
                 </div>
-                <div class="text-sm text-gray-600" v-html="car.notes.replace(/◦/g, '<br/>' + '◦')
-                    .replace('Quy định khác:', text)"></div>
+                <!-- <div class="text-sm text-gray-600" v-html="data.notes.replace(/◦/g, '<br/>' + '◦')
+                    .replace('Quy định khác:', text)"></div> -->
             </div>
         </div>
         <div class="col-span-1">
@@ -262,7 +262,7 @@
                     </div>
                 </div>
                 <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3">
-                    <div class="text-xl font-semibold text-gray-900">{{ formatter.format(car?.price) }} / ngày</div>
+                    <div class="text-xl font-semibold text-gray-900">{{ formatter.format(data?.price) }} / ngày</div>
                     <VueDatePicker class="date-picker" :enable-time-picker="false" cancelText="Hủy" selectText="Gửi"
                         fixed-start min-range="1" format="dd-MM-yyyy" :multi-calendars="{ solo: true }" id="date"
                         v-model="selectedDate" range :format-locale="vi"></VueDatePicker>
@@ -274,7 +274,7 @@
                                     <p class="text-gray-600 font-semibold">Đơn giá thuê</p>
                                     <TheQuestion answer="Giá cơ bản từ chủ cho thuê" />
                                 </div>
-                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(car?.price) }} / ngày</span>
+                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price) }} / ngày</span>
                                 </p>
                             </div>
                             <div class="flex justify-between items-center">
@@ -282,7 +282,7 @@
                                     <p class="text-gray-600 font-semibold">Phí dịch vụ</p>
                                     <TheQuestion answer="Phí duy trì và quản lý dịch vụ" />
                                 </div>
-                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(car?.price * 0.11) }} /
+                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 0.11) }} /
                                         ngày</span></p>
                             </div>
                             <div class="flex justify-between items-center">
@@ -290,7 +290,7 @@
                                     <p class="text-gray-600 font-semibold">Phí bảo hiểm</p>
                                     <TheQuestion answer="Phí bảo hiểm đã được đăng ký" />
                                 </div>
-                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(car?.price * 0.11) }} /
+                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 0.11) }} /
                                         ngày</span></p>
                             </div>
                             <div class="border-t border-gray-400"></div>
@@ -299,7 +299,7 @@
                                     <p class="text-gray-600 font-semibold">Tạm tính</p>
                                     <TheQuestion answer="Giá tiền được tạm tính" />
                                 </div>
-                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(car?.price * 1.22) }} /
+                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 1.22) }} /
                                         ngày</span></p>
                             </div>
                             <div class="flex justify-between items-center">
@@ -329,7 +329,7 @@
                                     <p class="text-gray-600 font-bold">Tổng cộng</p>
                                     <TheQuestion answer="Bắt đầu tính từ ngày mượn" />
                                 </div>
-                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(car?.price * 1.22) }} /
+                                <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 1.22) }} /
                                         ngày</span></p>
                             </div>
                             <button class="mt-3">
@@ -377,7 +377,7 @@ onMounted(() => {
     const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
     selectedDate.value = [startDate, endDate];
 })
-const props = defineProps(['car'])
+const props = defineProps(['data'])
 
 const text = '<span class="text-base font-medium text-gray-900">Quy định khác:</span>'
 const fees = [
@@ -390,7 +390,7 @@ const fees = [
     {
         title: 'Phí quá hạn',
         info: 'Phụ phí phát sinh nếu hoàn trả xe trễ giờ. Trường hợp trễ quá 5 tiếng, phụ phí thêm 1 ngày thuê',
-        price: props.car.price,
+        price: props.data.price,
         per: 'ngày'
     },
     {

@@ -18,10 +18,10 @@
 
             <TabPanels class="mt-2">
                 <TabPanel>
-                    <div v-html="car?.desc"></div>
+                    <div v-html="tab.desc"></div>
                 </TabPanel>
                 <TabPanel>
-                    <CarComment :post_id="car.id" />
+                    <CarComment :post_id="car_id" />
                 </TabPanel>
                 <TabPanel>
                     <div class="flex gap-x-2 items-center">
@@ -70,7 +70,7 @@ import { ref } from 'vue'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import CarComment from './CarComment.vue';
 import TheQuestion from '../Card/TheQuestion.vue';
-const props = defineProps(['car'])
+const props = defineProps(['tab','car_id'])
 const categories = ref(['Mô tả', 'Bình luận', 'Yêu cầu','Chính Sách'])
 const cancelTable = ref({
     'Thời Gian':[
