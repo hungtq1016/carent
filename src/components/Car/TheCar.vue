@@ -4,15 +4,9 @@
             <ImageCarouselLoading v-if="isFetch"/>
             <CarImages v-else :images="car.images"/>
             <div v-if="isFetch">Loading...</div>
-            <CarDetail v-else :info="car"/>
-            <div v-if="isFetch">Loading...</div>
-            <template  v-else>
-                <Suspense>
-                    <CarComment :post_id="car.id"/>
-                    <template #fallback>Loading..</template>
-                </Suspense>
-            </template>
+            <CarDetail v-else :car="car"/>
         </div>
+        <CarPanel :car="car"/>
     </section>
 </template>
 
@@ -25,7 +19,7 @@ import { useRoute } from 'vue-router';
 import CarImages from './CarImages.vue';
 import CarDetail from './CarDetail.vue';
 import ImageCarouselLoading from '@/components/Loading/ImageCarouselLoading.vue';
-import CarComment from './CarComment.vue';
+import CarPanel from './CarPanel.vue';
 
 const car = ref()
 const carSlug = useRoute().params.carSlug;

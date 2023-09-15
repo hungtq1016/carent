@@ -28,7 +28,6 @@ import FilterItem from "./FilterItem.vue";
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { ref,onMounted } from 'vue';
 import { vi } from 'date-fns/locale';
-import { useCars } from '@/stores/cars';
 
 const selectedDate = ref();
 onMounted(() => {
