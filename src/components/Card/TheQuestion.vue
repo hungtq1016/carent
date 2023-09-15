@@ -15,8 +15,8 @@
                 </g>
             </g>
             </svg>
-        <div class="absolute bottom-0 -right-2  w-60 translate-x-full bg-white p-1 rounded-md shadow hidden group-hover:inline">
-            <div class=" text-xs text-gray-600" v-html="answer"></div>
+        <div class="absolute bottom-0 -right-2  w-60 translate-x-full  hidden group-hover:inline">
+            <div class="w-fit bg-white shadow p-1 rounded-md text-xs text-gray-600" v-html="answer"></div>
         </div>
     </div>
 </template>

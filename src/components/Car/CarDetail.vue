@@ -12,14 +12,28 @@
                             </svg>
                         </div>
                     </div>
-                    <button class="border-gray-600 border p-1 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="w-6 h-6 stroke-gray-600">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                        </svg>
-
-                    </button>
+                    <div class="flex items-center gap-x-2">
+                        <button class="border-gray-600 border p-1 rounded-full relative group">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-6 h-6 stroke-gray-600">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                            </svg>
+                            <div class="absolute -bottom-2 left-0 text-xs text-gray-600 hidden group-hover:inline-block bg-white shadow w-20 text-center translate-y-full -translate-x-1/2 rounded-md">
+                                Yêu Thích
+                            </div>
+                        </button>
+                        <button class="border-red-600 border p-1 rounded-full relative group">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
+                                stroke="currentColor" class="w-6 h-6 stroke-red-600">
+                                <path strokeLinecap="round" strokeLinejoin="round"
+                                    d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
+                            </svg>
+                            <div class="absolute -bottom-2 left-0 text-xs text-gray-600 hidden group-hover:inline-block bg-white shadow w-20 text-center translate-y-full -translate-x-1/2 rounded-md">
+                                Báo cáo xe
+                            </div>
+                        </button>
+                    </div>
                 </div>
                 <div class="flex gap-x-3 items-center">
                     <div class="flex items-center gap-x-1">
@@ -247,7 +261,7 @@
                         Xe đã được đăng ký bảo hiểm tai nạn
                     </div>
                 </div>
-                <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3 sticky top-0">
+                <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3">
                     <div class="text-xl font-semibold text-gray-900">{{ formatter.format(car?.price) }} / ngày</div>
                     <VueDatePicker class="date-picker" :enable-time-picker="false" cancelText="Hủy" selectText="Gửi"
                         fixed-start min-range="1" format="dd-MM-yyyy" :multi-calendars="{ solo: true }" id="date"
@@ -319,13 +333,31 @@
                                         ngày</span></p>
                             </div>
                             <button class="mt-3">
-                                <div class="py-4 text-center bg-amber-600 rounded-md text-xl font-bold text-white hover:bg-orange-600 hover:text-amber-100 duration-300">
+                                <div
+                                    class="py-4 text-center bg-amber-600 rounded-md text-xl font-bold text-white hover:bg-orange-600 hover:text-amber-100 duration-300">
                                     Thuê Xe
                                 </div>
                             </button>
                         </div>
                     </div>
                 </div>
+                <div class="p-2 border-gray-400 border rounded-md">
+                    <div class="font-bold text-lime-600">Phụ phí phát sinh</div>
+                    <div class="flex flex-col gap-y-1 mt-3" v-for="fee in fees">
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm font-bold">
+                                {{ fee.title }}
+                            </div>
+                            <div class="text-xs font-medium">
+                                {{ formatter.format(fee.price) }}
+                                /
+                                {{ fee.per }}
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-600 font-light" v-html="fee.info"></div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -345,16 +377,42 @@ onMounted(() => {
     const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
     selectedDate.value = [startDate, endDate];
 })
-const text = '<span class="text-base font-medium text-gray-900">Quy định khác:</span>'
-
 const props = defineProps(['car'])
+
+const text = '<span class="text-base font-medium text-gray-900">Quy định khác:</span>'
+const fees = [
+    {
+        title: 'Phí quá giới hạn',
+        info: 'Phát sinh nếu lộ trình di chuyển vượt quá 300km/ngày',
+        price: 5000,
+        per: 'km'
+    },
+    {
+        title: 'Phí quá hạn',
+        info: 'Phụ phí phát sinh nếu hoàn trả xe trễ giờ. Trường hợp trễ quá 5 tiếng, phụ phí thêm 1 ngày thuê',
+        price: props.car.price,
+        per: 'ngày'
+    },
+    {
+        title: 'Phí vệ sinh',
+        info: 'Phụ phí phát sinh khi xe hoàn trả không đảm bảo vệ sinh <br/>(nhiều vết bẩn, bùn cát, sình lầy...)',
+        price: 50000,
+        per: 'lần'
+    },
+    {
+        title: 'Phí khử mùi',
+        info: 'Phụ phí phát sinh khi xe hoàn trả bị ám mùi khó chịu<br/> (mùi thuốc lá, thực phẩm nặng mùi...)',
+        price: 300000,
+        per: 'lần'
+    },
+]
 const formatter = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
     currency: 'VND',
 
 });
 </script>
-
+c
 <style>.date-picker input {
     @apply !rounded-md
 }</style>
