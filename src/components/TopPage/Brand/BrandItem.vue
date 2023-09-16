@@ -8,13 +8,14 @@
         <img v-if="error" class="aspect-3/2 object-contain mix-blend-color-burn" 
         src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" alt="error">
         <img v-else class="aspect-3/2 object-contain mix-blend-color-burn" 
-        :src="'http://localhost:8000'+brand.image.local_src" :alt="brand.name">
+        :src="`http://localhost:8000/model/${brand.slug}.png`" :alt="brand.name">
     </RouterLink>
 </template>
 
 <script setup lang="ts">
 import { useImage } from '@vueuse/core';
 const props = defineProps(['brand'])
-const { isLoading ,error,isReady } = useImage({ src: 'http://localhost:8000'+props.brand.image.local_src })
+const { isLoading ,error,isReady } = useImage({ src: `http://localhost:8000/model/${props.brand.slug}.png` })
+console.log(error.value);
 
 </script>

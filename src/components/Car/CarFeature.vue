@@ -6,7 +6,7 @@
             v-for="feature in features">
                 <div class="bg-amber-100 p-2 rounded-full">
                     <img class="w-6"
-                    :src="`http://localhost:8000/storage${feature.image.local_src}`" :alt="feature.name">
+                    :src="`http://localhost:8000/storage${feature.image.path}`" :alt="feature.name">
                 </div>
                 <div>{{ feature.name }}</div>
             </div>

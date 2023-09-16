@@ -9,7 +9,7 @@
         </div>
         <img v-if="error" class="aspect-3/2 object-contain mix-blend-color-burn"
             src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" alt="error">
-        <img v-else :src="`http://localhost:8000/storage${image.local_src}`" :alt="image.local_src"
+        <img v-else :src="`http://localhost:8000/storage${image.path}`" :alt="image.path"
             class="h-full w-full object-cover rounded-md">
     </div>
 </template>
@@ -18,5 +18,5 @@
 import { useImage } from '@vueuse/core';
 const props = defineProps(['image'])
 
-const { isLoading, error, isReady } = useImage({ src: `http://localhost:8000/storage${props.image.local_src}` })
+const { isLoading, error, isReady } = useImage({ src: `http://localhost:8000/storage${props.image.path}` })
 </script>

@@ -13,7 +13,7 @@
                 </div>
                 <img v-if="error" class="aspect-3/2 object-contain mix-blend-color-burn"
                     src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" alt="error">
-                <img v-else :src="`http://localhost:8000/storage${car.image.local_src}`" :alt="car.info.name"
+                <img v-else :src="`http://localhost:8000/storage${car.image.path}`" :alt="car.info.name"
                     class="aspect-3/2 object-cover rounded-md min-h-[300px]">
 
             </div>
@@ -115,7 +115,7 @@ const formatter = new Intl.NumberFormat('vi-VN', {
 
 });
 
-const { isLoading, error, isReady } = useImage({ src: `http://localhost:8000/storage${props.car.image.local_src}` })
+const { isLoading, error, isReady } = useImage({ src: `http://localhost:8000/storage${props.car.image.path}` })
 
 
 </script>
