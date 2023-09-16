@@ -56,8 +56,6 @@ const fetchChildren = async() =>{
     isFetch.value = true
     const {data,error,isFetching} = await useFetch(`http://localhost:8000/api/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()
     children.value = data.value.data
-    isFetch.value =false    
-    console.log(props.comment);
-        
+    isFetch.value =false            
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <label :for="province.slug" class="peer-checked:border-4 peer-checked:border-amber-600 block rounded-md box-border hover:border-4 hover:border-gray-400">
        <div class="min-h-[384px] relative">
-        <img :src="`http://localhost:8000/storage/provinces/${province.slug}.jpg`" :alt="province.slug"
+        <img :src="imgSrc" :alt="province.slug"
         class="object-contain max-h-96 w-full rounded-md">
         <div class="absolute bottom-2 inset-x-2">
             <div class="px-4 py-2 bg-black/50 rounded-md">
@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+import { IMG_URL } from '@/lib/fetch';
+
     const props = defineProps(['province'])
+    const imgSrc = props.province.image == null ?  `https://picsum.photos/400/400?random=${props.province.slug}` : IMG_URL+props.province.image.path
 </script>
 

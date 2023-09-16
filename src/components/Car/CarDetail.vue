@@ -240,8 +240,8 @@
                     <TheQuestion
                         answer="Người thuê có nhiệm vụ đúng với trách nhiệm dưới đây.<span class='text-red-600'>(Mọi thiệt hại người thuê phải chịu 100%)</span>" />
                 </div>
-                <!-- <div class="text-sm text-gray-600" v-html="data.notes.replace(/◦/g, '<br/>' + '◦')
-                    .replace('Quy định khác:', text)"></div> -->
+                <div class="text-sm text-gray-600" v-html="data.notes.replace(/◦/g, '<br/>' + '◦')
+                    .replace('Quy định khác:', text)"></div>
             </div>
         </div>
         <div class="col-span-1">

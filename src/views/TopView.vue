@@ -1,6 +1,11 @@
 <template>
     <TheTop />
-     <TheBrand />
+     <Suspense>
+        <TheBrand />
+        <template #fallback>
+            <div>Loading...</div>
+        </template>
+    </Suspense>
     <Suspense>
         <TheSuggest />
         <template #fallback>
@@ -8,12 +13,12 @@
         </template>
     </Suspense>
     <TheStep />
-    <!-- <Suspense>
+    <Suspense>
         <TheLocation />
         <template #fallback>
             <div>Loading...</div>
         </template>
-    </Suspense> -->
+    </Suspense>
     <TheRegister />
     <TheBlog />
 </template>

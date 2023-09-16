@@ -9,6 +9,6 @@ export const useBrands = defineStore('brands', () => {
     const {data,error:err,isFetching} = await useFetch(`http://localhost:8000/api/brand`).get().json()    
     brands.value = data.value.data         
   }
-onMounted((()=>  fetchBrands()))
+onMounted(()=>  fetchBrands())
   return { brands ,fetchBrands }
 })

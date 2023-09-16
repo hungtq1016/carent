@@ -56,7 +56,6 @@ export const useCars = defineStore('cars', () => {
 
     const { isFetching, error, data } = await useFetch(url.value).get().json()
     cars.value = [...cars.value,...data.value.data]
-    console.log(data.value);
     
   }
 

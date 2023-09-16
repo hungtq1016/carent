@@ -29,6 +29,8 @@ const test = async () => {
 //KLQFIL da nang
 //KLWNLG lam dong
 //KJU8HV khanh hoa
+//KJMS4K can tho
+//KKAYTR Hai phong
     await axios.get('https://m-car.mioto.vn/car/detail?carId=KH1AIZ').then(res => {
         data.value = res.data.data.cars
         console.log(data.value);
@@ -37,11 +39,6 @@ const test = async () => {
     ).catch(err => console.log(err)
     )
 
-
-    await axios.get(`http://localhost:8001/api/brand`).then(res => {
-            console.log(res.data);
-            
-        }).catch(err => console.log(err))
     data.value.map(async (item: any,index:number) => {
         
         const images:string[] = []
