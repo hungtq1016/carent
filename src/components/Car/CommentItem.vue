@@ -21,10 +21,7 @@
                     {{ formatDistance(parseISO(comment.created_at), new Date(), { addSuffix: true,locale:vi }) }}
                 </div>
             </div>
-            <div class="text-sm text-gray-600"
-            v-if="isFetch">
-                Đang tải nội dung...
-            </div>
+            <CommentLoading v-if="isFetch"/>
             <template v-else>
                 <button @click="fetchChildren"
                 v-if="children.length == 0 && comment.hasChild" 
@@ -46,6 +43,7 @@ import { formatDistance, parseISO } from 'date-fns';
 import { vi } from 'date-fns/locale';
 import { ref } from 'vue';
 import Swal from 'sweetalert2'
+import CommentLoading from '../Loading/CommentLoading.vue';
 
 const props = defineProps(['comment','post_id'])
 const children = ref<Array<IComment>>([])

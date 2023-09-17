@@ -7,7 +7,7 @@ import TheFooter from './components/inc/TheFooter.vue';
 <template>
   <TheHeader/>
   <main>
-    <RouterView />
+    <RouterView :key="$route.fullPath"/>
   </main>
   <TheFooter/>
 </template>

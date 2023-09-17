@@ -45,7 +45,11 @@ const router = createRouter({
       name: 'register',
       component: () => import('../views/AboutView.vue')
     },
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    // always scroll to top
+    return { top: 0,behavior: 'smooth', }
+  },
 })
 
 export default router

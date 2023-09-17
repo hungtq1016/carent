@@ -31,10 +31,8 @@ const test = async () => {
 //KJU8HV khanh hoa
 //KJMS4K can tho
 //KKAYTR Hai phong
-    await axios.get('https://m-car.mioto.vn/car/detail?carId=KH1AIZ').then(res => {
+    await axios.get('https://m-car.mioto.vn/car/detail?carId=KFZT7D').then(res => {
         data.value = res.data.data.cars
-        console.log(data.value);
-
     }
     ).catch(err => console.log(err)
     )

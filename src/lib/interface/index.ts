@@ -36,16 +36,7 @@ export interface IModel {
     name: string,
     slug:string,
     brand_id:string,
-    versions?:Array<IVersion>
 }
-
-export interface IVersion {
-    id: string,
-    name: string,
-    slug:string,
-    version_id?:string,
-}
-
 
 export interface IImage{
     id?:string,
@@ -75,7 +66,6 @@ export interface ICar{
     fuel_type: number,
     brand:IBrand,
     model:IModel,
-    version:IVersion,
     image: IImage,
     transmission_type: number,
     isDelivery: boolean
