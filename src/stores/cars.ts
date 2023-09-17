@@ -9,7 +9,6 @@ import { URL } from '@/lib/fetch'
 export const useCars = defineStore('cars', () => {
 
   const cars = ref<Array<ICar>>([])
-  const temps = ref<Array<ICar>>([])
 
   const provinceStore = useProvinces()
   const needDriver = ref(false)
@@ -41,7 +40,7 @@ export const useCars = defineStore('cars', () => {
     selectedDistrict.value = newDistrict.slug
   })
 
-  watch([date, price, seat,province,district], () => {
+  watch([date, price, seat,province,district,brand], () => {
     url.value = `${URL}`+'/car' +
       `?province=${selectedProvince.value}` +
       `&district=${selectedDistrict.value}` +

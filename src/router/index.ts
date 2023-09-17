@@ -15,8 +15,15 @@ const router = createRouter({
     },
     {
       path: '/car/:carSlug/id/:id',
-      name: 'CarDetail',
+      name: 'Owner',
       component: () => import('../views/CarView.vue')
+    },
+    {
+      path: '/car/:carSlug/id',
+      name: 'CarDetail',
+      redirect: to => {
+        return { path: '/find', query: { cars: 'all' } }
+      },
     },
     {
       path: '/car',
@@ -34,6 +41,11 @@ const router = createRouter({
       path: '/faq',
       name: 'faq',
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: '/fc',
+      name: 'fc',
+      component: () => import('../views/FCView.vue')
     },
     {
       path: '/login',

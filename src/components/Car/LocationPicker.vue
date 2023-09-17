@@ -4,9 +4,9 @@
     <div class="text-left font-semibold text-gray-700">Địa điểm nhận xe</div>
 
     <div class="text-sm text-left text-gray-700">
-      <span>{{ location?.district?.name }}</span>
-      <span  v-if="location.district">, </span>
-      <span>{{ location?.province?.name }}</span>
+      <span>{{ rentStore.rent.address?.district?.name }}</span>
+      <span  v-if="rentStore.rent.address.district">, </span>
+      <span>{{ rentStore.rent.address?.province?.name }}</span>
     </div>
   </button>
   <TransitionRoot appear :show="isOpen" as="template">
@@ -57,7 +57,8 @@ import {
   DialogPanel,
   DialogTitle,
 } from '@headlessui/vue'
-const props = defineProps(['location'])
+import { useRent } from '@/stores/rent';
+const rentStore = useRent()
 const isOpen = ref(false)
 
 function closeModal() {

@@ -284,8 +284,8 @@
                             </div>
                             <VueDatePicker class="date-picker" :enable-time-picker="false" cancelText="Hủy" selectText="Gửi"
                                 fixed-start min-range="1" format="dd-MM-yyyy" :multi-calendars="{ solo: true }" id="date"
-                                v-model="selectedDate" range :format-locale="vi"></VueDatePicker>
-                            <LocationPicker :location="data.location"/>
+                                v-model="rentStore.selected_day" range :format-locale="vi"></VueDatePicker>
+                            <LocationPicker />
                             <div class="border-t border-gray-400 pt-2">
                                 <div class="flex flex-col gap-y-1">
                                     <div class="flex justify-between items-center">
@@ -392,21 +392,25 @@
 </template>
 
 <script setup lang="ts">
+import { useRent } from '@/stores/rent';
 import TheQuestion from '../Card/TheQuestion.vue';
 import CarFeature from './CarFeature.vue';
 import LocationPicker from './LocationPicker.vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
-import { onMounted, ref } from 'vue';
-const selectedDate = ref();
+import { onMounted } from 'vue';
+const props = defineProps(['data'])
+
 onMounted(() => {
     const now = new Date();
     const seven_day = new Date().setDate(now.getDate() + 7)
     const startDate = new Date(props.data.isInstant ? now : seven_day);
     const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
-    selectedDate.value = [startDate, endDate];
+    rentStore.selected_day = [startDate, endDate];
+    rentStore.rent.total_per_day = props.data.price*1.22;
 })
-const props = defineProps(['data'])
+
+const rentStore = useRent()
 
 const text = '<span class="text-base font-medium text-gray-900">Quy định khác:</span>'
 const fees = [
@@ -441,7 +445,7 @@ const formatter = new Intl.NumberFormat('vi-VN', {
 
 });
 </script>
-c
+
 <style>.date-picker input {
     @apply !rounded-md
 }</style>
