@@ -5,7 +5,6 @@ import type { ICar, IDistrict, IProvince } from '@/lib/interface'
 import { useRouter } from 'vue-router'
 import { useFetch } from '@vueuse/core'
 import { URL } from '@/lib/fetch'
-import urlJoin from 'url-join';
 
 export const useCars = defineStore('cars', () => {
 
@@ -23,16 +22,13 @@ export const useCars = defineStore('cars', () => {
   const router = useRouter()
   const province = ref<IProvince>(provinceStore.provinces[0])
   const district = ref<IDistrict>({id:'all',name:'Không',code:-1,slug:"all",type:"quan",wards:[]})
-const url =ref('http://localhost:8000/api/car')
+  const url =ref('http://localhost:8000/api/car')
   const selectedProvince = ref<string>(province.value?.slug)
   const selectedDistrict = ref<string>(district.value?.slug)
-  const query = {
-    name:'sdsd'
-  }
+  
   onMounted(() => {
     date.value = [startDate, endDate];
     province.value = provinceStore.provinces[0]
-    fetchCars()
   })
 
   
@@ -42,20 +38,23 @@ const url =ref('http://localhost:8000/api/car')
     selectedDistrict.value = newDistrict.slug
   })
 
-  watch([date, price, seat,province,district,brand], () => {
+  watch([date, price, seat,province,district,brand,price], () => {
     url.value = `${URL}`+'/car' +
       `?province=${selectedProvince.value}` +
       `&district=${selectedDistrict.value}` +
       `&seat=${seat.value}` +
       `&brand=${brand.value}` +
+      `&priceStar=${price.value[0]}` +
+      `&priceEnd=${price.value[1]}` +
       '';
+    console.log(url.value);
     
   })
 
   const fetchCars = async () => {
 
     const { isFetching, error, data } = await useFetch(url.value).get().json()
-    cars.value = [...cars.value,...data.value.data]
+    cars.value = data.value.data
     
   }
 
@@ -69,10 +68,9 @@ const url =ref('http://localhost:8000/api/car')
         province: province.value?.slug,
         district: district.value?.slug,
         seat: seat.value,
-        'starPrice': price?.value[0],
-        'endPrice': price?.value[1],
-        'starDate': date?.value[0].toLocaleDateString('vi-VN'),
-        'endDate': date?.value[1].toLocaleDateString('vi-VN'),
+        starPrice: price?.value[0],
+        endPrice: price?.value[1],
+        delivery:needDriver.value ? 1: 0
       },
     })
   }

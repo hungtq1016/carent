@@ -17,8 +17,6 @@
 import { IMG_URL } from '@/lib/fetch';
 
     const props = defineProps(['province'])
-    const imgSrc = props.province.image == null ?  `https://picsum.photos/400/400?random=${props.province.slug}` : IMG_URL+props.province.image.path
-    console.log(props.province);
-    
+    const imgSrc = props.province.image == null ?  `https://picsum.photos/400/400?random=${props.province.slug}` : IMG_URL+props.province.image.path    
 </script>
 
