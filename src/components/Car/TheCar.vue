@@ -34,8 +34,8 @@ onMounted(async () => {
     car.value = data.value.data
     isFetch.value = false
     rentStore.rent.owner_id = car.value.id
-    rentStore.rent.address = car.value.info.location
-    console.log(data.value.data);
+    rentStore.rent.address = `${car.value.info.location.district ? car.value.info.location.district.name+', ':''} ${car.value.info.location.province.name}`
+    rentStore.absoluteAddress = `${car.value.info.location.district ? car.value.info.location.district.name+', ':''} ${car.value.info.location.province.name}`
 })
 
 </script>

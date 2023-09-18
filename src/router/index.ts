@@ -44,8 +44,8 @@ const router = createRouter({
     },
     {
       path: '/fc',
-      name: 'fc',
-      component: () => import('../views/FCView.vue')
+      name: 'Fake Car',
+      component: () => import('../views/FcView.vue')
     },
     {
       path: '/login',

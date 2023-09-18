@@ -5,6 +5,7 @@ import type { ICar, IDistrict, IProvince } from '@/lib/interface'
 import { useRouter } from 'vue-router'
 import { useFetch } from '@vueuse/core'
 import { URL } from '@/lib/fetch'
+import urlJoin from 'url-join';
 
 export const useCars = defineStore('cars', () => {
 
@@ -22,18 +23,19 @@ export const useCars = defineStore('cars', () => {
   const router = useRouter()
   const province = ref<IProvince>(provinceStore.provinces[0])
   const district = ref<IDistrict>({id:'all',name:'Không',code:-1,slug:"all",type:"quan",wards:[]})
-
+const url =ref('http://localhost:8000/api/car')
   const selectedProvince = ref<string>(province.value?.slug)
   const selectedDistrict = ref<string>(district.value?.slug)
-
+  const query = {
+    name:'sdsd'
+  }
   onMounted(() => {
     date.value = [startDate, endDate];
     province.value = provinceStore.provinces[0]
     fetchCars()
   })
 
-  const url = ref<string>(`${URL}/car`);
-
+  
   watch([province,district], ([newProvince,newDistrict]) => {
     provinceStore.districts = newProvince.districts
     selectedProvince.value=newProvince.slug
@@ -47,7 +49,6 @@ export const useCars = defineStore('cars', () => {
       `&seat=${seat.value}` +
       `&brand=${brand.value}` +
       '';
-    console.log(url.value);
     
   })
 

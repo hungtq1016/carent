@@ -2,7 +2,7 @@
     <section>
         <div class="max-w-screen-xl mx-auto">
             <div class="flex flex-col gap-y-2">
-                <div class="flex gap-x-3" v-for="i in 4">
+                <div class="flex gap-x-3" v-for="i in count">
                     <svg class="w-10 h-10 text-gray-400 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path
@@ -17,3 +17,11 @@
         </div>
     </section>
 </template>
+<script setup lang="ts">
+const props = defineProps({
+    count: {
+    type: Number,
+    default: 5
+  },
+})
+</script>

@@ -6,7 +6,7 @@
                 answer="Bạn chỉ có thể bình luận sau khi đã thuê xe." />
         </div>
         <CommentItem v-for="comment in comments" :comment="comment" :post_id="post_id" />
-        <CommentLoading v-if="isFetch"/>
+        <CommentLoading v-if="isFetch" />
         <button @click="fetchComments" v-if="isNext && !isFetch" class="font-medium text-gray-600 mt-3">Xem thêm bình
             luận</button>
     </section>

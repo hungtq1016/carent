@@ -11,7 +11,7 @@
                             ? ' border-amber-600 text-amber-600'
                             : 'text-gray-600 border-gray-100',
                     ]">
-                        {{ category }}
+                        {{ category }} <span v-if="category == 'Bình luận'">({{ tabs.comment_count }})</span>
                     </button>
                 </Tab>
                 <div class="flex-auto border-b-2 py-3 border-gray-100"></div>
@@ -23,7 +23,7 @@
                     v-html="tabs?.desc"></div>
                 </TabPanel>
                 <TabPanel as="div" class="overflow-y-auto max-h-[550px]">
-                    <CarComment :post_id="car_id" />
+                    <CarComment :post_id="car_id"/>
                 </TabPanel>
                 <TabPanel >
                     <div class="flex gap-x-2 items-center">
@@ -36,7 +36,7 @@
                         <li v-for="identity in tabs.identity"
                         class="text-sm text-gray-900">{{ identity }}</li>
                     </ul>
-                    <div v-else class="text-sm text-gray-900">Không có yêu cầu</div>
+                    <div v-else class="space-y-1 mt-1 bg-red-100 p-2 border-l-4 border-red-600 rounded w-fit text-sm">Không có yêu cầu</div>
                     <div class="flex gap-x-2 items-center">
                         <h4 class="text-xl font-semibold py-2">Thế Chấp</h4>
                         <TheQuestion answer="Bạn sẽ để lại tài sản thế chấp (tiền mặt/chuyển khoản hoặc xe máy kèm cà vẹt gốc) cho chủ xe khi làm thủ tục nhận xe

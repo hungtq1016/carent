@@ -21,11 +21,11 @@
                     {{ formatDistance(parseISO(comment.created_at), new Date(), { addSuffix: true,locale:vi }) }}
                 </div>
             </div>
-            <CommentLoading v-if="isFetch"/>
+            <CommentLoading v-if="isFetch" :count="countCommentChild"/>
             <template v-else>
                 <button @click="fetchChildren"
                 v-if="children.length == 0 && comment.hasChild" 
-                class="text-sm text-gray-600">Xem thêm {{ (comment.right - comment.left -1)/2 }} bình luận còn lại</button>
+                class="text-sm text-gray-600">Xem thêm {{ countCommentChild }} bình luận còn lại</button>
                 <template v-else>
                     <CommentItem v-for="sub in children" :comment="sub"/>
                 </template>
@@ -48,7 +48,7 @@ import CommentLoading from '../Loading/CommentLoading.vue';
 const props = defineProps(['comment','post_id'])
 const children = ref<Array<IComment>>([])
 const isFetch = ref(false)
-
+const countCommentChild = (props.comment.right - props.comment.left -1)/2
 children.value = props.comment.children
 const fetchChildren = async() =>{
     isFetch.value = true
