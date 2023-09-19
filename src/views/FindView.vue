@@ -1,11 +1,6 @@
 <template>
     <TheFilter/>
-    <Suspense>
-        <TheLayout/>
-        <template #fallback>
-            Loading...
-        </template>
-    </Suspense>
+    <TheLayout/>
 </template>
 
 <script setup lang="ts">

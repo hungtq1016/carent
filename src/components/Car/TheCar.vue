@@ -14,16 +14,17 @@ import { onMounted, ref } from 'vue';
 import { useFetch } from '@vueuse/core';
 import { URL } from '@/lib/fetch';
 import { useRoute } from 'vue-router';
+import { useRent } from '@/stores/rent';
 
 import CarImages from './CarImages.vue';
 import CarDetail from './CarDetail.vue';
-import ImageCarouselLoading from '@/components/Loading/ImageCarouselLoading.vue';
 import CarPanel from './CarPanel.vue';
 import CarRelate from './CarRelate.vue';
-import CarDetailLoading from '../Loading/CarDetailLoading.vue';
-import TabsLoading from '../Loading/TabsLoading.vue';
-import CarThumbLoading from '../Loading/CarThumbLoading.vue';
-import { useRent } from '@/stores/rent';
+import CarDetailLoading from '@/components/Loading/CarDetailLoading.vue';
+import TabsLoading from '@/components/Loading/TabsLoading.vue';
+import CarThumbLoading from '@/components/Loading/CarThumbLoading.vue';
+import ImageCarouselLoading from '@/components/Loading/ImageCarouselLoading.vue';
+
 
 const car = ref()
 const id = useRoute().params.id;
@@ -33,9 +34,11 @@ onMounted(async () => {
     const { data} = await useFetch(`${URL}/car/${id}`).get().json()
     car.value = data.value.data
     isFetch.value = false
+    console.log(car.value);
+    
     rentStore.rent.owner_id = car.value.id
-    rentStore.rent.address = `${car.value.info.location.district ? car.value.info.location.district.name+', ':''} ${car.value.info.location.province.name}`
-    rentStore.absoluteAddress = `${car.value.info.location.district ? car.value.info.location.district.name+', ':''} ${car.value.info.location.province.name}`
+    rentStore.rent.address = car.value.info.address
+    rentStore.absoluteAddress = rentStore.rent.address
 })
 
 </script>

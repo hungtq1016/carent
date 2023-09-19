@@ -2,7 +2,7 @@
     <section class="py-5">
         <div class="max-w-screen-xl mx-auto">
             <div class="grid grid-cols-4 gap-x-3">
-                <div class="rounded-md h-80 bg-gray-100 p-4" v-for="i in 4">
+                <div class="rounded-md h-80 bg-gray-100 p-4" v-for="i in loop">
                     <div class="bg-gray-200 h-40 flex items-center justify-center">
                         <svg class="w-10 h-10 text-gray-400 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
@@ -15,3 +15,11 @@
         </div>
     </section>
 </template>
+<script setup lang="ts">
+const props = defineProps({
+    loop:{
+        type:Number,
+        default:4
+    }
+})
+</script>

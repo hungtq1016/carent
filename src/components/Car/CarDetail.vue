@@ -297,52 +297,70 @@
                             <VueDatePicker class="date-picker" :enable-time-picker="false" cancelText="Hủy" selectText="Gửi"
                                 fixed-start min-range="1" format="dd-MM-yyyy" :multi-calendars="{ solo: true }" id="date"
                                 v-model="rentStore.selected_day" range :format-locale="vi"></VueDatePicker>
-                                <LocationPicker />
+                                <LocationPicker :isDelivery="data.isDelivery" :address="data.address"/>
                             <div class="border-t border-gray-400 pt-2">
                                 <div class="flex flex-col gap-y-1">
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Đơn giá thuê</p>
-                                            <TheQuestion answer="Giá cơ bản từ chủ cho thuê" />
+                                            <p class="text-gray-600 font-semibold">Đơn giá</p>
+                                            <TheQuestion answer="Giá thuê cơ bản" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price) }} /
+                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data.price) }} /
                                                 ngày</span>
                                         </p>
+                                    </div>
+                                
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center gap-x-2">
+                                            <p class="text-gray-600 font-semibold">Phí bảo hiểm</p>
+                                            <TheQuestion answer="Bảo hiểm của xe" />
+                                        </div>
+                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data.isInsurant ? data.price*0.1 : 0)
+                                        }} /
+                                                ngày</span></p>
+                                    </div>
+                                    <div class="border-t border-gray-400"></div>
+                                
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center gap-x-2">
+                                            <p class="text-gray-600 font-semibold">Tạm tính</p>
+                                            <TheQuestion answer="Giá tiền được tạm tính" />
+                                        </div>
+                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.rent.total_per_day)
+                                        }} / ngày</span></p>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center gap-x-2">
+                                            <p class="text-gray-600 font-semibold">Ngày</p>
+                                            <TheQuestion answer="Tổng số ngày" />
+                                        </div>
+                                        <p class="text-gray-600 font-medium"><span>{{ rentStore.rent.count_days
+                                        }} ngày</span></p>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="flex items-center gap-x-2">
+                                            <p class="text-gray-600 font-semibold">Tổng</p>
+                                            <TheQuestion answer="Giá tính tất cả ngày" />
+                                        </div>
+                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.total)
+                                        }} </span></p>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
                                             <p class="text-gray-600 font-semibold">Phí dịch vụ</p>
                                             <TheQuestion answer="Phí duy trì và quản lý dịch vụ" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 0.11)
-                                        }} /
-                                                ngày</span></p>
+                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.deliveryFee)
+                                        }}</span></p>
                                     </div>
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Phí bảo hiểm</p>
-                                            <TheQuestion answer="Phí bảo hiểm đã được đăng ký" />
-                                        </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 0.11)
-                                        }} /
-                                                ngày</span></p>
-                                    </div>
-                                    <div class="border-t border-gray-400"></div>
-                                    <div class="flex justify-between items-center">
-                                        <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Tạm tính</p>
-                                            <TheQuestion answer="Giá tiền được tạm tính" />
-                                        </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 1.22)
-                                        }} /
-                                                ngày</span></p>
-                                    </div>
+                                   
+                                   
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
                                             <p class="text-gray-600 font-semibold">Giảm giá</p>
                                             <TheQuestion answer="Áp dụng mã dưới đây" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(0) }} / ngày</span>
+                                        <p class="text-gray-600 font-medium"><span>-{{ formatter.format(rentStore.discount) }}</span>
                                         </p>
                                     </div>
                                     <div class="flex flex-col gap-y-3">
@@ -366,9 +384,8 @@
                                             <p class="text-gray-600 font-bold">Tổng cộng</p>
                                             <TheQuestion answer="Bắt đầu tính từ ngày mượn" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data?.price * 1.22)
-                                        }} /
-                                                ngày</span></p>
+                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.rent.total_all_days)
+                                        }} </span></p>
                                     </div>
                                     <button class="mt-3">
                                         <div
@@ -410,16 +427,23 @@ import CarFeature from './CarFeature.vue';
 import LocationPicker from './LocationPicker.vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
-import { onMounted } from 'vue';
+import { onMounted,ref } from 'vue';
 const props = defineProps(['data'])
 
+
+const discount= ref(0)
 onMounted(() => {
     const now = new Date();
     const seven_day = new Date().setDate(now.getDate() + 7)
     const startDate = new Date(props.data.isInstant ? now : seven_day);
     const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
+
     rentStore.selected_day = [startDate, endDate];
-    rentStore.rent.total_per_day = props.data.price * 1.22;
+    rentStore.rent.total_per_day =  props.data.isInsurance ? props.data?.price*1.1 : props.data?.price
+    rentStore.total = rentStore.rent.total_per_day * rentStore.rent.count_days
+    rentStore.deliveryFee = rentStore.isDriver ? props.data.delivery_fee :0
+    rentStore.rent.total_all_days =  rentStore.deliveryFee + rentStore.total + rentStore.discount
+    rentStore.absoluteFee = props.data.delivery_fee
 })
 
 const rentStore = useRent()

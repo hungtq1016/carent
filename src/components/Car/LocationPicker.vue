@@ -1,10 +1,18 @@
 <template>
-  <button type="button" @click="openModal"
+  <button type="button" v-if="isDelivery" @click="openModal"
     class="rounded-md bg-white border border-gray-200 p-2 text-gray-900 hover:bg-opacity-30 focus:outline-none">
     <div class="text-left font-semibold text-gray-700">Địa điểm nhận xe</div>
 
     <div class="text-sm text-left text-gray-700">
-      {{ rentStore.rent.address }}
+      <p  class="line-clamp-1 hover:line-clamp-2">{{ rentStore.rent.address }} </p>     
+    </div>
+  </button>
+  <button type="button" v-else
+    class="rounded-md bg-white border border-gray-200 p-2 text-gray-900 hover:bg-opacity-30 focus:outline-none">
+    <div class="text-left font-semibold text-gray-700">Địa điểm nhận xe</div>
+
+    <div class="text-sm text-left text-gray-700">
+      <p  class="line-clamp-1 hover:line-clamp-2">{{ rentStore.rent.address }} </p>     
     </div>
   </button>
   <TransitionRoot appear :show="isOpen" as="template">
@@ -46,7 +54,7 @@ import { useRent } from '@/stores/rent';
 import LocationModal from '../Modal/LocationModal.vue';
 const rentStore = useRent()
 const isOpen = ref(false)
-
+const props = defineProps(['isDelivery','address'])
 function closeModal() {
   isOpen.value = false
 }
