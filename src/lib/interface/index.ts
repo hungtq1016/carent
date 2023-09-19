@@ -70,3 +70,6 @@ export interface ICar{
     transmission_type: number,
     isDelivery: boolean
 }
+export interface IQuery {
+    [key:string]:string|number
+}

@@ -1,6 +1,6 @@
 <template>
     <TheFilter/>
-    <TheLayout/>
+    <TheLayout :key="$route.fullPath"/>
 </template>
 
 <script setup lang="ts">

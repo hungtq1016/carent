@@ -16,7 +16,7 @@
 
             </div>
             <div class="absolute top-1 left-1">
-                <RouterLink :to="`/find?seat=${car.seats}`"
+                <RouterLink :to="{ name: 'FindCars', query: query}" 
                     class="py-1 px-2 text-xs bg-white/60 rounded-full hover:bg-white duration-300">
                     {{ car.seats }} chỗ
                 </RouterLink>
@@ -103,9 +103,12 @@
 
 <script setup lang="ts">
 import { IMG_URL } from '@/lib/fetch';
+import { useCars } from '@/stores/cars';
 import { useImage } from '@vueuse/core';
+import { useRouter } from 'vue-router';
 
-
+const router = useRouter()
+const carsStore  = useCars()
 const props = defineProps(['car'])
 
 const formatter = new Intl.NumberFormat('vi-VN', {
@@ -114,8 +117,10 @@ const formatter = new Intl.NumberFormat('vi-VN', {
 
 });
 
-const { isLoading, error, isReady } = useImage({ src: IMG_URL+props.car.image.path })
+const { isLoading } = useImage({ src: IMG_URL+props.car.image.path })
 
+let query = carsStore.query
+query.seat = props.car.seats
 
 </script>
 

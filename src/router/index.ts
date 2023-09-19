@@ -40,7 +40,7 @@ const router = createRouter({
     {
       path: '/faq',
       name: 'faq',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/FaqView.vue')
     },
     {
       path: '/fc',
