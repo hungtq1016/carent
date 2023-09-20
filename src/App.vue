@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import TheHeader from './components/inc/TheHeader.vue';
 import TheFooter from './components/inc/TheFooter.vue';
+import { computed } from 'vue';
+const router = useRouter()
+const isFindCars = computed(() => router.currentRoute.value.name === 'FindCars')
 
 </script>
 
@@ -10,6 +13,6 @@ import TheFooter from './components/inc/TheFooter.vue';
   <main>
     <RouterView :key="$route.fullPath"/>
   </main>
-  <TheFooter/>
+  <TheFooter v-if="!isFindCars"/>
 </template>
 

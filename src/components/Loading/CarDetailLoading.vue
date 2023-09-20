@@ -1,5 +1,5 @@
 <template>
-    <section class="py-2">
+    <section class="py-2 dark:bg-slate-900">
         <div class="max-w-screen-xl mx-auto animate-pulse">
             <div class="grid grid-cols-3 gap-x-3">
                 <div class="col-span-2 flex flex-col gap-y-2">

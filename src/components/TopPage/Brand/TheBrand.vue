@@ -1,8 +1,8 @@
 <template>
-    <section class="pt-40 pb-10">
+    <section class="pt-40 pb-10 dark:bg-slate-900 dark:text-slate-100">
         <div class="max-w-screen-xl mx-auto">
-            <h3 class="text-4xl font-bold text-center">Hãng Xe</h3>
-            <div class="font-normal text-lg text-gray-600 text-center mt-3">Tìm hãng xe ưa thích của bạn.</div>
+            <h3 class="text-4xl font-bold text-center dark:text-slate-200">Hãng Xe</h3>
+            <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-slate-100">Tìm hãng xe ưa thích của bạn.</div>
             <div class="py-10 min-h-[240px]">
                 <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
                     <BrandItem  v-for="(brand,index) in brandStore.brands" :key="brand.id" :brand="brand"/>

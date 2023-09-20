@@ -2,7 +2,7 @@
     <div class="flex gap-x-3 items-center">
         <div>
             <div v-if="isLoading"
-                class="h-32 w-32 rounded-full flex items-center justify-center bg-gray-300     animate-pulse">
+                class="h-32 w-32 rounded-full flex items-center justify-center bg-gray-300">
                 <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                     <path
@@ -13,9 +13,9 @@
 
         </div>
         <div class="flex flex-col gap-y-1">
-            <div class="font-bold text-xl">{{ user.name }}</div>
-            <a class="text-gray-700" :href="`mailto:${user.email}`">{{ user.email }}</a>
-            <div class="flex items-center">
+            <div class="font-bold text-xl dark:text-slate-50">{{ user.name }}</div>
+            <a class="text-gray-700 dark:text-slate-200" :href="`mailto:${user.email}`">{{ user.email }}</a>
+            <div class="flex items-center dark:text-slate-100">
                 <span>{{ user?.star?.toFixed(1) }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class="w-5 h-5 fill-yellow-400">

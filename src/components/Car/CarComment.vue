@@ -1,13 +1,13 @@
 <template>
     <section class="py-2">
         <div class="flex gap-x-2 items-center">
-            <h4 class="text-xl font-semibold py-2">Bình Luận</h4>
+            <h4 class="text-xl font-semibold py-2 dark:text-slate-200">Bình Luận</h4>
             <TheQuestion
                 answer="Bạn chỉ có thể bình luận sau khi đã thuê xe." />
         </div>
         <CommentItem v-for="comment in comments" :comment="comment" :post_id="post_id" />
         <CommentLoading v-if="isFetch" />
-        <button @click="fetchComments" v-if="isNext && !isFetch" class="font-medium text-gray-600 mt-3">Xem thêm bình
+        <button @click="fetchComments" v-if="isNext && !isFetch" class="font-medium text-gray-600 mt-3 dark:text-slate-50">Xem thêm bình
             luận</button>
     </section>
 </template>

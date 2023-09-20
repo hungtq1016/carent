@@ -1,8 +1,8 @@
 <template>
-    <section class="py-10 ">
+    <section class="py-10 dark:bg-slate-900 dark:text-slate-100">
         <div class="max-w-screen-xl mx-auto">
             <div class="space-y-8">
-                <div class="flex bg-amber-50 p-10 rounded-md gap-x-2">
+                <div class="flex bg-amber-50 dark:bg-amber-600/40 bg-blend-normal p-10 rounded-md gap-x-2">
                     <div class="w-2/5">
                         <img src="https://blog.carbar.com.au/wp-content/uploads/2022/02/4-Reasons-why-a-Car-Rental-is-better-for-a-Family-Road-Trip-1-1110x600.jpeg"
                             alt="#" class=" object-cover h-[450px] rounded-md " />
@@ -11,26 +11,26 @@
                         <div class="flex flex-col h-full items-center justify-center gap-y-5">
                             <div>
       
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 fill-amber-600" viewBox="0 0 576 512">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 fill-amber-600 dark:fill-amber-700" viewBox="0 0 576 512">
                                     <path d="M312 24V34.5c6.4 1.2 12.6 2.7 18.2 4.2c12.8 3.4 20.4 16.6 17 29.4s-16.6 20.4-29.4 17c-10.9-2.9-21.1-4.9-30.2-5c-7.3-.1-14.7 1.7-19.4 4.4c-2.1 1.3-3.1 2.4-3.5 3c-.3 .5-.7 1.2-.7 2.8c0 .3 0 .5 0 .6c.2 .2 .9 1.2 3.3 2.6c5.8 3.5 14.4 6.2 27.4 10.1l.9 .3c11.1 3.3 25.9 7.8 37.9 15.3c13.7 8.6 26.1 22.9 26.4 44.9c.3 22.5-11.4 38.9-26.7 48.5c-6.7 4.1-13.9 7-21.3 8.8V232c0 13.3-10.7 24-24 24s-24-10.7-24-24V220.6c-9.5-2.3-18.2-5.3-25.6-7.8c-2.1-.7-4.1-1.4-6-2c-12.6-4.2-19.4-17.8-15.2-30.4s17.8-19.4 30.4-15.2c2.6 .9 5 1.7 7.3 2.5c13.6 4.6 23.4 7.9 33.9 8.3c8 .3 15.1-1.6 19.2-4.1c1.9-1.2 2.8-2.2 3.2-2.9c.4-.6 .9-1.8 .8-4.1l0-.2c0-1 0-2.1-4-4.6c-5.7-3.6-14.3-6.4-27.1-10.3l-1.9-.6c-10.8-3.2-25-7.5-36.4-14.4c-13.5-8.1-26.5-22-26.6-44.1c-.1-22.9 12.9-38.6 27.7-47.4c6.4-3.8 13.3-6.4 20.2-8.2V24c0-13.3 10.7-24 24-24s24 10.7 24 24zM568.2 336.3c13.1 17.8 9.3 42.8-8.5 55.9L433.1 485.5c-23.4 17.2-51.6 26.5-80.7 26.5H192 32c-17.7 0-32-14.3-32-32V416c0-17.7 14.3-32 32-32H68.8l44.9-36c22.7-18.2 50.9-28 80-28H272h16 64c17.7 0 32 14.3 32 32s-14.3 32-32 32H288 272c-8.8 0-16 7.2-16 16s7.2 16 16 16H392.6l119.7-88.2c17.8-13.1 42.8-9.3 55.9 8.5zM193.6 384l0 0-.9 0c.3 0 .6 0 .9 0z"/></svg>
                             </div>
-                            <div class="text-3xl font-bold text-center">
+                            <div class="text-3xl font-bold text-center dark:text-slate-200">
                                 Bạn muốn tìm xe với chi phí tiết kiệm? <br>
                                Hãy đến với dịch vụ của chúng tôi.
                             </div>
-                            <div class="text-lg font-medium text-gray-600">
+                            <div class="text-lg font-medium text-gray-600 dark:text-slate-100">
                                 Đưa xe tại sân bay. Có mặt tại mọi tỉnh thành. Hỗ trợ 24/7
                             </div>
                             <div class="flex gap-x-3">
                                 <RouterLink to="#" class="px-10 py-4 border-amber-600 text-amber-600 border font-medium rounded-md ease-in-out
-                                duration-300 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-600">Liên Hệ</RouterLink>
+                                duration-300 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-600 dark:hover:bg-amber-800 dark:hover:text-slate-100">Liên Hệ</RouterLink>
                                 <button class="px-10 py-4 bg-amber-600 text-white font-medium rounded-md duration-300 ease-in
                                 hover:bg-orange-600 hover:text-gray-50">Đặt Xe Ngay</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex bg-sky-50 p-10 rounded-md gap-x-2 flex-row-reverse">
+                <div class="flex bg-sky-50 p-10 rounded-md gap-x-2 flex-row-reverse dark:bg-sky-600/40 dark:text-slate-100">
                     <div class="w-2/5">
                         <img src="https://gray-kptv-prod.cdn.arcpublishing.com/resizer/Ae3FLCg86f5iE3i18e7krPEXDzM=/1200x675/smart/filters:quality(85)/cloudfront-us-east-1.images.arcpublishing.com/gray/FYQ65GWRF5FCZGDBMJUHMBB52I.jpg"
                             alt="#  " class=" object-cover h-[450px] rounded-md " />
@@ -38,26 +38,26 @@
                     <div class="flex-auto">
                         <div class="flex flex-col h-full items-center justify-center gap-y-5">
                             <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 fill-sky-600" viewBox="0 0 640 512">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 fill-sky-600 dark:fill-sky-700" viewBox="0 0 640 512">
                                 <path d="M323.4 85.2l-96.8 78.4c-16.1 13-19.2 36.4-7 53.1c12.9 17.8 38 21.3 55.3 7.8l99.3-77.2c7-5.4 17-4.2 22.5 2.8s4.2 17-2.8 22.5l-20.9 16.2L512 316.8V128h-.7l-3.9-2.5L434.8 79c-15.3-9.8-33.2-15-51.4-15c-21.8 0-43 7.5-60 21.2zm22.8 124.4l-51.7 40.2C263 274.4 217.3 268 193.7 235.6c-22.2-30.5-16.6-73.1 12.7-96.8l83.2-67.3c-11.6-4.9-24.1-7.4-36.8-7.4C234 64 215.7 69.6 200 80l-72 48V352h28.2l91.4 83.4c19.6 17.9 49.9 16.5 67.8-3.1c5.5-6.1 9.2-13.2 11.1-20.6l17 15.6c19.5 17.9 49.9 16.6 67.8-2.9c4.5-4.9 7.8-10.6 9.9-16.5c19.4 13 45.8 10.3 62.1-7.5c17.9-19.5 16.6-49.9-2.9-67.8l-134.2-123zM16 128c-8.8 0-16 7.2-16 16V352c0 17.7 14.3 32 32 32H64c17.7 0 32-14.3 32-32V128H16zM48 320a16 16 0 1 1 0 32 16 16 0 1 1 0-32zM544 128V352c0 17.7 14.3 32 32 32h32c17.7 0 32-14.3 32-32V144c0-8.8-7.2-16-16-16H544zm32 208a16 16 0 1 1 32 0 16 16 0 1 1 -32 0z"/></svg>
                             </div>
-                            <div class="text-3xl font-bold text-center">
+                            <div class="text-3xl font-bold text-center dark:text-slate-200">
                                 Bạn có xe nhưng không dùng đến? <br>
                                 Trở thành hội viên của chúng tôi.
                             </div>
-                            <div class="text-lg font-medium text-gray-600">
+                            <div class="text-lg font-medium text-gray-600 dark:text-slate-100">
                                 Hơn 8,000 chủ xe đang cho thuê hiệu quả. <br>Lợi nhuận cao. Hệ thống bảo trì xe ưu đãi.
                             </div>
                             <div class="flex gap-x-3 flex-row-reverse">
                                 <RouterLink to="#" class="px-10 py-4 border-sky-600 text-sky-600 border font-medium rounded-md ease-in-out
-                                duration-300 hover:bg-blue-100 hover:text-blue-600 hover:border-blue-600">Hỏi Đáp</RouterLink>
+                                duration-300 hover:bg-blue-100 hover:text-blue-600 hover:border-blue-600 dark:hover:bg-blue-700 dark:hover:text-slate-100">Hỏi Đáp</RouterLink>
                                 <button class="px-10 py-4 bg-sky-600 text-white font-medium rounded-md duration-300 ease-in
                                 hover:bg-blue-600 hover:text-blue-50">Đăng Ký Thành Viên</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex bg-lime-50 p-10 rounded-md gap-x-2">
+                <div class="flex bg-lime-50 dark:bg-lime-600/40 dark:text-slate-100 p-10 rounded-md gap-x-2">
                     <div class="w-2/5">
                         <img src="https://cdn.dribbble.com/users/890912/screenshots/9324676/media/116b96dd4f2dd10f223999338649322d.png"
                             alt="#" class=" object-cover h-[450px] rounded-md " />

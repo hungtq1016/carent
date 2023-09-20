@@ -1,15 +1,15 @@
 <template>
-    <footer class="bg-white" aria-labelledby="footer-heading">
+    <footer class="bg-white dark:bg-slate-900 dark:text-slate-100" aria-labelledby="footer-heading">
       <h2 id="footer-heading" class="sr-only">Footer</h2>
       <div class="mx-auto max-w-screen-xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
           <div class="space-y-8">
             <img class="h-7" src="/icon.png" alt="Company name" />
-            <p class="text-sm leading-6 text-gray-600">Thuê xe nhanh, tiện, rẻ và dễ dàng hơn bao giờ hết.</p>
+            <p class="text-sm leading-6 text-gray-600 dark:text-slate-200">Thuê xe nhanh, tiện, rẻ và dễ dàng hơn bao giờ hết.</p>
             <div class="flex space-x-6">
               <a v-for="item in navigation.social" :key="item.name" :href="item.href" class="text-gray-400 hover:text-gray-500">
                 <span class="sr-only">{{ item.name }}</span>
-                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+                <component :is="item.icon" class="h-6 w-6 dark:fill-slate-100" aria-hidden="true" />
               </a>
             </div>
           </div>
@@ -19,7 +19,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-gray-900">Solutions</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.solutions" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -27,7 +27,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-gray-900">Support</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.support" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -37,7 +37,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.company" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -45,7 +45,7 @@
                 <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.legal" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p class="text-xs leading-5 text-gray-500">&copy; 2023 Carent Co, Inc. Bản quyền thuộc về HungTQ.</p>
+          <p class="text-xs leading-5 text-gray-500 dark:text-white">&copy; 2023 Carent Co, Inc. Bản quyền thuộc về HungTQ.</p>
         </div>
       </div>
     </footer>

@@ -6,18 +6,21 @@
                     <div class="flex flex-col gap-y-5 pb-5">
                         <div class="flex items-center justify-between">
                             <div class="flex gap-x-2 items-center">
-                                <div class="text-4xl font-semibold capitalize">{{ data.name }}</div>
-                                <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                <div class="text-4xl font-semibold capitalize dark:text-slate-200">{{ data.name }}</div>
+                                <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" v-if="!isDark"
                                         strokeWidth={1.5} stroke="currentColor" class="w-8 h-8 stroke-green-500">
                                         <path strokeLinecap="round" strokeLinejoin="round"
                                             d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 fill-green-700 " v-else>
+                                        <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                                    </svg>
                                 </div>
                             </div>
                             <div class="flex items-center gap-x-2">
-                                <button class="border-gray-600 border p-1 rounded-full relative group">
+                                <button class="border-gray-600 border p-1 rounded-full relative group dark:border-slate-400">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-600">
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-600 dark:fill-slate-400 dark:stroke-slate-400">
                                         <path stroke-linecap="round" stroke-linejoin="round"
                                             d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                     </svg>
@@ -28,7 +31,7 @@
                                 </button>
                                 <button class="border-red-600 border p-1 rounded-full relative group">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 stroke-red-600">
+                                        strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 stroke-red-600 dark:fill-red-600">
                                         <path strokeLinecap="round" strokeLinejoin="round"
                                             d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
                                     </svg>
@@ -43,60 +46,60 @@
                             <div class="flex items-center gap-x-1">
                                 <div class="sr-only">Star AVG</div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                                    stroke="currentColor" class="w-6 h-6 stroke-yellow-400">
+                                    stroke="currentColor" class="w-6 h-6 stroke-yellow-400 dark:fill-yellow-400">
                                     <path strokeLinecap="round" strokeLinejoin="round"
                                         d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
                                 </svg>
-                                <span class="text-gray-600">{{ Number(data.rating.avg).toFixed(1) }}</span>
+                                <span class="text-gray-600 dark:text-slate-100">{{ Number(data.rating.avg).toFixed(1) }}</span>
                             </div>
                             <div class="flex items-center gap-x-1">
                                 <div class="sr-only">Favorite</div>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                                    stroke="currentColor" class="w-6 h-6 stroke-rose-600">
+                                    stroke="currentColor" class="w-6 h-6 stroke-rose-600 dark:fill-rose-600">
                                     <path strokeLinecap="round" strokeLinejoin="round"
                                         d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
                                 </svg>
 
-                                <span class="text-gray-600">{{ data.like_count }}</span>
+                                <span class="text-gray-600 dark:text-slate-100">{{ data.like_count }}</span>
                             </div>
                             <div class="flex items-center gap-x-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                                    stroke="currentColor" class="w-6 h-6 stroke-gray-600">
+                                    stroke="currentColor" class="w-6 h-6 stroke-gray-600 dark:fill-white">
                                     <path strokeLinecap="round" strokeLinejoin="round"
                                         d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
                                 </svg>
-                                <span class="text-gray-600">{{ data.comment_count }}</span>
+                                <span class="text-gray-600 dark:text-slate-100">{{ data.comment_count }}</span>
                             </div>
                             <div class="flex items-center gap-x-1">
 
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    version="1.1" class="w-6 h-6 fill-amber-600" viewBox="0 0 256 256"
+                                    version="1.1" class="w-6 h-6" viewBox="0 0 256 256"
                                     enable-background="new 0 0 256 256" xml:space="preserve">
                                     <g>
                                         <g>
                                             <g>
-                                                <path fill="#d97706"
+                                                <path class="fill-amber-600 dark:fill-white"
                                                     d="M90.6,18.9c-1.5,1.1-2.4,3.5-2.4,6.5V28h-8.1c-9.5,0-10.7,0.4-11.6,3.7c-0.7,2.9-0.4,52.3,0.4,53.7c1.5,2.5,0.4,2.5,39.4,2.5c40,0,38.3,0.1,39.6-3c1-2.3,1-51.5,0-53.8c-1.2-2.9-1.9-3.1-11.1-3.1h-8.3l-0.2-3.6c-0.1-3.3-0.3-3.7-1.7-4.9l-1.5-1.4h-16.8C93.7,18.2,91.6,18.3,90.6,18.9z M118.2,53.1v25.1h-9.8h-9.8V53.1V28h9.8h9.8V53.1z M88.2,58v19.7h-4.9h-4.9V58V38.3h4.9h4.9V58z M138.3,58v19.7h-4.9h-4.9V58V38.3h4.9h4.9V58z" />
-                                                <path fill="#d97706"
+                                                <path class="fill-amber-600 dark:fill-white"
                                                     d="M97.1,99c-19.8,2.2-33.7,7.9-44.3,18C45,124.6,39.7,134.5,38,145l-0.6,3.4l-2.6,0.9c-6.2,2.3-12.1,7.6-16,14.3c-5.2,9.2-8.9,24.1-8.9,36.5c0,6.7,0.9,7.6,8.6,7.6c4.8,0,5,0,6.5-1.4c1.3-1.2,1.5-1.7,1.5-3.6c0-1.9-0.2-2.4-1.5-3.6c-1.1-1-2-1.4-3.4-1.4h-1.9l0.3-3c1.7-18.5,7.7-31.3,16.8-35.7l2.8-1.4h77.7c73.5,0,78,0,82.7,0.8c17.7,3.1,28,10.9,32.9,25c1.3,3.6,2.7,10.1,2.7,12.6v1.6h-2.5c-2.2,0-2.8,0.2-4,1.4c-2.5,2.3-1.8,6.4,1.2,8c0.6,0.3,3.4,0.5,6.6,0.5c4.7,0,5.8-0.1,7-0.9c2-1.2,2.2-2.3,1.9-8.8c-1-20.5-9.9-35.7-25.4-43.4c-7.4-3.7-14.4-5.4-24.6-6.4c-9.7-0.8-8.6-0.3-10.1-5c-0.7-2.2-2.5-6.5-4-9.3c-9.9-19.5-26.6-31.4-49.1-34.8C127.1,98.4,104,98.2,97.1,99z M132,109.3c20.9,3.1,36.6,15.7,43.5,34.7l1.2,3.4h-34.2h-34.2V128v-19.4h9.4C123.8,108.6,128.9,108.8,132,109.3z M98.5,128.2v19.2H73H47.6l0.4-2.2c2.4-12.8,11.1-23.6,24-29.6c6.6-3.1,19.2-6.4,25.1-6.5l1.5,0V128.2z" />
-                                                <path fill="#d97706"
+                                                <path class="fill-amber-600 dark:fill-white"
                                                     d="M58.4,179c-8.2,1.8-15.9,8.9-18.5,17c-4.4,14.1,6.1,29.4,21.6,31.2c11.1,1.3,23.6-8.7,25.8-20.6C89.5,194.8,80.5,182,68,179C64.4,178.2,62.2,178.2,58.4,179z M69.9,189.8c2.2,1.2,5.1,3.9,6.1,6c2,3.8,2,10.5,0,14.4c-1.3,2.5-4.8,5.4-7.6,6.4c-3.3,1.1-9.2,0.7-12.1-0.7c-4.7-2.4-7.1-6.1-7.4-11.8c-0.3-5.1,0.8-8.3,3.9-11.4c3.2-3.2,5.3-3.9,11-3.8C67,188.9,68.8,189.2,69.9,189.8z" />
-                                                <path fill="#d97706"
+                                                <path class="fill-amber-600 dark:fill-white"
                                                     d="M188.7,178.9c-5.7,1.1-12.5,5.7-15.9,11c-6.6,9.9-4.9,22.8,4,30.8c10.3,9.3,23.4,8.8,33.2-1.1c3.8-3.9,5.6-6.9,6.8-11.8c3-12-6-25.7-19.1-28.8C194.4,178.3,192.1,178.2,188.7,178.9z M199.9,190c4.8,2.5,7.4,6.9,7.4,12.9c0,4.8-1.2,7.9-4.3,10.7c-3,2.8-6,3.8-11,3.5c-6.4-0.4-10.4-3.1-12.5-8.8c-1.4-3.6-1.1-9.1,0.7-12.5c1.5-2.8,4.3-5.5,7.1-6.5C190.1,188.3,197.4,188.6,199.9,190z" />
-                                                <path fill="#d97706"
+                                                <path class="fill-amber-600 dark:fill-white"
                                                     d="M100.3,199.4c-1.3,1.2-1.5,1.7-1.5,3.6c0,1.9,0.2,2.4,1.5,3.6l1.5,1.4H128c19.3,0,26.5-0.1,27.4-0.6c3.3-1.5,3.3-7.2,0-8.7c-0.9-0.4-8.1-0.6-27.4-0.6h-26.2L100.3,199.4z" />
-                                                <path fill="#d97706"
+                                                <path class="fill-amber-600 dark:fill-white"
                                                     d="M15.5,228.9c-1.8,1.4-2.4,3.7-1.5,5.8c1.4,3.4-8.8,3.1,114.8,3.1H240l1.6-1.6c2.3-2.3,2.1-5.3-0.5-7.4c-0.9-0.8-7.5-0.8-112.7-0.8C17.1,228,16.7,228,15.5,228.9z" />
                                             </g>
                                         </g>
                                     </g>
                                 </svg>
-                                <span class="text-gray-600">{{ data.total_trip }}</span>
+                                <span class="text-gray-600 dark:text-slate-100">{{ data.total_trip }}</span>
                             </div>
                             <div class="flex items-center gap-x-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
-                                    stroke="currentColor" class="w-6 h-6 stroke-gray-900">
+                                    stroke="currentColor" class="w-6 h-6 stroke-gray-900 dark:stroke-gray-400">
                                     <path strokeLinecap="round" strokeLinejoin="round"
                                         d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                                     <path strokeLinecap="round" strokeLinejoin="round"
@@ -104,11 +107,11 @@
                                 </svg>
                                 <RouterLink v-if="data.location.district"
                                     :to="`/find?district=${data.location.district.slug}&province=${data.location.province.slug}`"
-                                    class="text-gray-900 text-lg font-semibold">{{ data?.location.district.name }},
+                                    class="text-gray-900 text-lg font-semibold dark:text-slate-200">{{ data?.location.district.name }},
                                 </RouterLink>
                                 <RouterLink v-if="data.location.province"
                                     :to="`/find?province=${data.location.province.slug}`"
-                                    class="text-gray-900 text-lg font-semibold">{{ data?.location.province.name }}
+                                    class="text-gray-900 text-lg font-semibold dark:text-slate-200">{{ data?.location.province.name }}
                                 </RouterLink>
                             </div>
                         </div>
@@ -127,7 +130,7 @@
                             <template v-for="(rate, index) in data.rating.star">
                                 <div class="flex items-center gap-x-1">
                                     <div class="flex items-center gap-x-px w-8 justify-between">
-                                        <span>{{ index + 1 }}</span>
+                                        <span class="text-gray-900 dark:text-slate-100">{{ index + 1 }}</span>
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                             class="w-5 h-5 fill-yellow-400">
                                             <path fillRule="evenodd"
@@ -136,12 +139,12 @@
                                         </svg>
 
                                     </div>
-                                    <div class="w-80 h-2 rounded-full bg-gray-300">
+                                    <div class="w-80 h-2 rounded-full bg-gray-300 dark:bg-gray-100">
                                         <div :style="{ width: `${(rate / data.rating.total) * 100}%` }"
                                             class="h-2 bg-yellow-400 rounded-l-full"
                                             :class="{ 'rounded-r-full': (rate / data.rating.total) * 100 == 100 }"></div>
                                     </div>
-                                    <div class="flex gap-x-px w-14 justify-end text-sm text-gray-600">
+                                    <div class="flex gap-x-px w-14 justify-end text-sm text-gray-600 dark:text-slate-100">
                                         <span>{{ rate }}</span> /
                                         <span>{{ data.rating.total }}</span>
                                     </div>
@@ -150,7 +153,7 @@
                         </div>
                     </div>
                     <div class="py-5">
-                        <h4 class="text-xl font-semibold">Thông Số</h4>
+                        <h4 class="text-xl font-semibold dark:text-slate-200">Thông Số</h4>
                         <div class="grid grid-cols-4 mt-5">
                             <div class="flex gap-x-2 items-center">
                                 <div class="bg-lime-600 p-2 rounded-full">
@@ -173,8 +176,8 @@
                                 </div>
 
                                 <div class="flex flex-col gap-y-0.5">
-                                    <span class="text-lg font-bold">Hộp Số</span>
-                                    <span class="text-gray-600">{{ data.transmission_type == 1 ? 'Số tự động' : 'Số sàn'
+                                    <span class="text-lg font-bold dark:text-slate-100">Hộp Số</span>
+                                    <span class="text-gray-600 dark:text-slate-100">{{ data.transmission_type == 1 ? 'Số tự động' : 'Số sàn'
                                     }}</span>
                                 </div>
                             </div>
@@ -190,8 +193,8 @@
 
                                 </div>
                                 <div class="flex flex-col gap-y-0.5">
-                                    <span class="text-lg font-bold">Chỗ Ngồi</span>
-                                    <span class="text-gray-600">{{ data.seats }} ghế</span>
+                                    <span class="text-lg font-bold dark:text-slate-100">Chỗ Ngồi</span>
+                                    <span class="text-gray-600 dark:text-slate-100">{{ data.seats }} ghế</span>
                                 </div>
                             </div>
                             <div class="flex gap-x-2 items-center">
@@ -209,8 +212,8 @@
                                     </svg>
                                 </div>
                                 <div class="flex flex-col gap-y-0.5">
-                                    <span class="text-lg font-bold">Nhiên Liệu</span>
-                                    <span class="text-gray-600">{{ data.fuel_type == 3 ? 'Điện' : data.fuel_type == 2 ?
+                                    <span class="text-lg font-bold dark:text-slate-100">Nhiên Liệu</span>
+                                    <span class="text-gray-600 dark:text-slate-100">{{ data.fuel_type == 3 ? 'Điện' : data.fuel_type == 2 ?
                                         'Dầu'
                                         : 'Xăng' }}</span>
                                 </div>
@@ -253,11 +256,11 @@
                                     </svg>
                                 </div>
                                 <div class="flex flex-col gap-y-0.5">
-                                    <span class="text-lg font-bold">Hao Phí</span>
-                                    <span v-if="data.fuel_type == 3" class="text-gray-600">{{ data.fuel_consumption }} KM /
+                                    <span class="text-lg font-bold dark:text-slate-100">Hao Phí</span>
+                                    <span v-if="data.fuel_type == 3" class="text-gray-600 dark:text-slate-100">{{ data.fuel_consumption }} KM /
                                         Lần
                                         Sạc</span>
-                                    <span v-else class="text-gray-600">{{ data.fuel_consumption }} Lít / 100KM</span>
+                                    <span v-else class="text-gray-600 dark:text-slate-100">{{ data.fuel_consumption }} Lít / 100KM</span>
                                 </div>
                             </div>
                         </div>
@@ -265,20 +268,20 @@
                     <CarFeature :features="data.features" />
                     <div class="py-5">
                         <div class="flex gap-x-2 items-center">
-                            <h4 class="text-xl font-semibold py-2">Điều Khoản</h4>
+                            <h4 class="text-xl font-semibold dark:text-slate-200 py-2">Điều Khoản</h4>
                             <TheQuestion
                                 answer="Người thuê có nhiệm vụ đúng với trách nhiệm dưới đây.<span class='text-red-600'>(Mọi thiệt hại người thuê phải chịu 100%)</span>" />
                         </div>
-                        <div class="text-sm text-gray-600" v-html="data.notes.replace(/◦/g, '<br/>' + '◦')
+                        <div class="text-sm text-gray-600 dark:text-slate-100" v-html="data.notes.replace(/◦/g, '<br/>' + '◦')
                             .replace('Quy định khác:', text)"></div>
                     </div>
                 </div>
                 <div class="col-span-1">
                     <div class="flex flex-col gap-y-3">
                         <div v-if="data.isInsurance"
-                            class="bg-green-100 flex items-center px-2 py-4 rounded-md gap-x-2 justify-center">
+                            class="bg-green-100 flex items-center px-2 py-4 rounded-md gap-x-2 justify-center dark:bg-green-600/40">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                class="w-8 h-8 fill-green-500" viewBox="0 0 36 36" version="1.1"
+                                class="w-8 h-8 fill-green-500 dark:text-slate-100" viewBox="0 0 36 36" version="1.1"
                                 preserveAspectRatio="xMidYMid meet">
                                 <path
                                     d="M31.25,7.4a43.79,43.79,0,0,1-6.62-2.35,45,45,0,0,1-6.08-3.21L18,1.5l-.54.35a45,45,0,0,1-6.08,3.21A43.79,43.79,0,0,1,4.75,7.4L4,7.59v8.34c0,13.39,13.53,18.4,13.66,18.45l.34.12.34-.12c.14,0,13.66-5.05,13.66-18.45V7.59ZM30,15.93c0,11-10,15.61-12,16.43-2-.82-12-5.44-12-16.43V9.14a47.54,47.54,0,0,0,6.18-2.25,48.23,48.23,0,0,0,5.82-3,48.23,48.23,0,0,0,5.82,3A47.54,47.54,0,0,0,30,9.14Z"
@@ -287,12 +290,12 @@
                                     class="clr-i-outline clr-i-outline-path-2" />
                                 <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
                             </svg>
-                            <div class="font-bold text-green-500">
+                            <div class="font-bold text-green-500 dark:text-slate-100">
                                 Xe đã được đăng ký bảo hiểm tai nạn
                             </div>
                         </div>
-                        <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3">
-                            <div class="text-xl font-semibold text-gray-900">{{ formatter.format(data?.price) }} / ngày
+                        <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3 dark:bg-slate-700 dark:text-slate-100">
+                            <div class="text-xl font-semibold dark:text-slate-200 text-gray-900">{{ useFormatCurrency(data?.price) }} / ngày
                             </div>
                             <VueDatePicker class="date-picker" :enable-time-picker="false" cancelText="Hủy" selectText="Gửi"
                                 fixed-start min-range="1" format="dd-MM-yyyy" :multi-calendars="{ solo: true }" id="date"
@@ -302,20 +305,20 @@
                                 <div class="flex flex-col gap-y-1">
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Đơn giá</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Đơn giá</p>
                                             <TheQuestion answer="Giá thuê cơ bản" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data.price) }} /
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ useFormatCurrency(data.price) }} /
                                                 ngày</span>
                                         </p>
                                     </div>
                                 
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Phí bảo hiểm</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Phí bảo hiểm</p>
                                             <TheQuestion answer="Bảo hiểm của xe" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(data.isInsurant ? data.price*0.1 : 0)
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ useFormatCurrency(data.isInsurant ? data.price*0.1 : 0)
                                         }} /
                                                 ngày</span></p>
                                     </div>
@@ -323,44 +326,44 @@
                                 
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Tạm tính</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Tạm tính</p>
                                             <TheQuestion answer="Giá tiền được tạm tính" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.rent.total_per_day)
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ useFormatCurrency(rentStore.rent.total_per_day)
                                         }} / ngày</span></p>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Ngày</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Ngày</p>
                                             <TheQuestion answer="Tổng số ngày" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ rentStore.rent.count_days
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ rentStore.rent.count_days
                                         }} ngày</span></p>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Tổng</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Tổng</p>
                                             <TheQuestion answer="Giá tính tất cả ngày" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.total)
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ useFormatCurrency(rentStore.total)
                                         }} </span></p>
                                     </div>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Phí dịch vụ</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Phí dịch vụ</p>
                                             <TheQuestion answer="Phí duy trì và quản lý dịch vụ" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.deliveryFee)
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ useFormatCurrency(rentStore.deliveryFee)
                                         }}</span></p>
                                     </div>
                                    
                                    
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-semibold">Giảm giá</p>
+                                            <p class="text-gray-600 font-semibold dark:text-slate-100">Giảm giá</p>
                                             <TheQuestion answer="Áp dụng mã dưới đây" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>-{{ formatter.format(rentStore.discount) }}</span>
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>-{{ useFormatCurrency(rentStore.discount) }}</span>
                                         </p>
                                     </div>
                                     <div class="flex flex-col gap-y-3">
@@ -368,23 +371,23 @@
                                             id="">
                                         <button>
                                             <div class="flex gap-x-2 items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-gray-600"
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-gray-600 dark:fill-slate-200"
                                                     viewBox="0 0 24 24" fill="none">
                                                     <path
                                                         d="M21.3 10.8394C21.69 10.8394 22 10.5294 22 10.1394V9.20938C22 5.10938 20.75 3.85938 16.65 3.85938H7.35C3.25 3.85937 2 5.10938 2 9.20938V9.67938C2 10.0694 2.31 10.3794 2.7 10.3794C3.6 10.3794 4.33 11.1094 4.33 12.0094C4.33 12.9094 3.6 13.6294 2.7 13.6294C2.31 13.6294 2 13.9394 2 14.3294V14.7994C2 18.8994 3.25 20.1494 7.35 20.1494H16.65C20.75 20.1494 22 18.8994 22 14.7994C22 14.4094 21.69 14.0994 21.3 14.0994C20.4 14.0994 19.67 13.3694 19.67 12.4694C19.67 11.5694 20.4 10.8394 21.3 10.8394ZM9 8.87938C9.55 8.87938 10 9.32938 10 9.87938C10 10.4294 9.56 10.8794 9 10.8794C8.45 10.8794 8 10.4294 8 9.87938C8 9.32938 8.44 8.87938 9 8.87938ZM15 15.8794C14.44 15.8794 13.99 15.4294 13.99 14.8794C13.99 14.3294 14.44 13.8794 14.99 13.8794C15.54 13.8794 15.99 14.3294 15.99 14.8794C15.99 15.4294 15.56 15.8794 15 15.8794ZM15.9 9.47937L9.17 16.2094C9.02 16.3594 8.83 16.4294 8.64 16.4294C8.45 16.4294 8.26 16.3594 8.11 16.2094C7.82 15.9194 7.82 15.4394 8.11 15.1494L14.84 8.41938C15.13 8.12938 15.61 8.12938 15.9 8.41938C16.19 8.70938 16.19 9.18937 15.9 9.47937Z">
                                                     </path>
                                                 </svg>
-                                                <p class="text-gray-600 font-medium">Sử dụng mã khuyến mãi</p>
+                                                <p class="text-gray-600 font-medium dark:text-slate-200">Sử dụng mã khuyến mãi</p>
                                             </div>
                                         </button>
                                     </div>
                                     <div class="border-t border-gray-400"></div>
                                     <div class="flex justify-between items-center">
                                         <div class="flex items-center gap-x-2">
-                                            <p class="text-gray-600 font-bold">Tổng cộng</p>
+                                            <p class="text-gray-600 font-bold dark:text-slate-100">Tổng cộng</p>
                                             <TheQuestion answer="Bắt đầu tính từ ngày mượn" />
                                         </div>
-                                        <p class="text-gray-600 font-medium"><span>{{ formatter.format(rentStore.rent.total_all_days)
+                                        <p class="text-gray-600 font-medium dark:text-slate-200"><span>{{ useFormatCurrency(rentStore.rent.total_all_days)
                                         }} </span></p>
                                     </div>
                                     <button class="mt-3">
@@ -400,16 +403,16 @@
                             <div class="font-bold text-lime-600">Phụ phí phát sinh</div>
                             <div class="flex flex-col gap-y-1 mt-3" v-for="fee in fees">
                                 <div class="flex justify-between items-center">
-                                    <div class="text-sm font-bold">
+                                    <div class="text-sm font-bold dark:text-gray-200">
                                         {{ fee.title }}
                                     </div>
-                                    <div class="text-xs font-medium">
-                                        {{ formatter.format(fee.price) }}
+                                    <div class="text-xs font-medium dark:text-gray-100">
+                                        {{ useFormatCurrency(fee.price) }}
                                         /
                                         {{ fee.per }}
                                     </div>
                                 </div>
-                                <div class="text-xs text-gray-600 font-light" v-html="fee.info"></div>
+                                <div class="text-xs text-gray-600 font-light dark:text-slate-100" v-html="fee.info"></div>
                             </div>
                         </div>
 
@@ -428,6 +431,9 @@ import LocationPicker from './LocationPicker.vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
 import { onMounted,ref } from 'vue';
+import useFormatCurrency from '@/lib/hook/useFormatCurrency';
+import { useDark } from '@vueuse/core';
+const isDark = useDark()
 const props = defineProps(['data'])
 
 
@@ -448,7 +454,7 @@ onMounted(() => {
 
 const rentStore = useRent()
 
-const text = '<span class="text-base font-medium text-gray-900">Quy định khác:</span>'
+const text = '<span class="text-base font-medium text-gray-900 dark:text-slate-200">Quy định khác:</span>'
 const fees = [
     {
         title: 'Phí quá giới hạn',
@@ -475,11 +481,7 @@ const fees = [
         per: 'lần'
     },
 ]
-const formatter = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
 
-});
 </script>
 
 <style>

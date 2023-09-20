@@ -1,7 +1,7 @@
 <template>
     <section class="py-5">
         <div class="max-w-screen-xl mx-auto">
-            <h2 class="text-3xl font-semibold pb-4">Xe tương tự</h2>
+            <h2 class="text-3xl font-semibold pb-4 dark:text-slate-200">Xe tương tự</h2>
             <div class="grid grid-cols-4 gap-3">
                 <TheItem v-for="(car, index) in cars" :car="car" :key="index" />
             </div>

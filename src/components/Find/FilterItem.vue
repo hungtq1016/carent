@@ -1,23 +1,23 @@
 <template>
     <div class="">
         <button @click="openModal"
-            class="px-3 rounded-md border py-1 border-gray-600 hover:border-amber-600 duration-300 group">
+            class="px-3 rounded-md border py-1 border-gray-600 hover:border-amber-600 duration-300 group dark:border-slate-100 dark:hover:border-gray-400">
             <div class="flex gap-x-2 items-center">
                 <div v-html="filter.icon"></div>
-                <div class="text-gray-600 group-hover:text-amber-600 duration-300">
+                <div class="text-gray-600 group-hover:text-amber-600 duration-300 dark:text-slate-100 dark:group-hover:text-gray-400">
                     {{ filter.name }}
                 </div>
             </div>
         </button>
     </div>
     <TransitionRoot appear :show="isOpen" as="template">
-        <Dialog as="div" @close="closeModal" class="relative z-10">
+        <Dialog as="div" @close="closeModal" class="relative z-10 ov">
             <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0" enter-to="opacity-100"
                 leave="duration-200 ease-in" leave-from="opacity-100" leave-to="opacity-0">
                 <div class="fixed inset-0 bg-black bg-opacity-25" />
             </TransitionChild>
 
-            <div class="fixed inset-0 overflow-y-auto">
+            <div class="fixed inset-0 overflow-y-scroll">
                 <div class="flex min-h-full items-center justify-center p-4 text-center">
                     <TransitionChild as="template" enter="duration-300 ease-out" enter-from="opacity-0 scale-95"
                         enter-to="opacity-100 scale-100" leave="duration-200 ease-in" leave-from="opacity-100 scale-100"

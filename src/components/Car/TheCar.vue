@@ -1,12 +1,14 @@
 <template>
-    <ImageCarouselLoading v-if="isFetch" />
-    <CarImages v-else :images="car.images" />
-    <CarDetailLoading v-if="isFetch" />
-    <CarDetail v-else :data="car.info" />
-    <TabsLoading v-if="isFetch" />
-    <CarPanel v-else :tabs="car.tabs" :car_id="car.id" />
-    <CarThumbLoading v-if="isFetch" />
-    <CarRelate v-else :cars="car.relate" />
+    <div class="bg-white dark:bg-gray-800">
+        <ImageCarouselLoading v-if="isFetch" />
+        <CarImages v-else :images="car.images" />
+        <CarDetailLoading v-if="isFetch" />
+        <CarDetail v-else :data="car.info" />
+        <TabsLoading v-if="isFetch" />
+        <CarPanel v-else :tabs="car.tabs" :car_id="car.id" />
+        <CarThumbLoading v-if="isFetch" />
+        <CarRelate v-else :cars="car.relate" />
+    </div>
 </template>
 
 <script setup lang="ts">
