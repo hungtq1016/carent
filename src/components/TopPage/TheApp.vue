@@ -8,7 +8,7 @@
             <span class="text-amber-600">dễ dàng</span>
         </div>
         <div>
-            <p class="text-sm text-gray-600 font-light dark:text-amber-50">Đặt xe bất kỳ đâu trên toàn quốc. <br>Nay đã có mặt trên di động.</p>
+            <p class="text-sm text-gray-600 font-light dark:text-gray-100">Đặt xe bất kỳ đâu trên toàn quốc. <br>Nay đã có mặt trên di động.</p>
             <div class="flex gap-x-2">
 
                 <a href="#" class="">

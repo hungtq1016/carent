@@ -41,67 +41,67 @@ const test = async () => {
     //KJU8HV khanh hoa
     //KJMS4K can tho
     //KKAYTR Hai phong
-    const cars =[]
-    loading.value = true
-    await axios.get('https://m-car.mioto.vn/car/detail?carId=KFZT7D').then(res => {
-        data.value = res.data.data.cars
-    }
-    ).catch(err => console.log(err)
-    )
-    const ind = ref(0);
+    // const cars =[]
+    // loading.value = true
+    // await axios.get('https://m-car.mioto.vn/car/detail?carId=KFZT7D').then(res => {
+    //     data.value = res.data.data.cars
+    // }
+    // ).catch(err => console.log(err)
+    // )
+    // const ind = ref(0);
 
-    try {
+    // try {
         
-        (async () => {
+    //     (async () => {
 
-            cars.map(async (item: any) => {
+    //         cars.map(async (item: any) => {
 
-                const images: string[] = []
-                let car: any
-                await axios.get(`https://m-car.mioto.vn/car/detail?carId=${item.id}`).then(res => {
-                    car = res.data.data.car
+    //             const images: string[] = []
+    //             let car: any
+    //             await axios.get(`https://m-car.mioto.vn/car/detail?carId=${item.id}`).then(res => {
+    //                 car = res.data.data.car
 
-                }).catch(err => console.log(err))
+    //             }).catch(err => console.log(err))
 
-                car.photos.forEach((element: any) => {
-                    images.push(element.fullUrl)
-                });
+    //             car.photos.forEach((element: any) => {
+    //                 images.push(element.fullUrl)
+    //             });
 
-                let payload = {
-                    car_name: car.name,
-                    seats: car.seat,
-                    fuel_type: car.optionsFuel,
-                    transmission_type: car.optionsTransmission,
-                    features: car.features,
-                    images: images,
-                    desc: car.desc,
-                    price: car.price,
-                    location: car.locationAddr,
-                    isInstant: car.instant,
-                    isInsurance: car.insSupport,
-                    isDelivery: car.deliveryEnable,
-                    delivery_fee: car?.deliveryLocations?.deliveryFee,
-                    isMortgages: !car.nonMortgage,
-                    address: car.location.street,
-                    fuel_consumption: car.optionsFuelConsumption,
-                }
-                const result = await axios.post('http://localhost:8000/api/fake-car', payload)
-                    .then((res) => {
-                        ind.value+=1;
-                    })
-                    .catch(err => console.log(err))
-                console.log(ind.value)
+    //             let payload = {
+    //                 car_name: car.name,
+    //                 seats: car.seat,
+    //                 fuel_type: car.optionsFuel,
+    //                 transmission_type: car.optionsTransmission,
+    //                 features: car.features,
+    //                 images: images,
+    //                 desc: car.desc,
+    //                 price: car.price,
+    //                 location: car.locationAddr,
+    //                 isInstant: car.instant,
+    //                 isInsurance: car.insSupport,
+    //                 isDelivery: car.deliveryEnable,
+    //                 delivery_fee: car?.deliveryLocations?.deliveryFee,
+    //                 isMortgages: !car.nonMortgage,
+    //                 address: car.location.street,
+    //                 fuel_consumption: car.optionsFuelConsumption,
+    //             }
+    //             const result = await axios.post('http://localhost:8000/api/fake-car', payload)
+    //                 .then((res) => {
+    //                     ind.value+=1;
+    //                 })
+    //                 .catch(err => console.log(err))
+    //             console.log(ind.value)
 
-            })
-        })();
-        if (ind.value==10) {
-        loading.value = false
+    //         })
+    //     })();
+    //     if (ind.value==10) {
+    //     loading.value = false
 
-    }
-    } catch (error) {
-            console.log(error);
+    // }
+    // } catch (error) {
+    //         console.log(error);
             
-    }
+    // }
    
     
 }

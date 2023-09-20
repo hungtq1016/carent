@@ -1,6 +1,6 @@
 <template>
     <div class="absolute inset-x-0 bottom-0 translate-y-1/2 z-[2]">
-        <div class="max-w-screen-xl mx-auto bg-white dark:bg-slate-950 shadow rounded-md px-10 py-5 space-y-5 dark:shadow-amber-600">
+        <div class="max-w-screen-xl mx-auto bg-white dark:bg-zinc-800 shadow rounded-md px-10 py-5 space-y-5 dark:shadow-zinc-900">
             <div class="grid w-full gap-6 md:grid-cols-2">
                     <div>
                         <input type="radio" id="by-self" v-model="carsStore.query.delivery" name="needDriver" :value="false" class="hidden peer"
@@ -30,11 +30,11 @@
                     
                     <div class="grid grid-cols-2 gap-x-2">
                         <select id="location"  v-model="carsStore.province"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-gray-800 dark:border-none text-slate-50 ">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none text-slate-50 ">
                             <option v-for="province in provinceStore.provinces" :value="province">{{ province.name }}</option>
                     </select>
                     <select id="district" v-model="carsStore.district"
-                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-gray-800 dark:border-none text-slate-50">
+                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none">
                         <option v-for="district in provinceStore.districts" :value="district">{{ district.name }}</option>        
                     </select>
                     </div>
@@ -44,7 +44,7 @@
                         Chỗ Ngồi
                     </label>
                     <select id="seat" v-model="carsStore.query.seat"
-                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-gray-800 dark:border-none text-slate-50">
+                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none">
                         <option v-for="seat in seats" :value="seat == 0 ? 'all':seat">{{ seat == 0 ? 'Tất cả':seat }}</option>
                     </select>
                 </div>
@@ -54,10 +54,10 @@
                     </label>
                     <div class="flex items-center gap-x-1">
                         <input type="number" id="start-price" placeholder="Từ" v-model="carsStore.query.priceStart"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-gray-800 dark:border-none text-slate-50 hover:placeholder:text-amber-600">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
                         -
                         <input type="number" id="end-price" placeholder="Đến" v-model="carsStore.query.priceEnd"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-gray-800 dark:border-none text-slate-50 hover:placeholder:text-amber-600">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
                     </div>
                 </div>
                 <div class="col-span-3">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="flex items-center justify-end">
                     <button @click="carsStore.submit"
-                    class="bg-amber-100 text-amber-600 rounded-md px-6 py-4 hover:bg-amber-600 hover:text-white duration-300 hover:font-bold dark:bg-slate-800 dark:text-slate-100 dark:shadow dark:hover:bg-amber-600">Tìm</button>
+                    class="bg-amber-100 text-amber-600 rounded-md px-6 py-4 hover:bg-amber-600 duration-300  dark:bg-amber-600 dark:shadow-amber-600 dark:text-slate-100 dark:hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600">Tìm</button>
                 </div>
             </div>
         </div>

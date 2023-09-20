@@ -1,5 +1,5 @@
 <template>
-    <header class="dark:bg-slate-900 dark:text-slate-100">
+    <header class="dark:bg-zinc-800 dark:text-gray-100">
         <div class="max-w-screen-xl mx-auto">
             <div class="flex justify-between items-center py-5">
                 <RouterLink to="/" >
@@ -21,7 +21,7 @@
                         class="font-bold"
                         to="/login">Đăng Nhập</RouterLink>
                         <RouterLink 
-                        class="px-4 py-2 rounded-md bg-amber-600  text-amber-50 font-bold dark:bg-amber-100 dark:text-amber-600"
+                        class="px-4 py-2 rounded-md bg-amber-600  text-gray-100 font-bold "
                         to="/about-us">Đăng Ký</RouterLink>
                     </div>
                     <button @click="toggleDark()">
