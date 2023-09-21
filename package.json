@@ -13,6 +13,7 @@
     "@egjs/flicking-plugins": "^4.7.1",
     "@egjs/vue3-flicking": "^4.11.0",
     "@headlessui/vue": "^1.7.16",
+    "@tailwindcss/forms": "^0.5.6",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@types/uuid": "^9.0.3",
     "@vuepic/vue-datepicker": "^6.0.3",
@@ -22,10 +23,13 @@
     "pinia": "^2.1.6",
     "slugify": "^1.6.6",
     "sweetalert2": "^11.7.28",
+    "universal-cookie": "^6.1.1",
     "url-join": "^5.0.0",
     "uuid": "^9.0.0",
     "vue": "^3.3.4",
-    "vue-router": "^4.2.4"
+    "vue-cookies": "^1.8.3",
+    "vue-router": "^4.2.4",
+    "vue3-toastify": "^0.1.13"
   },
   "devDependencies": {
     "@tsconfig/node18": "^18.2.0",

@@ -30,11 +30,11 @@
                     
                     <div class="grid grid-cols-2 gap-x-2">
                         <select id="location"  v-model="carsStore.province"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none text-gray-50 ">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none text-gray-900 hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none text-gray-50 ">
                             <option v-for="province in provinceStore.provinces" :value="province">{{ province.name }}</option>
                     </select>
                     <select id="district" v-model="carsStore.district"
-                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none">
+                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none text-gray-900 hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none">
                         <option v-for="district in provinceStore.districts" :value="district">{{ district.name }}</option>        
                     </select>
                     </div>
@@ -44,7 +44,7 @@
                         Chỗ Ngồi
                     </label>
                     <select id="seat" v-model="carsStore.query.seat"
-                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none">
+                    class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none text-gray-900 hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none">
                         <option v-for="seat in seats" :value="seat == 0 ? 'all':seat">{{ seat == 0 ? 'Tất cả':seat }}</option>
                     </select>
                 </div>
@@ -54,10 +54,10 @@
                     </label>
                     <div class="flex items-center gap-x-1">
                         <input type="number" id="start-price" placeholder="Từ" v-model="carsStore.query.priceStart"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none text-gray-900 hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
                         -
                         <input type="number" id="end-price" placeholder="Đến" v-model="carsStore.query.priceEnd"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none text-gray-900 hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
                     </div>
                 </div>
                 <div class="md:col-span-4 lg:col-span-3">

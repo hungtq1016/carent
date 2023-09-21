@@ -1,7 +1,7 @@
 <template>
     <div class="py-5">
         <h4 class="text-xl font-semibold dark:text-gray-200">Tiện Ích</h4>
-        <div class="grid grid-cols-2 md:grid-col-4 gap-3 mt-3">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
             <div class="flex items-center gap-x-2"
             v-for="feature in features">
                 <div class="bg-amber-100 p-2 rounded-full">

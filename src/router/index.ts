@@ -55,7 +55,7 @@ const router = createRouter({
     {
       path: '/register',
       name: 'register',
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/RegisterView.vue')
     },
   ],
   scrollBehavior(to, from, savedPosition) {

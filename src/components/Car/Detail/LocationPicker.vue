@@ -1,6 +1,6 @@
 <template>
   <button type="button" v-if="isDelivery" @click="openModal"
-    class="rounded-md bg-white border border-gray-200 p-2 text-gray-900 hover:bg-opacity-30 focus:outline-none dark:bg-slate-500 ">
+    class="rounded-md bg-white border border-gray-200 p-2 text-gray-900 hover:bg-opacity-30 focus:outline-none dark:bg-zinc-900 dark:hover:bg-zinc-950 ">
     <div class="text-left font-semibold text-gray-700 dark:text-gray-200">Địa điểm nhận xe</div>
 
     <div class="text-sm text-left text-gray-700">

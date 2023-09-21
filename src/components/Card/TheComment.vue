@@ -11,7 +11,7 @@
                 
             </div>
             <div class="flex gap-x-2 mt-0.5 ">
-                <button @click="()=>Swal.fire( 'Tính năng đang cải tiến.', '','warning' )"
+                <button @click="toggleLike"
                 class="text-sm font-medium text-gray-600 dark:text-gray-100">Thích</button>
                 <button class="text-sm font-medium text-gray-600 dark:text-gray-100">Trả lời</button>
                 <div v-if="comment.like_count>0" class="text-sm font-medium text-gray-600 dark:text-gray-100">
@@ -38,13 +38,28 @@
 
 <script setup lang="ts">
 import type { IComment } from '@/lib/interface';
-import { useFetch } from '@vueuse/core';
 import { formatDistance, parseISO } from 'date-fns';
 import { vi } from 'date-fns/locale';
-import { ref } from 'vue';
 import Swal from 'sweetalert2'
 import CommentLoading from '../Loading/CommentLoading.vue';
+import { URL } from '@/lib/fetch';
+import { useDark, useFetch } from '@vueuse/core';
+import Cookies from 'universal-cookie';
+import { onMounted, ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { toast } from 'vue3-toastify';
 
+const cookies = new Cookies();
+const isAuthen = ref(false)
+const user = ref()
+const isLike = ref(false)
+const isDark = useDark()
+onMounted(async () => {
+    user.value = JSON.parse(localStorage.getItem('user') || '{}')
+    isAuthen.value = cookies.get('token') ? true : false
+    const { data, error } = await useFetch(`${URL}/like?post_id=${props.post_id}&user_id=${user.value.id}&type=comment`).get().json()
+    isLike.value = data.value.data
+})
 const props = defineProps(['comment','post_id'])
 const children = ref<Array<IComment>>([])
 const isFetch = ref(false)
@@ -52,8 +67,32 @@ const countCommentChild = (props.comment.right - props.comment.left -1)/2
 children.value = props.comment.children
 const fetchChildren = async() =>{
     isFetch.value = true
-    const {data,error,isFetching} = await useFetch(`http://localhost:8000/api/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()
+    const {data,error,isFetching} = await useFetch(`${URL}/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()
     children.value = data.value.data
     isFetch.value =false            
+}
+const toggleLike = async () => {
+    if (!isAuthen.value) {
+        toast('Yêu cầu đăng nhập', {
+            autoClose: 1000,
+            type: 'error',
+            theme: isDark.value ? 'dark' : 'light'
+        });
+    } else {
+        let payload = {
+            post_id: props.post_id,
+            user_id: user.value.id,
+            like: isLike.value,
+            type:'comment'
+        }
+        const { data, isFinished } = await useFetch(`${URL}/like`).post(payload).json()
+        if (isFinished.value) {
+            isLike.value = data.value.data
+
+        }
+    }
+
+
+
 }
 </script>

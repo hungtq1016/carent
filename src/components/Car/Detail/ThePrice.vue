@@ -17,7 +17,7 @@
                     Xe đã được đăng ký bảo hiểm tai nạn
                 </div>
             </div>
-            <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3 dark:bg-zinc-700 dark:text-gray-100">
+            <div class="px-4 py-8 bg-gray-100 rounded-md flex flex-col gap-y-3 dark:bg-zinc-800 dark:text-gray-100">
                 <div class="text-xl font-semibold dark:text-gray-200 text-gray-900">{{ useFormatCurrency(data?.price) }} /
                     ngày
                 </div>
@@ -122,7 +122,7 @@
                         </div>
                         <button class="mt-3">
                             <div
-                                class="py-4 text-center bg-amber-600 rounded-md text-xl font-bold text-white hover:bg-orange-600 hover:text-amber-100 duration-300">
+                                class="py-4 text-center bg-amber-600 rounded-md text-xl font-bold text-white hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600 dark:hover:text-gray-100 duration-300">
                                 Thuê Xe
                             </div>
                         </button>

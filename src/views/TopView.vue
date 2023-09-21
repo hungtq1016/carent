@@ -1,22 +1,22 @@
 <template>
-    <TheTop />
+    <TheTop/>
      <Suspense>
         <TheBrand />
         <template #fallback>
-            <div>Loading...</div>
+            <BrandLoading/>
         </template>
     </Suspense>
     <Suspense>
         <TheSuggest />
         <template #fallback>
-            <div>Loading...</div>
+            <CarThumbLoading :loop="8"/>
         </template>
     </Suspense>
     <TheStep />
     <Suspense>
         <TheLocation />
         <template #fallback>
-            <div>Loading...</div>
+            <BrandLoading/>
         </template>
     </Suspense>
     <TheRegister />
@@ -31,5 +31,7 @@ import TheStep from '../components/TopPage/Step/TheStep.vue'
 import TheLocation from '../components/TopPage/Location/TheLocation.vue';
 import TheRegister from '../components/TopPage/Register/TheRegister.vue';
 import TheBlog from '../components/TopPage/Blog/TheBlog.vue';
+import BrandLoading from '@/components/Loading/BrandLoading.vue';
+import CarThumbLoading from '@/components/Loading/CarThumbLoading.vue';
 </script>
 

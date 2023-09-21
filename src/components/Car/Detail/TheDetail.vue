@@ -18,20 +18,10 @@
                                 </div>
                             </div>
                             <div class="flex items-center gap-x-2">
-                                <button class="border-gray-600 border p-1 rounded-full relative group dark:border-slate-400">
+                                <TheFavorite/>
+                                <button class="border-yellow-600 border p-1 rounded-full relative group">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-gray-600 dark:fill-slate-400 dark:stroke-slate-400">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
-                                    </svg>
-                                    <div
-                                        class="absolute -bottom-2 left-0 text-xs text-gray-600 hidden group-hover:inline-block bg-white shadow w-20 text-center translate-y-full -translate-x-1/2 rounded-md">
-                                        Yêu Thích
-                                    </div>
-                                </button>
-                                <button class="border-red-600 border p-1 rounded-full relative group">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 stroke-red-600 dark:fill-red-600">
+                                        strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 stroke-yellow-600 dark:fill-yellow-600">
                                         <path strokeLinecap="round" strokeLinejoin="round"
                                             d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
                                     </svg>
@@ -153,6 +143,7 @@ import TheRating from './TheRating.vue';
 import TheSystem from './TheSystem.vue';
 import { useDark } from '@vueuse/core';
 import ThePrice from './ThePrice.vue';
+import TheFavorite from './TheFavorite.vue';
 
 const isDark = useDark()
 const props = defineProps(['data'])

@@ -1,7 +1,7 @@
 <template>
     <div class="py-5">
         <h4 class="text-xl font-semibold dark:text-gray-200">Thông Số</h4>
-        <div class="grid grid-cols-4 md:grid-cols-2 gap-3 mt-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
             <div class="flex gap-x-2 items-center">
                 <div class="bg-lime-600 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
