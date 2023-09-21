@@ -3,16 +3,12 @@
     <Menu as="div" class="relative inline-block text-left">
       <div>
         <MenuButton
-          class="inline-flex w-full justify-center items-center rounded-md bg-gray-100 px-4 py-1 hover:bg-gray-300 hover:dark:bg-zinc-900 text-gray-900 dark:text-gray-100 dark:bg-zinc-700 duration-500 dark:text-gray-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-          <div class="flex items-center gap-x-2">
-            <img class="rounded-full w-10 h-10" :src="`https://randomuser.me/api/portraits/men/${random}.jpg`" :alt="user.name">
-            <span>{{ user.name }}</span>
-          </div>
-
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
+          class="inline-flex w-full justify-center items-center rounded-md text-gray-900 duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <img class="rounded-full w-10 h-10" :src="`https://randomuser.me/api/portraits/men/${random}.jpg`" :alt="user.name">
+          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
             class="ml-2 -mr-1 h-5 w-5 text-gray-900 dark:text-gray-100">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
+          </svg> -->
 
         </MenuButton>
       </div>
@@ -21,7 +17,7 @@
         enter-to-class="transform scale-100 opacity-100" leave-active-class="transition duration-75 ease-in"
         leave-from-class="transform scale-100 opacity-100" leave-to-class="transform scale-95 opacity-0">
         <MenuItems
-          class="absolute right-0 mt-2 w-56 z-10 origin-top-right divide-y divide-gray-200 dark:divide-gray-600 rounded-md bg-white dark:bg-zinc-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          class="absolute right-0 mt-2 w-56 z-50 origin-top-right divide-y divide-gray-200 dark:divide-gray-600 rounded-md bg-white dark:bg-zinc-700 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div class="">
             <MenuItem v-slot="{ active }">
             <button :class="[

@@ -16,27 +16,26 @@
 
 <script setup lang="ts">
 import { URL } from '@/lib/fetch';
+import useAuthen from '@/lib/hook/useAuthen';
+import useUser from '@/lib/hook/useUser';
+import type { IUser } from '@/lib/interface';
 import { useDark, useFetch } from '@vueuse/core';
-import Cookies from 'universal-cookie';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { toast } from 'vue3-toastify';
+const props = defineProps(['user_like'])
+const emit = defineEmits(['updateUser'])
 
-const cookies = new Cookies();
-const isAuthen = ref(false)
-const user = ref()
+const user_like = ref<Array<Partial<IUser>>>([])
+onMounted(()=>user_like.value =props.user_like)
 const post_id = useRoute().params.id;
-const isLike = ref(false)
+const isAuthen = useAuthen()
+const user = useUser()
 const isDark = useDark()
-onMounted(async () => {
-    user.value = JSON.parse(localStorage.getItem('user') || '{}')
-    isAuthen.value = cookies.get('token') ? true : false
-    const { data, error } = await useFetch(`${URL}/like?post_id=${post_id}&user_id=${user.value.id}&type=car`).get().json()
-    isLike.value = data.value.data
-})
+const isLike = computed(() =>user_like.value.some(person => person.id == user.id))
 
 const toggleLike = async () => {
-    if (!isAuthen.value) {
+    if (!isAuthen) {
         toast('Yêu cầu đăng nhập', {
             autoClose: 1000,
             type: 'error',
@@ -45,19 +44,14 @@ const toggleLike = async () => {
     } else {
         let payload = {
             post_id: post_id,
-            user_id: user.value.id,
+            user_id: user.id,
             type:'car',
-            like: isLike.value
+            like: !isLike.value
         }
         const { data, isFinished } = await useFetch(`${URL}/like`).post(payload).json()
-        if (isFinished.value) {
-            isLike.value = data.value.data
-
-        }
+        user_like.value = data.value.data
+        emit('updateUser',user_like.value)
     }
-
-
-
 }
 </script>
 

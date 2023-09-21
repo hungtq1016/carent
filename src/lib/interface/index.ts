@@ -57,6 +57,14 @@ export interface IComment{
     left:number,
     right:number
 }
+export interface IUser{
+    id:string,
+    name:string,
+    email:string,
+    address:string,
+    phone:string
+}
+
 export interface ICar{
     id:string,
     name:string,
