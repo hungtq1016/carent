@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <div v-if="isLoading" class="h-[600px] flex items-center justify-center bg-gray-300 rounded-md mx-2 animate-pulse">
+        <div v-if="isLoading" class="h-[600px] flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md mx-2 animate-pulse">
             <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 18">
                 <path
@@ -9,14 +9,15 @@
         </div>
         <img v-if="error" class="aspect-3/2 object-contain mix-blend-color-burn"
             src="https://ipsf.net/wp-content/uploads/2021/12/dummy-image-square.webp" alt="error">
-        <img v-else :src="`http://localhost:8000/storage${image.path}`" :alt="image.path"
+        <img v-else :src="IMG_URL+image.path" :alt="image.path"
             class="h-full w-full object-cover rounded-md">
     </div>
 </template>
 
 <script setup lang="ts">
+import { IMG_URL } from '@/lib/fetch';
 import { useImage } from '@vueuse/core';
 const props = defineProps(['image'])
 
-const { isLoading, error, isReady } = useImage({ src: `http://localhost:8000/storage${props.image.path}` })
+const { isLoading, error, isReady } = useImage({ src: IMG_URL+props.image.path })
 </script>

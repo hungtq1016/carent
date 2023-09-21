@@ -13,9 +13,9 @@
 
         </div>
         <div class="flex flex-col gap-y-1">
-            <div class="font-bold text-xl dark:text-slate-50">{{ user.name }}</div>
-            <a class="text-gray-700 dark:text-slate-200" :href="`mailto:${user.email}`">{{ user.email }}</a>
-            <div class="flex items-center dark:text-slate-100">
+            <div class="font-bold text-xl dark:text-gray-50">{{ user.name }}</div>
+            <a class="text-gray-700 dark:text-gray-200" :href="`mailto:${user.email}`">{{ user.email }}</a>
+            <div class="flex items-center dark:text-gray-100">
                 <span>{{ user?.star?.toFixed(1) }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                     class="w-5 h-5 fill-yellow-400">

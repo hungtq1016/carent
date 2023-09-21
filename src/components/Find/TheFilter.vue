@@ -1,6 +1,6 @@
 <template>
-    <section class="py-2 sticky top-0 bg-white z-10 shadow dark:bg-slate-800/90 ">
-        <div class="max-w-screen-xl mx-auto">
+    <section class="py-2 sticky top-0 bg-white z-10 shadow dark:bg-zinc-900/90 ">
+        <div class="max-w-screen-xl lg:mx-auto sm:mx-4 md:mx-8">
             <div class="flex items-center gap-x-2">
                 <RouterLink to="/find" class="p-1 border rounded-md border-gray-600 hover:border-amber-600 duration-300 group dark:border-slate-100 dark:hover:border-gray-400">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 fill-gray-600 group-hover:fill-amber-600 duration-300 dark:fill-slate-100 dark:group-hover:fill-gray-400" viewBox="0 0 512 512">
@@ -79,7 +79,7 @@ const filters = [
 
 <style >
 .date-find .dp__input{
-    @apply hover:!border-amber-600 !rounded-md !border-gray-600 !py-1 !pl-10 !pr-5 dark:bg-transparent dark:!border-slate-100 dark:hover:!border-gray-400 dark:!text-slate-100 dark:hover:!text-gray-400
+    @apply hover:!border-amber-600 !rounded-md !border-gray-600 !py-1 !pl-10 !pr-5 dark:bg-transparent dark:!border-slate-100 dark:hover:!border-gray-400 dark:!text-gray-100 dark:hover:!text-gray-400
 }
 .dp__input_wrap:hover input{
     @apply text-amber-600

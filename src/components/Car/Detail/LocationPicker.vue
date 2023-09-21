@@ -1,10 +1,10 @@
 <template>
   <button type="button" v-if="isDelivery" @click="openModal"
     class="rounded-md bg-white border border-gray-200 p-2 text-gray-900 hover:bg-opacity-30 focus:outline-none dark:bg-slate-500 ">
-    <div class="text-left font-semibold text-gray-700 dark:text-slate-200">Địa điểm nhận xe</div>
+    <div class="text-left font-semibold text-gray-700 dark:text-gray-200">Địa điểm nhận xe</div>
 
     <div class="text-sm text-left text-gray-700">
-      <p  class="line-clamp-1 hover:line-clamp-2 dark:text-slate-100">{{ rentStore.rent.address }} </p>     
+      <p  class="line-clamp-1 hover:line-clamp-2 dark:text-gray-100">{{ rentStore.rent.address }} </p>     
     </div>
   </button>
   <button type="button" v-else
@@ -51,7 +51,7 @@ import {
   DialogTitle,
 } from '@headlessui/vue'
 import { useRent } from '@/stores/rent';
-import LocationModal from '../Modal/LocationModal.vue';
+import LocationModal from '@/components/Modal/LocationModal.vue';
 const rentStore = useRent()
 const isOpen = ref(false)
 const props = defineProps(['isDelivery','address'])

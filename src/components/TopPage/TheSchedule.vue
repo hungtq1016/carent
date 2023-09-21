@@ -6,7 +6,7 @@
                         <input type="radio" id="by-self" v-model="carsStore.query.delivery" name="needDriver" :value="false" class="hidden peer"
                             required>
                         <label for="by-self"
-                            class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-amber-500 peer-checked:border-amber-600 peer-checked:text-amber-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-amber-500 peer-checked:border-amber-600 peer-checked:text-amber-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-zinc-900 dark:hover:bg-zinc-950">
                             <div class="block">
                                 <div class="w-full text-lg font-semibold">Tự Lái</div>
                             </div>
@@ -15,22 +15,22 @@
                     <div>
                         <input type="radio" id="need-driver" v-model="carsStore.query.delivery" name="needDriver" :value="true" class="hidden peer">
                         <label for="need-driver"
-                            class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-amber-500 peer-checked:border-amber-600 peer-checked:text-amber-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                            class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-amber-500 peer-checked:border-amber-600 peer-checked:text-amber-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-zinc-900 dark:hover:bg-zinc-950">
                             <div class="block">
                                 <div class="w-full text-lg font-semibold">Thuê Tài Xế</div>
                             </div>
                         </label>
                     </div>
                 </div>
-            <div class="grid grid-cols-12 gap-x-2">
-                <div class="col-span-4">
+            <div class="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-x-2">
+                <div class="md:col-span-6 lg:col-span-4">
                     <label for="location" class="font-semibold text-lg">
                         Địa điểm
                     </label>
                     
                     <div class="grid grid-cols-2 gap-x-2">
                         <select id="location"  v-model="carsStore.province"
-                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none text-slate-50 ">
+                        class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none text-gray-50 ">
                             <option v-for="province in provinceStore.provinces" :value="province">{{ province.name }}</option>
                     </select>
                     <select id="district" v-model="carsStore.district"
@@ -39,7 +39,7 @@
                     </select>
                     </div>
                 </div>
-                <div>
+                <div class="md:col-span-2 lg:col-span-1">
                     <label for="seat" class="font-semibold text-lg">
                         Chỗ Ngồi
                     </label>
@@ -48,7 +48,7 @@
                         <option v-for="seat in seats" :value="seat == 0 ? 'all':seat">{{ seat == 0 ? 'Tất cả':seat }}</option>
                     </select>
                 </div>
-                <div class="col-span-3">
+                <div class="md:col-span-3 lg:col-span-3">
                     <label for="price" class="font-semibold text-lg">
                         Giá
                     </label>
@@ -60,7 +60,7 @@
                         class="w-full border-b text-sm py-2 px-1 focus:ring-0 focus:outline-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-zinc-900 dark:text-gray-100 dark:border-none hover:placeholder:text-amber-600">
                     </div>
                 </div>
-                <div class="col-span-3">
+                <div class="md:col-span-4 lg:col-span-3">
                     <label for="date" class="font-semibold text-lg">
                         Ngày Đi - Ngày Về
                     </label>
@@ -68,9 +68,9 @@
                     id="date" v-model="carsStore.date" range :format-locale="vi"></VueDatePicker>
 
                 </div>
-                <div class="flex items-center justify-end">
+                <div class="flex justify-end">
                     <button @click="carsStore.submit"
-                    class="bg-amber-100 text-amber-600 rounded-md px-6 py-4 hover:bg-amber-600 duration-300  dark:bg-amber-600 dark:shadow-amber-600 dark:text-slate-100 dark:hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600">Tìm</button>
+                    class="bg-amber-100 text-amber-600 rounded-md px-6 py-4 hover:bg-amber-600 duration-300  dark:bg-amber-600 dark:shadow-amber-600 dark:text-gray-100 dark:hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600">Tìm</button>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
 </template>
 <style>
 .schedule .dp__input{
-    @apply border-b border-t-0 border-x-0 rounded-none hover:text-amber-600 hover:border-amber-600 duration-200 dark:bg-gray-800 dark:border-none text-slate-50 hover:placeholder:text-amber-600;
+    @apply border-b border-t-0 border-x-0 rounded-none duration-200 dark:bg-zinc-900 dark:border-none dark:text-gray-50 hover:text-amber-600;
 }
 
 .dp__range_end, .dp__range_start, .dp__active_date{

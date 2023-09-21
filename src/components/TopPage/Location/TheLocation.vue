@@ -1,8 +1,8 @@
 <template>
-    <section class="py-10 bg-gray-50 dark:bg-slate-800 dark:text-slate-100">
+    <section class="py-10 bg-gray-50 dark:bg-zinc-950 dark:text-gray-100">
         <div class="max-w-screen-xl mx-auto">
-            <h3 class="text-4xl font-bold text-center dark:text-slate-200">Địa Điểm</h3>
-            <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-slate-100">Hệ thống phát triển toàn quốc.</div>
+            <h3 class="text-4xl font-bold text-center dark:text-gray-200">Địa Điểm</h3>
+            <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-gray-100">Hệ thống phát triển toàn quốc.</div>
             <div class="py-5 relative">
                 <Flicking :options=optionProvince :plugins=pluginsProvince>
                     <template v-for="(province, index) in provinceStore.provinces" :key="index">

@@ -1,5 +1,5 @@
 <template>
-    <label :for="province.slug" class="peer-checked:border-4 peer-checked:border-amber-600 block rounded-md box-border border-4 border-gray-50 dark:border-slate-800 hover:border-gray-400">
+    <label :for="province.slug" class="peer-checked:border-4 peer-checked:border-amber-600 block rounded-md box-border border-4 border-gray-50 dark:border-zinc-900 hover:border-gray-400">
        <div class="min-h-[384px] relative">
         <img :src="imgSrc" :alt="province.slug"
         class="object-contain max-h-96 w-full rounded-md">

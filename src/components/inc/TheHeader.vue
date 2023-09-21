@@ -1,6 +1,6 @@
 <template>
     <header class="dark:bg-zinc-800 dark:text-gray-100">
-        <div class="max-w-screen-xl mx-auto">
+        <div class="max-w-screen-xl lg:mx-auto mx-4 md:mx-8">
             <div class="flex justify-between items-center py-5">
                 <RouterLink to="/" >
                     <img src="/logo.png" alt="Logo company" v-if="!isDark">

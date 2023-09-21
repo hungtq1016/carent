@@ -1,8 +1,8 @@
 <template>
-    <section class="py-10 dark:bg-slate-800 dark:text-slate-100">
+    <section class="py-10 dark:bg-zinc-950 dark:text-gray-100">
         <div class="max-w-screen-xl mx-auto">
-            <h3 class="text-4xl font-bold text-center dark:text-slate-200">Bài Viết</h3>
-            <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-slate-100">Chia sẻ đến từ các thành viên có kinh nghiệm.</div>
+            <h3 class="text-4xl font-bold text-center dark:text-gray-200">Bài Viết</h3>
+            <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-gray-100">Chia sẻ đến từ các thành viên có kinh nghiệm.</div>
             <div class="flex flex-col gap-y-2 py-5">
                 <BlogItem v-for="blog in blogs " :blog="blog" :key="blog.id"/>
             </div>

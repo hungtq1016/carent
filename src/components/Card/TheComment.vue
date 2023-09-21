@@ -5,9 +5,9 @@
                 :alt="comment.user.name">
         </div>
         <div class="basis-[calc(100%-45px)]">
-            <div class="flex flex-col gap-y-1 bg-gray-100 dark:bg-gray-600 rounded pl-3 pr-2 py-1 w-fit">
-                <div class="font-medium dark:text-slate-200 dark:font-medium">{{ comment.user.name }}</div>
-                <div class="text-gray-700 text-sm dark:text-slate-100">{{ comment.content }}</div>
+            <div class="flex flex-col gap-y-1 bg-gray-100 dark:bg-zinc-700 rounded pl-3 pr-2 py-1 w-fit">
+                <div class="font-medium dark:text-gray-200 dark:font-medium">{{ comment.user.name }}</div>
+                <div class="text-gray-700 text-sm dark:text-gray-100">{{ comment.content }}</div>
                 
             </div>
             <div class="flex gap-x-2 mt-0.5 ">
@@ -27,7 +27,7 @@
                 v-if="children.length == 0 && comment.hasChild" 
                 class="text-sm text-gray-600 dark:text-gray-100">Xem thêm {{ countCommentChild }} bình luận còn lại</button>
                 <template v-else>
-                    <CommentItem v-for="sub in children" :comment="sub"/>
+                    <TheComment v-for="sub in children" :comment="sub"/>
                 </template>
             </template>
             

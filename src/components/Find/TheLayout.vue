@@ -1,10 +1,10 @@
 <template>
-    <section class="py-10 dark:bg-slate-800">
-        <div class="max-w-screen-xl mx-auto">
+    <section class="py-10 dark:bg-zinc-950">
+        <div class="max-w-screen-xl lg:mx-auto md:mx-8 mx-4">
             <div class="text-xl text-gray-900 font-semibold text-center" v-if="carsStore.cars.length == 0 &&!carsStore.isLoading">Không có xe theo
                 yêu cầu của bạn</div>
             <template v-else>
-                <div class="grid grid-cols-4 gap-3" v-if="carsStore.cars.length >0">
+                <div class="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-3" v-if="carsStore.cars.length >0">
                     <TheItem v-for="(car, index) in carsStore.cars" :car="car" :key="index" />
                 </div>
                 <CarThumbLoading v-if="carsStore.isLoading" :loop="8" />

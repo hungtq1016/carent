@@ -4,7 +4,7 @@
             class="px-3 rounded-md border py-1 border-gray-600 hover:border-amber-600 duration-300 group dark:border-slate-100 dark:hover:border-gray-400">
             <div class="flex gap-x-2 items-center">
                 <div v-html="filter.icon"></div>
-                <div class="text-gray-600 group-hover:text-amber-600 duration-300 dark:text-slate-100 dark:group-hover:text-gray-400">
+                <div class="text-gray-600 group-hover:text-amber-600 duration-300 dark:text-gray-100 dark:group-hover:text-gray-400">
                     {{ filter.name }}
                 </div>
             </div>

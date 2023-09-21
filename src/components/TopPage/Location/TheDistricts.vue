@@ -1,9 +1,9 @@
 <template>
     <Flicking :options="{ circular: true, align: 'center' }" :plugins="plugins">
         <RouterLink :to="`/find?province=all`" class="px-1">
-            <div class="px-4 py-2 bg-black/50 rounded-md whitespace-nowrap dark:bg-gray-600">
-                <div class="text-xl font-semibold text-white dark:text-slate-200">Tất Cả</div>
-                <div class="text-sm text-white invisible dark:text-slate-100">0</div>
+            <div class="px-4 py-2 bg-black/50 rounded-md whitespace-nowrap dark:bg-gray-800">
+                <div class="text-xl font-semibold text-white dark:text-gray-200">Tất Cả</div>
+                <div class="text-sm text-white invisible dark:text-gray-100">0</div>
             </div>
         </RouterLink>
         <TheDistrict :district="district" v-for="(district, index) in districts" :key="index" :province="province.slug"/>
