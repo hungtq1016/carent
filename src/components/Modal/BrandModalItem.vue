@@ -1,8 +1,8 @@
 <template>
-    <RouterLink :to="{ name: 'FindCars', query: query}" 
-    class="hover:bg-gray-100 rounded-md px-2" :class="{'bg-gray-100':carsStore.query.brand==brand.name}">
+    <button @click="findCarsByBrand(props.brand.slug)" 
+    class="hover:bg-gray-100 rounded-md px-2 dark:bg-zinc-200" :class="{'bg-gray-100':carsStore.query.brand==brand.name}">
         <div class="flex gap-x-2 items-center">
-        <div v-if="isLoading||error" class="h-20 w-20 flex items-center justify-center bg-gray-300 rounded-md mx-2 animate-pulse">
+        <div v-if="isLoading||error" class="h-20 w-20 flex items-center justify-center bg-gray-300 dark:bg-zinc-700 rounded-md mx-2 animate-pulse">
             <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 18">
                 <path
@@ -16,18 +16,28 @@
             <div class="text-sm text-gray-600 font-light">({{ brand.model_count }} xe)</div>
         </div>
     </div>
-    </RouterLink>
+    </button>
 </template>
 
 <script setup lang="ts">
 import { IMG_URL } from '@/lib/fetch';
 import { useCars } from '@/stores/cars';
 import { useImage } from '@vueuse/core';
+import {  useRouter } from 'vue-router';
 const props = defineProps(['brand'])
 const emit = defineEmits(['closeModal'])
 const carsStore = useCars()
 
-let query = {...carsStore.query,...{brand: props.brand.slug,seat:'all' }}
 const { isLoading ,error} = useImage({ src: IMG_URL + props.brand.image?.path })
+const router = useRouter()
+const findCarsByBrand = (brand: string) => {
+    router.push({
+        name: 'FindCars',
+    })
+    carsStore.query.brand = brand
+    carsStore.query.seat = 'all',
+    emit('closeModal')
+}
+
 </script>
 

@@ -66,13 +66,14 @@ export const useCars = defineStore('cars', () => {
     const { data } = await useFetch(url.value).get().json()
     cars.value = [...cars.value,...data.value.data]    
     last_page.value = data.value.meta.last_page
+    console.log(data.value);
+    
     isLoading.value = false
   }
 
   const submit = () => {
     router.push({
       name: 'FindCars',
-      query: query.value,
     })
   }
   return { cars, province, district, date, needDriver, submit, fetchCars, query, isLoading, last_page, page,debounce,absoluteQuery }

@@ -11,7 +11,7 @@
                             ? ' border-amber-600 text-amber-600'
                             : 'text-gray-600 border-gray-100 dark:text-gray-200',
                     ]">
-                        {{ category }} <span v-if="category == 'Bình luận'">({{ tabs.comment_count }})</span>
+                        {{ category }} <span v-if="category == 'Bình luận'">({{ comment_count }})</span>
                     </button>
                 </Tab>
                 <div class="flex-auto border-b-2 py-3 border-gray-100"></div>
@@ -75,12 +75,13 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref ,inject} from 'vue'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import TheComment from './TheComment.vue';
 import TheQuestion from '@/components/Card/TheQuestion.vue';
 import TheOwner from './TheOwner.vue';
 const props = defineProps(['tabs','car_id'])
+const {comment_count} = inject<any>('messageRight')
 const categories = ref(['Mô tả', 'Bình luận', 'Yêu cầu','Chính Sách','Chủ Xe'])
 </script>
   
