@@ -52,8 +52,6 @@ import { vi } from 'date-fns/locale';
 import CommentLoading from '../Loading/CommentLoading.vue';
 import { URL } from '@/lib/fetch';
 import { useDark, useFetch } from '@vueuse/core';
-import useAuthen from '@/lib/hook/useAuthen';
-import useUser from '@/lib/hook/useUser';
 import { computed, onMounted, ref,inject } from 'vue';
 import { toast } from 'vue3-toastify';
 import type { IUser } from '@/lib/interface'
@@ -65,10 +63,10 @@ const isReply = ref(false)
 const user_like = ref<Array<Partial<IUser>>>([])
 const children = ref<Array<IComment>>([])
 const isFetch = ref(false)
-const isAuthen = useAuthen()
-const user = useUser()
 const isDark = useDark()
 const content = ref('')
+const {isAuthen,user} = inject<any>('user')
+
 onMounted(async () => {
     user_like.value = props.comment.likes
     children.value = props.comment.children        
@@ -76,17 +74,17 @@ onMounted(async () => {
 
 const fetchChildren = async () => {
     isFetch.value = true
-    const { data, error, isFetching } = await useFetch(`${URL}/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()
-    children.value = data.value.children
+    const { data } = await useFetch(`${URL}/comment?parent_id=${props.comment.id}&post_id=${props.post_id}`).get().json()    
+    children.value = data.value.data
     isFetch.value = false
 }
 
-const isLike = computed(() =>user_like.value.some(person => person.id == user.id))
+const isLike = computed(() =>user_like.value.some(person => person.id == user.value.id))
 const countLike = computed(() => user_like.value.length)
 const countChild = computed(() => (props.comment.right - props.comment.left - 1) / 2)
 
 const toggleReply = ()=>{
-    if (!isAuthen) {
+    if (!isAuthen.value) {
         toast('Yêu cầu đăng nhập', {
             autoClose: 1000,
             type: 'error',
@@ -101,7 +99,7 @@ const submitComment = async () => {
     isReply.value=false
     let payload = {
         post_id: props.post_id,
-        user_id: user.id,
+        user_id: user.value.id,
         content: content.value,
         parent_id:props.comment.id
     }    
@@ -118,7 +116,7 @@ const submitComment = async () => {
 }
 
 const toggleLike = async () => {
-    if (!isAuthen) {
+    if (!isAuthen.value) {
         toast('Yêu cầu đăng nhập', {
             autoClose: 1000,
             type: 'error',
@@ -127,7 +125,7 @@ const toggleLike = async () => {
     } else {
         let payload = {
             post_id: props.comment.id,
-            user_id: user.id,
+            user_id: user.value.id,
             like: !isLike.value,
             type: 'comment'
         }

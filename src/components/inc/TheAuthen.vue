@@ -1,5 +1,5 @@
 <template>
-    <template v-if="token">
+    <template v-if="isAuthen">
         <TheUser :user="user"/>
     </template>
     <template v-else>
@@ -20,19 +20,13 @@
 </template>
 
 <script setup lang="ts">
-import Cookies from 'universal-cookie';
+import { inject } from 'vue';
 import TheUser from './TheUser.vue';
-import { onMounted, ref } from 'vue';
 import { useDark, useToggle } from '@vueuse/core'
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-const user = ref()
-const cookies = new Cookies();
-const token  = ref()
-onMounted(()=>{
-    user.value = JSON.parse(localStorage.getItem('user') || '{}')
-    token.value = cookies.get('token')
-})
+
+const{user,isAuthen} = inject<any>('user')
 </script>
 
 <style scoped></style>

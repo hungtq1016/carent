@@ -16,11 +16,9 @@
 
 <script setup lang="ts">
 import { URL } from '@/lib/fetch';
-import useAuthen from '@/lib/hook/useAuthen';
-import useUser from '@/lib/hook/useUser';
 import type { IUser } from '@/lib/interface';
 import { useDark, useFetch } from '@vueuse/core';
-import { computed, onMounted, ref } from 'vue';
+import { computed, inject, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { toast } from 'vue3-toastify';
 const props = defineProps(['user_like'])
@@ -29,21 +27,22 @@ const emit = defineEmits(['updateUser'])
 const user_like = ref<Array<Partial<IUser>>>([])
 onMounted(()=>user_like.value =props.user_like)
 const post_id = useRoute().params.id;
-const isAuthen = useAuthen()
-const user = useUser()
+const {isAuthen,user} = inject<any>('user')
 const isDark = useDark()
-const isLike = computed(() =>user_like.value.some(person => person.id == user.id))
+const isLike = computed(() =>user_like.value.some(person => person.id == user.value.id))
 const toggleLike = async () => {
-    if (!isAuthen) {
+    if (!isAuthen.value) {
         toast('Yêu cầu đăng nhập', {
             autoClose: 1000,
             type: 'error',
             theme: isDark.value ? 'dark' : 'light'
         });
+        
     } else {
+        
         let payload = {
             post_id: post_id,
-            user_id: user.id,
+            user_id: user.value.id,
             type:'car',
             like: !isLike.value
         }

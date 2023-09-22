@@ -40,10 +40,8 @@ const isFetch = ref<boolean>(true)
 const rentStore = useRent()
 onMounted(async () => {
     const { data} = await useFetch(`${URL}/car/${id}`).get().json()
-    
     car.value = data.value.data
     isFetch.value = false   
-    console.log(car.value);
     updateRight(car.value.info.right_comment)
     rentStore.rent.owner_id = car.value.id
     rentStore.rent.address = car.value.info.address

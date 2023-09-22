@@ -53,7 +53,7 @@
 <script setup lang="ts">
 import { URL } from '@/lib/fetch';
 import { useFetch, useDark } from '@vueuse/core';
-import { ref } from 'vue';
+import { inject, ref } from 'vue';
 import Cookies from 'universal-cookie';
 import { toast } from 'vue3-toastify';
 import router from '@/router';
@@ -63,6 +63,7 @@ const form = ref({
     email: '',
     password: ''
 })
+const{updateUser,updateAuthen} = inject<any>('user')
 
 const submit = async () => {
     const { data, error, isFetching, isFinished } = await useFetch(URL + '/login').post(form.value).json()
@@ -77,6 +78,8 @@ const submit = async () => {
         cookies.set('token', data.value.access_token);
         cookies.set('type', data.value.token_type);
         localStorage.setItem('user',JSON.stringify(data.value.data))
+        updateUser(data.value.data)
+        updateAuthen(true)
         router.push('/')
     }
 }

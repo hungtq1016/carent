@@ -28,8 +28,6 @@ import TheComment from '@/components/Card/TheComment.vue';
 import TheQuestion from '@/components/Card/TheQuestion.vue';
 import CommentLoading from '@/components/Loading/CommentLoading.vue';
 import { URL } from '@/lib/fetch';
-import useAuthen from '@/lib/hook/useAuthen';
-import useUser from '@/lib/hook/useUser';
 import { toast } from 'vue3-toastify';
 const props = defineProps(['post_id'])
 const comments = ref<Array<IComment>>([])
@@ -37,10 +35,9 @@ const isNext = ref(false)
 const nextPage = ref<number>(1)
 const isFetch = ref(false)
 const content = ref('')
-const isAuthen = useAuthen()
-const user = useUser()
 const isDark = useDark()
 const {updateRight} = inject<any>('messageRight')
+const {isAuthen,user} = inject<any>('user')
 
 onMounted(() => {
     fetchComments()
@@ -48,8 +45,8 @@ onMounted(() => {
 
 const fetchComments = async () => {
     isFetch.value = true
-    const { data} = await useFetch(`${URL}/comment?post_id=${props.post_id}&page=${nextPage.value}`).get().json()
-    comments.value = [...comments.value, ...data.value.data]
+    const { data } = await useFetch(`${URL}/comment?post_id=${props.post_id}&page=${nextPage.value}`).get().json()
+    comments.value = [...comments.value, ...data.value.data]    
     if (data.value.meta.current_page < data.value.meta.last_page) {
         isNext.value = true;
         nextPage.value++;
@@ -59,9 +56,17 @@ const fetchComments = async () => {
     isFetch.value = false
 }
 const submitComment = async () => {
-    let payload = {
+    if (!isAuthen) {
+        toast('Yêu cầu đăng nhập', {
+            autoClose: 1000,
+            type: 'error',
+            theme: isDark.value ? 'dark' : 'light'
+        });
+        content.value =''
+    }else{
+        let payload = {
         post_id: props.post_id,
-        user_id: user.id,
+        user_id: user.value.id,
         content: content.value,
     }    
     const { data } = await useFetch(`${URL}/comment`).post(payload).json()        
@@ -75,6 +80,8 @@ const submitComment = async () => {
             type: data.value.error ? 'error' :'default',
             theme: isDark.value ? 'dark' : 'light'
     });
+    }
+    
 }
 
 </script>

@@ -65,9 +65,7 @@ export const useCars = defineStore('cars', () => {
     
     const { data } = await useFetch(url.value).get().json()
     cars.value = [...cars.value,...data.value.data]    
-    last_page.value = data.value.meta.last_page
-    console.log(data.value);
-    
+    last_page.value = data.value.meta.last_page    
     isLoading.value = false
   }
 

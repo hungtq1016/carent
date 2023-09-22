@@ -75,11 +75,12 @@
 </template>
   
 <script setup lang="ts">
-import { computed, ref ,inject} from 'vue'
+import { ref ,inject} from 'vue'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import TheComment from './TheComment.vue';
 import TheQuestion from '@/components/Card/TheQuestion.vue';
 import TheOwner from './TheOwner.vue';
+
 const props = defineProps(['tabs','car_id'])
 const {comment_count} = inject<any>('messageRight')
 const categories = ref(['Mô tả', 'Bình luận', 'Yêu cầu','Chính Sách','Chủ Xe'])

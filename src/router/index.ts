@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
+import useAuthen from '@/lib/hook/useAuthen';
+const isAuthen = useAuthen()
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'Home',
       component: () => import('../views/TopView.vue')
     },
     {
@@ -56,6 +57,16 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue')
+    },
+    {
+      path: '/user/favorite',
+      name: 'FavoritePage',
+      component: () => import('../views/FavoriteView.vue'),
+      beforeEnter: (to, from) => {
+        if (!isAuthen) {
+          return { name: 'Home' }
+        }
+      },
     },
   ],
   scrollBehavior(to, from, savedPosition) {
