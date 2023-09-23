@@ -13,7 +13,7 @@ export const useRent = defineStore('rent', () => {
     const deliveryFee = ref(0)
     const total = ref(0)
     const discount = ref(0)
-
+    const car = ref()
     const rent = ref({
       guest_id:'',
       owner_id:'',
@@ -40,5 +40,5 @@ export const useRent = defineStore('rent', () => {
       rent.value.total_all_days = isDriver.value ? total.value+deliveryFee.value:total.value       
     })
 
-  return { rent ,selected_day, isDriver ,isReceive,absoluteAddress,deliveryFee,total,discount,absoluteFee}
+  return { rent ,selected_day, isDriver ,isReceive,absoluteAddress,deliveryFee,total,discount,absoluteFee,car}
 })

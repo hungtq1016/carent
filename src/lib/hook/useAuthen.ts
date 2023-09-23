@@ -1,6 +1,6 @@
 import Cookies from 'universal-cookie';
 
-const cookies = new Cookies();
+const cookies = new Cookies(null, { path: '/' });
 
 const useAuthen = ():boolean => {
     let isAuthen:boolean

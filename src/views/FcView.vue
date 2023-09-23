@@ -16,7 +16,6 @@
 <script setup lang="ts">
 import axios from 'axios';
 import { ref } from 'vue';
-import { v4 as uuid } from 'uuid';
 const data = ref()
 const loading = ref(false)
 const loglocation = async () => {

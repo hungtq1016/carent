@@ -59,9 +59,24 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue')
     },
     {
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import('../views/CheckoutView.vue')
+    },
+    {
       path: '/user/favorite',
       name: 'FavoritePage',
       component: () => import('../views/FavoriteView.vue'),
+      beforeEnter: (to, from) => {
+        if (!isAuthen) {
+          return { name: 'Home' }
+        }
+      },
+    },
+    {
+      path: '/user/history',
+      name: 'HistoryPage',
+      component: () => import('../views/HistoryView.vue'),
       beforeEnter: (to, from) => {
         if (!isAuthen) {
           return { name: 'Home' }

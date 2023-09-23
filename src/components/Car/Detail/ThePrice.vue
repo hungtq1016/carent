@@ -120,7 +120,7 @@
                                 useFormatCurrency(rentStore.rent.total_all_days)
                             }} </span></p>
                         </div>
-                        <button class="mt-3">
+                        <button class="mt-3" @click="checkout">
                             <div
                                 class="py-4 text-center bg-amber-600 rounded-md text-xl font-bold text-white hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600 dark:hover:text-gray-100 duration-300">
                                 Thuê Xe
@@ -151,17 +151,25 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import { useRent } from '@/stores/rent';
 import useFormatCurrency from '@/lib/hook/useFormatCurrency';
 import LocationPicker from './LocationPicker.vue';
 import TheQuestion from '@/components/Card/TheQuestion.vue';
-
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+
 const rentStore = useRent()
 const props = defineProps(['data'])
-const discount = ref(0)
+
+const checkout = () =>{
+    router.push({
+        name: 'checkout',
+    })
+}
+
 onMounted(() => {
     const now = new Date();
     const seven_day = new Date().setDate(now.getDate() + 7)

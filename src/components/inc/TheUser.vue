@@ -38,7 +38,7 @@
           </div>
           <div>
             <MenuItem v-slot="{ active }">
-            <RouterLink to="/" :class="[
+            <RouterLink to="/user/history" :class="[
               active ? 'bg-amber-500 text-gray-100' : 'text-gray-900 dark:text-gray-100',
               'group flex w-full items-center p-2 gap-x-2',
             ]">
