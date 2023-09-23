@@ -1,7 +1,8 @@
 import { useFetch } from '@vueuse/core'
+import { URL } from '.';
 
 const getCars = async () =>{
-    const url = 'http://localhost:8000/api/car';
+    const url = URL+'/car';
     const { isFetching, error, data } = await useFetch(url).get().json()
 
     return {
