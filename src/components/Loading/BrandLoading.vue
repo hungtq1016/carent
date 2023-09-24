@@ -1,6 +1,6 @@
 <template>
     <section class="pt-40 pb-10 bg-white dark:bg-zinc-900">
-        <div class="max-w-screen-xl mx-4 md:mx-8 lg:mx-auto">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4">
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
                 <div class="flex items-center justify-center h-48 bg-gray-100 dark:bg-zinc-700 animate-pulse rounded-md" v-for="i in 6">
                     <svg class="w-10 h-10 text-gray-400 dark:text-zinc-700" aria-hidden="true"

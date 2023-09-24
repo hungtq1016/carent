@@ -122,7 +122,7 @@
                         </div>
                         <button class="mt-3" @click="checkout">
                             <div
-                                class="py-4 text-center bg-amber-600 rounded-md text-xl font-bold text-white hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600 dark:hover:text-gray-100 duration-300">
+                                class="md:py-4 py-2 text-center bg-amber-600 rounded-md text-base md:text-lg lg:text-xl font-bold text-white hover:bg-orange-600 dark:hover:shadow-md dark:hover:shadow-orange-600 dark:hover:text-gray-100 duration-300">
                                 Thuê Xe
                             </div>
                         </button>

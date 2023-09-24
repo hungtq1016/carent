@@ -1,14 +1,14 @@
 <template>
     <section class="py-5">
-        <div class="max-w-screen-xl mx-auto">
-            <div class="grid grid-cols-3 gap-x-3">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-3">
                 <div class="col-span-2">
-                    <Flicking ref="flicking0" class="!h-[600px]"
+                    <Flicking ref="flicking0" class="!h-96 lg:!h-[600px]"
                         :options="{ circular: true, panelsPerView: 1, adaptive: true }" :plugins="plugins">
                         <ImageThumb v-for="(image, index) in images" :image="image" :key="index" />
                     </Flicking>
                 </div>
-                <div class="col-span-1">
+                <div class="col-span-1 hidden lg:block">
 
                     <Flicking ref="flicking1" class="!h-[600px] w-full slider"
                         :options="{ circular: true, moveType: 'freeScroll', horizontal: false, panelsPerView: 3 }">

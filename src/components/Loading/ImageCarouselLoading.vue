@@ -1,9 +1,9 @@
 <template>
     <section class="py-5">
-        <div class="max-w-screen-xl mx-auto an">
-            <div class="grid grid-cols-3 grid-rows-3 gap-y-3 gap-x-2">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4 animate-pulse">
+            <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-3 gap-y-3 gap-x-2">
                 <div
-                    class="h-[600px] col-span-2 row-span-3 flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
+                    class="h-96 md:h-[600px] flex col-span-2 row-span-3 items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path
@@ -11,7 +11,7 @@
                     </svg>
 
                 </div>
-                <div class="h-[188px]  flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
+                <div class="h-[188px] hidden md:flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path
@@ -19,7 +19,7 @@
                     </svg>
 
                 </div>
-                <div class="h-[188px]  flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
+                <div class="h-[188px] hidden md:flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path
@@ -27,7 +27,7 @@
                     </svg>
 
                 </div>
-                <div class="h-[188px]  flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
+                <div class="h-[188px] hidden md:flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md animate-pulse">
                     <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
                         <path

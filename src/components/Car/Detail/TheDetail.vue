@@ -1,18 +1,18 @@
 <template>
     <section class="pb-5">
-        <div class="max-w-screen-xl lg:mx-auto md:mx-8 sm:mx-4">
-            <div class="grid lg:grid-cols-3 md:grid-cols-5 grid-cols-2 gap-x-3">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4">
+            <div class="grid lg:grid-cols-3 md:grid-cols-5 grid-cols-1 gap-x-3">
                 <div class="lg:col-span-2 md:col-span-3 col-span-1 divide-y">
-                    <div class="flex flex-col gap-y-5 pb-5">
-                        <div class="flex items-center justify-between">
-                            <div class="flex gap-x-2 items-center">
-                                <div class="text-4xl font-semibold capitalize dark:text-gray-200">{{ data.name }}</div>
+                    <div class="flex flex-col gap-y-3 md:gap-y-5 pb-5">
+                        <div class="flex md:items-center gap-2 md:justify-between flex-col md:flex-row">
+                            <div class="flex gap-2 items-center">
+                                <div class="xl:text-4xl lg:text-3xl md:text-2xl text-xl font-semibold capitalize dark:text-gray-200">{{ data.name }}</div>
                                 <div><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" v-if="!isDark"
-                                        strokeWidth={1.5} stroke="currentColor" class="w-8 h-8 stroke-green-500">
+                                        strokeWidth={1.5} stroke="currentColor" class="md:w-8 md:h-8 w-5 h-5 stroke-green-500">
                                         <path strokeLinecap="round" strokeLinejoin="round"
                                             d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 fill-green-700 " v-else>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="md:w-8 md:h-8 w-5 h-5 fill-green-700 " v-else>
                                         <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
                                     </svg>
                                 </div>
@@ -21,7 +21,7 @@
                                 <TheFavorite/>
                                 <button class="border-yellow-600 border p-1 rounded-full relative group">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        strokeWidth={1.5} stroke="currentColor" class="w-6 h-6 stroke-yellow-600 dark:fill-yellow-600">
+                                        strokeWidth={1.5} stroke="currentColor" class="md:w-6 md:h-6 w-4 h-4 stroke-yellow-600 dark:fill-yellow-600">
                                         <path strokeLinecap="round" strokeLinejoin="round"
                                             d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5" />
                                     </svg>
@@ -32,7 +32,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="flex gap-x-3 items-center">
+                        <div class="flex gap-1 md:gap-x-3 items-center flex-wrap ">
                             <div class="flex items-center gap-x-1">
                                 <div class="sr-only">Star AVG</div>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -97,22 +97,22 @@
                                 </svg>
                                 <RouterLink v-if="data.location.district"
                                     :to="`/find?district=${data.location.district.slug}&province=${data.location.province.slug}`"
-                                    class="text-gray-900 text-lg font-semibold dark:text-gray-200">{{ data?.location.district.name }},
+                                    class="text-gray-900  text-sm md:text-lg font-semibold dark:text-gray-200">{{ data?.location.district.name }},
                                 </RouterLink>
                                 <RouterLink v-if="data.location.province"
                                     :to="`/find?province=${data.location.province.slug}`"
-                                    class="text-gray-900 text-lg font-semibold dark:text-gray-200">{{ data?.location.province.name }}
+                                    class="text-gray-900 text-sm md:text-lg font-semibold dark:text-gray-200">{{ data?.location.province.name }}
                                 </RouterLink>
                             </div>
                         </div>
                         <div class="flex gap-x-3">
-                            <div class="bg-amber-100 px-3 py-2 rounded-md">
+                            <div class="bg-amber-100 md:px-3 md:py-2 p-1 px-2 rounded-md">
                                 {{ data.transmission_type == 1 ? 'Số tự động' : 'Số sàn' }}
                             </div>
-                            <div v-if="data.isDelivery" class="bg-green-100 px-3 py-2 rounded-md">
+                            <div v-if="data.isDelivery" class="bg-green-100  md:px-3 md:py-2 p-1 px-2rounded-md">
                                 Giao tận nơi
                             </div>
-                            <div v-if="data.isInstant" class="bg-blue-100 px-3 py-2 rounded-md">
+                            <div v-if="data.isInstant" class="bg-blue-100  md:px-3 md:py-2 p-1 px-2 rounded-md">
                                 Xe giao ngay
                             </div>
                         </div>
@@ -122,7 +122,7 @@
                     <TheFeature :features="data.features" />
                     <div class="py-5">
                         <div class="flex gap-x-2 items-center">
-                            <h4 class="text-xl font-semibold dark:text-gray-200 py-2">Điều Khoản</h4>
+                            <h4 class="text-center text-lg lg:text-xl font-semibold dark:text-gray-200">Điều Khoản</h4>
                             <TheQuestion
                                 answer="Người thuê có nhiệm vụ đúng với trách nhiệm dưới đây.<span class='text-red-600'>(Mọi thiệt hại người thuê phải chịu 100%)</span>" />
                         </div>

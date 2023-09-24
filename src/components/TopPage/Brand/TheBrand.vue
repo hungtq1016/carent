@@ -4,7 +4,7 @@
             <h3 class="text-4xl font-bold text-center dark:text-gray-200">Hãng Xe</h3>
             <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-gray-100">Tìm hãng xe ưa thích của bạn.</div>
             <div class="py-10 min-h-[240px]">
-                <Flicking :options="{ align: 'prev', circular: true ,panelsPerView: 6, adaptive: true }" :plugins="plugins" >
+                <Flicking :options=optionBrand :plugins="plugins" >
                     <BrandItem  v-for="(brand,index) in brandStore.brands" :key="brand.id" :brand="brand"/>
                 </Flicking>
             </div>
@@ -20,6 +20,7 @@ import  BrandItem from "./BrandItem.vue";
 const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true})];
 
 const brandStore = useBrands()
+const optionBrand = { align: 'center', circular: true, panelsPerView: 6, noPanelStyleOverride: true }
 
 </script>
 

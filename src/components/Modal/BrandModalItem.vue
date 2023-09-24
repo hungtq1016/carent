@@ -1,7 +1,7 @@
 <template>
     <button @click="findCarsByBrand(props.brand.slug)" 
-    class="hover:bg-gray-100 rounded-md px-2 dark:bg-zinc-200" :class="{'bg-gray-100':carsStore.query.brand==brand.name}">
-        <div class="flex gap-x-2 items-center">
+    class="hover:bg-gray-100 rounded-md px-2 py-2 lg:py-0 dark:bg-zinc-200" :class="{'bg-gray-100':carsStore.query.brand==brand.name}">
+        <div class="flex gap-2 flex-col lg:flex-row items-center">
         <div v-if="isLoading||error" class="h-20 w-20 flex items-center justify-center bg-gray-300 dark:bg-zinc-700 rounded-md mx-2 animate-pulse">
             <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 18">

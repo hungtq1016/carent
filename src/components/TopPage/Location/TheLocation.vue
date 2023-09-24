@@ -1,8 +1,8 @@
 <template>
     <section class="py-10 bg-gray-50 dark:bg-zinc-950 dark:text-gray-100">
-        <div class="max-w-screen-xl mx-auto">
-            <h3 class="text-4xl font-bold text-center dark:text-gray-200">Địa Điểm</h3>
-            <div class="font-normal text-lg text-gray-600 text-center mt-3 dark:text-gray-100">Hệ thống phát triển toàn quốc.</div>
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4">
+            <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-center dark:text-gray-200">Địa Điểm</h3>
+            <div class="font-normal text-sm md:text-base xl:text-lg text-gray-600 text-center mt-3 dark:text-gray-100">Hệ thống phát triển toàn quốc.</div>
             <div class="py-5 relative">
                 <Flicking :options=optionProvince :plugins=pluginsProvince>
                     <template v-for="(province, index) in provinceStore.provinces" :key="index">
@@ -46,7 +46,7 @@ import { useProvinces } from "@/stores/provinces";
 import { useCars } from "@/stores/cars";
 
 const pluginsProvince = [new AutoPlay({ duration: 60000, direction: "NEXT", stopOnHover: true }), new Arrow()];
-const optionProvince = { align: 'center', circular: true, panelsPerView: 4, defaultIndex: 49, noPanelStyleOverride: true }
+const optionProvince = { align: 'center', circular: true, panelsPerView: 4, noPanelStyleOverride: true }
 
 const provinceStore = useProvinces()
 const carStore = useCars()

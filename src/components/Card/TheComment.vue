@@ -10,7 +10,7 @@
                 <div class="text-gray-700 text-sm dark:text-gray-100">{{ comment.content }}</div>
             </div>
            
-            <div class="flex gap-x-2 mt-0.5 ">
+            <div class="flex gap-x-2 mt-0.5 flex-wrap">
                 <button @click="toggleLike" class="text-sm font-medium text-gray-600 dark:text-gray-100"
                     :class="{ '!text-sky-600 !font-bold': isLike && isAuthen}">Thích</button>
                 <button @click="toggleReply"
@@ -40,7 +40,7 @@
             </template>
 
         </div>
-        <div v-if="comment.hasChild" class="absolute top-10 bottom-1 left-5 w-5 -z-[1] border-l-2 border-b-2 rounded-bl-lg border-gray-900">
+        <div v-if="comment.hasChild" class="absolute bg-gray-100 top-10 bottom-1 left-5 w-5 -z-[1] border-l-2 border-b-2 rounded-bl-lg border-gray-900">
         </div>
     </div>
 </template>

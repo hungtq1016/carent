@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="hidden lg:block">
     <Flicking :options="{ align: 'prev', circular: true ,autoResize: true}" :plugins="plugins">
         <ReviewItem v-for="car in cars" :key="car.id" :item="car"/>
     </Flicking>

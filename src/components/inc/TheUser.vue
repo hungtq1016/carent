@@ -6,11 +6,6 @@
           class="inline-flex w-full justify-center items-center rounded-md text-gray-900 duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
           <img class="rounded-full w-10 h-10" :src="`https://randomuser.me/api/portraits/men/${random}.jpg`"
             :alt="user.name">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
-            class="ml-2 -mr-1 h-5 w-5 text-gray-900 dark:text-gray-100">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg> -->
-
         </MenuButton>
       </div>
 

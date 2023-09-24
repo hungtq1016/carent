@@ -1,8 +1,8 @@
 <template>
     <div class="py-5">
-        <h4 class="text-xl font-semibold dark:text-gray-200">Thông Số</h4>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-5">
-            <div class="flex gap-x-2 items-center">
+        <h4 class="text-center text-lg lg:text-xl font-semibold dark:text-gray-200">Thông Số</h4>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-5">
+            <div class="flex gap-2 flex-col md:flex-row items-center">
                 <div class="bg-lime-600 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         class="w-10 h-10 fill-white" viewBox="0 0 256 256" enable-background="new 0 0 256 256"
@@ -22,13 +22,13 @@
                     </svg>
                 </div>
 
-                <div class="flex flex-col gap-y-0.5">
-                    <span class="text-lg font-bold dark:text-gray-100">Hộp Số</span>
+                <div class="flex flex-col gap-y-0.5 text-center">
+                    <span class="text-sm md:text-base lg:text-lg font-bold dark:text-gray-100">Hộp Số</span>
                     <span class="text-gray-600 dark:text-gray-100">{{ data.transmission_type == 1 ? 'Số tự động' : 'Số sàn'
                     }}</span>
                 </div>
             </div>
-            <div class="flex gap-x-2 items-center">
+            <div class="flex gap-2 flex-col md:flex-row items-center">
                 <div class="bg-lime-600 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         class="w-10 h-10 fill-white" viewBox="0 0 95.42 122.88" xml:space="preserve">
@@ -39,12 +39,12 @@
                     </svg>
 
                 </div>
-                <div class="flex flex-col gap-y-0.5">
-                    <span class="text-lg font-bold dark:text-gray-100">Chỗ Ngồi</span>
+                <div class="flex flex-col gap-y-0.5 text-center">
+                    <span class="text-sm md:text-base lg:text-lg font-bold dark:text-gray-100">Chỗ Ngồi</span>
                     <span class="text-gray-600 dark:text-gray-100">{{ data.seats }} ghế</span>
                 </div>
             </div>
-            <div class="flex gap-x-2 items-center">
+            <div class="flex gap-2 flex-col md:flex-row items-center">
                 <div class="bg-lime-600 p-2 rounded-full">
                     <svg class="w-10 h-10 fill-white" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -57,14 +57,14 @@
                             d="M928.972 358.832h-48.978c-11.309 0-20.48-9.171-20.48-20.48V191.091c0-11.311-9.169-20.48-20.48-20.48s-20.48 9.169-20.48 20.48v147.261c0 33.931 27.509 61.44 61.44 61.44h48.978c11.311 0 20.48-9.169 20.48-20.48s-9.169-20.48-20.48-20.48z" />
                     </svg>
                 </div>
-                <div class="flex flex-col gap-y-0.5">
-                    <span class="text-lg font-bold dark:text-gray-100">Nhiên Liệu</span>
+                <div class="flex flex-col gap-y-0.5 text-center">
+                    <span class="text-sm md:text-base lg:text-lg font-bold dark:text-gray-100">Nhiên Liệu</span>
                     <span class="text-gray-600 dark:text-gray-100">{{ data.fuel_type == 3 ? 'Điện' : data.fuel_type == 2 ?
                         'Dầu'
                         : 'Xăng' }}</span>
                 </div>
             </div>
-            <div class="flex gap-x-2 items-center">
+            <div class="flex gap-2 flex-col md:flex-row items-center">
                 <div class="bg-lime-600 p-2 rounded-full">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         class="w-10 h-10 fill-white" viewBox="0 0 256 256" enable-background="new 0 0 256 256"
@@ -99,8 +99,8 @@
                         </g>
                     </svg>
                 </div>
-                <div class="flex flex-col gap-y-0.5">
-                    <span class="text-lg font-bold dark:text-gray-100">Hao Phí</span>
+                <div class="flex flex-col gap-y-0.5 text-center">
+                    <span class="text-sm md:text-base lg:text-lg font-bold dark:text-gray-100">Hao Phí</span>
                     <span v-if="data.fuel_type == 3" class="text-gray-600 dark:text-gray-100">{{ data.fuel_consumption }} KM
                         /
                         Lần

@@ -1,5 +1,5 @@
 <template>
-    <div class=" ">
+    <div>
         <div v-if="isLoading" class="h-[200px] flex items-center justify-center bg-gray-300 dark:bg-zinc-900 rounded-md mx-2 animate-pulse">
             <svg class="w-10 h-10 text-gray-200 dark:text-gray-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor" viewBox="0 0 20 18">

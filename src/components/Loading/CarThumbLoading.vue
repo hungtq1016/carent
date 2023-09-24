@@ -1,7 +1,7 @@
 <template>
     <section class="py-5 dark:bg-zinc-950" :class="{'!py-2':loop==4}">
-        <div class="max-w-screen-xl mx-auto">
-            <div class="grid grid-cols-4 gap-3">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4 animate-pulse">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
                 <div class="rounded-md h-[490px] bg-gray-100 p-4 dark:bg-zinc-700" v-for="i in loop">
                     <div class="bg-gray-200 h-[300px] flex items-center justify-center dark:bg-zinc-800">
                         <svg class="w-10 h-10 fill-gray-400 dark:fill-zinc-400" aria-hidden="true"

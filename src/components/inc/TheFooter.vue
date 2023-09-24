@@ -16,36 +16,36 @@
           <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 class="text-sm font-semibold leading-6 text-gray-900">Solutions</h3>
+                <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Solutions</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.solutions" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-400">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm font-semibold leading-6 text-gray-900">Support</h3>
+                <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Support</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.support" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-400">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
             </div>
             <div class="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
+                <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Công Ty</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.company" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-400">{{ item.name }}</a>
+                    <RouterLink :to="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-400">{{ item.name }}</RouterLink>
                   </li>
                 </ul>
               </div>
               <div class="mt-10 md:mt-0">
-                <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
+                <h3 class="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-100">Legal</h3>
                 <ul role="list" class="mt-6 space-y-4">
                   <li v-for="item in navigation.legal" :key="item.name">
-                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-400">{{ item.name }}</a>
+                    <a :href="item.href" class="text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-gray-400">{{ item.name }}</a>
                   </li>
                 </ul>
               </div>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p class="text-xs leading-5 text-gray-500 dark:text-white">&copy; 2023 Carent Co, Inc. Bản quyền thuộc về HungTQ.</p>
+          <p class="text-xs leading-5 text-gray-500 dark:text-gray-200">&copy; 2023 Carent Co, Inc. Bản quyền thuộc về HungTQ.</p>
         </div>
       </div>
     </footer>
@@ -76,11 +76,10 @@
       { name: 'API Status', href: '#' },
     ],
     company: [
-      { name: 'About', href: '#' },
-      { name: 'Blog', href: '#' },
-      { name: 'Jobs', href: '#' },
-      { name: 'Press', href: '#' },
-      { name: 'Partners', href: '#' },
+      { name: 'Thông Tin', href: 'about-us' },
+      { name: 'Bài Viết', href: '/' },
+      { name: 'Tìm Xe', href: 'find' },
+      { name: 'FaQ', href: 'faq' },
     ],
     legal: [
       { name: 'Claim', href: '#' },

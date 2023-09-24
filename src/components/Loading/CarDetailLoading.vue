@@ -1,7 +1,7 @@
 <template>
     <section class="py-5 dark:bg-zinc-900">
-        <div class="max-w-screen-xl mx-auto animate-pulse">
-            <div class="grid grid-cols-3 gap-x-3">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4 animate-pulse">
+            <div class="grid gird-cols-1 lg:grid-cols-3 gap-x-3">
                 <div class="col-span-2 flex flex-col gap-y-2">
                     <div class="w-1/2 h-12 bg-gray-100 dark:bg-zinc-700 rounded-md"></div>
                     <div class="w-4/5 h-5 bg-gray-100 dark:bg-zinc-700 rounded-md"></div>

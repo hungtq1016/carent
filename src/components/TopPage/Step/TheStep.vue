@@ -1,15 +1,15 @@
 <template>
     <section class="py-10 dark:bg-zinc-900 dark:text-gray-100">
-        <div class="max-w-screen-xl mx-auto">
-            <h3 class="text-4xl font-bold text-center dark:text-gray-200">Hướng Dẫn</h3>
-            <div class="font-normal text-lg text-gray-600 dark:text-gray-100 text-center mt-3">Thủ tục nhanh và đơn giản.</div>
-            <div class="pb-5 pt-10 grid grid-cols-4">
+        <div class="max-w-screen-xl xl:mx-auto lg:mx-8 md:mx-6 mx-4">
+            <h3 class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-center dark:text-gray-200">Hướng Dẫn</h3>
+            <div class="font-normal text-sm md:text-base xl:text-lg text-gray-600 text-center mt-3 dark:text-gray-100">Thủ tục nhanh và đơn giản.</div>
+            <div class="pb-5 pt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-y-4">
                 <div class="flex flex-col items-center gap-y-2" v-for="step in steps">
-                    <div class="p-8 bg-amber-600 text-black rounded-full duration-1000">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 fill-white dark:fill-gray-100" viewBox="0 0 512 512" v-html="step.icon"> </svg>
+                    <div class="p-4 md:p-6 xl:p-8 bg-amber-600 text-black rounded-full duration-1000">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="xl:w-20 xl:h-20 w-10 h-10 md:w-14 md:h-14 lg:w-16 lg:h-16 fill-white dark:fill-gray-100" viewBox="0 0 512 512" v-html="step.icon"> </svg>
                     </div>
-                    <div class="text-2xl font-semibold dark:text-gray-200">{{step.title}}</div>
-                    <div class="text-gray-700 text-center w-3/4 mx-auto dark:text-gray-100">{{ step.desc }}</div>
+                    <div class="text-base md:text-lg xl:text-2xl font-semibold dark:text-gray-200">{{step.title}}</div>
+                    <div class="text-gray-700 text-center w-3/4 mx-auto dark:text-gray-100 text-sm md:text-base">{{ step.desc }}</div>
                 </div>
             </div>
         </div>
