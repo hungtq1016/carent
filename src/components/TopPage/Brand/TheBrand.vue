@@ -20,7 +20,7 @@ import  BrandItem from "./BrandItem.vue";
 const plugins = [new AutoPlay({ duration: 5000, direction: "NEXT", stopOnHover: true})];
 
 const brandStore = useBrands()
-const optionBrand = { align: 'center', circular: true, panelsPerView: 6, noPanelStyleOverride: true }
+const optionBrand = { align: 'center', circular: true, panelsPerView: 6, noPanelStyleOverride: true ,adaptive: true}
 
 </script>
 
