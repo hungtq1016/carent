@@ -1,7 +1,8 @@
 <template>
-  <!-- Hero section -->
-  <section class="pt-10 pb-20">
-    <div class="relative isolate  max-w-screen-xl mx-4 lg:mx-8 xl:mx-auto">
+ <div class="bg-white dark:bg-zinc-900">
+   <!-- Hero section -->
+   <section class="pt-10 pb-20">
+    <div class="relative isolate max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
       <svg
         class="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
         aria-hidden="true">
@@ -26,8 +27,8 @@
         <div class="max-w-screen-xl">
           <div class="mx-auto max-w-2xl gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
             <div class="w-full max-w-xl lg:shrink-0 xl:max-w-2xl">
-              <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Giải pháp thuê xe toàn diện</h1>
-              <p class="relative mt-6 text-lg leading-8 text-gray-600 sm:max-w-md lg:max-w-none">Carent cung cấp đa dạng
+              <h1 class="text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-6xl">Giải pháp thuê xe toàn diện</h1>
+              <p class="relative mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200 sm:max-w-md lg:max-w-none">Carent cung cấp đa dạng
                 các loại xe từ xe du lịch, xe tải, xe khách đến xe chuyên dụng, đáp ứng mọi nhu cầu của khách hàng.</p>
             </div>
             <div class="mt-14 flex justify-end gap-8 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
@@ -71,14 +72,14 @@
   </section>
   <section class="py-10">
     <!-- Content section -->
-    <div class="mx-4 max-w-screen-xl md:mx-6 lg:mx-8 xl:mx-auto">
-      <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Đơn vị cho thuê xe hàng đầu Việt Nam</h2>
+    <div class="relative isolate max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
+      <div class="">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">Đơn vị cho thuê xe hàng đầu Việt Nam</h2>
         <div class="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
           <div class="lg:w-full lg:max-w-2xl lg:flex-auto">
-            <p class="text-xl leading-8 text-gray-600">Carent có kinh nghiệm lâu năm trong lĩnh vực cho thuê xe, với đội
+            <p class="text-xl leading-8 text-gray-600 dark:text-gray-200">Carent có kinh nghiệm lâu năm trong lĩnh vực cho thuê xe, với đội
               ngũ nhân viên chuyên nghiệp và tận tâm.</p>
-            <div class="mt-10 max-w-xl text-base leading-7 text-gray-700">
+            <div class="mt-10 max-w-xl text-base leading-7 text-gray-700 dark:text-gray-200">
               Carent - Giải pháp thuê xe toàn diện <br>
               Carent - Đơn vị cho thuê xe hàng đầu Việt Nam <br>
               Carent - Chất lượng, giá cả và dịch vụ hàng đầu <br>
@@ -92,51 +93,49 @@
     </div>
   </section>
   <section class="py-10">
-    <div class="max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
+    <div class="relative isolate max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
       <img src="https://picsum.photos/1920/600?random=6" alt="6"
         class="aspect-[5/2] w-full object-cover xl:rounded-3xl" />
     </div>
   </section>
   <section class="py-10">
     <!-- Values section -->
-    <div class="max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
-      <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Lựa chọn hoàn hảo cho mọi nhu cầu di
+    <div class="relative isolate max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
+      <div class="">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">Lựa chọn hoàn hảo cho mọi nhu cầu di
           chuyển</h2>
-        <p class="mt-6 text-lg leading-8 text-gray-600">Carent là lựa chọn phù hợp cho mọi nhu cầu di chuyển, từ du lịch,
+        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">Carent là lựa chọn phù hợp cho mọi nhu cầu di chuyển, từ du lịch,
           công tác đến vận chuyển hàng hóa.</p>
       </div>
       <dl
         class="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-4 text-base leading-7 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3">
         <div v-for="value in values" :key="value.name">
-          <dt class="font-semibold text-gray-900">{{ value.name }}</dt>
-          <dd class="mt-1 text-gray-600">{{ value.description }}</dd>
+          <dt class="font-semibold text-gray-900 dark:text-gray-100">{{ value.name }}</dt>
+          <dd class="mt-1 text-gray-600 dark:text-gray-200">{{ value.description }}</dd>
         </div>
       </dl>
     </div>
   </section>
-
-
-
   <section class="py-10">
     <!-- Team section -->
-    <div class="max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
+    <div class="relative isolate max-w-screen-xl mx-4 md:mx-6 lg:mx-8 xl:mx-auto">
       <div class="mx-auto max-w-2xl lg:mx-0">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Nhóm</h2>
-        <p class="mt-6 text-lg leading-8 text-gray-600">Trang web được thực hiện bởi.</p>
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">Nhóm</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">Trang web được thực hiện bởi.</p>
       </div>
       <ul role="list"
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-8">
         <li v-for="person in team" :key="person.name" class="text-center flex flex-col gap-y-px">
           <img class="mx-auto h-24 w-24 rounded-full" :src="person.imageUrl" alt="hungtq" />
-          <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">{{ person.name }}</h3>
-          <p class="text-sm leading-6 text-gray-600 whitespace-normal">{{ person.role }}</p>
-          <a :href="`tel:${person.phone}`" class="text-sm leading-6 text-gray-600 whitespace-normal">{{ person.phone }}</a>
-          <a :href="`mailto:${person.email}`" class="text-sm leading-6 text-gray-600 whitespace-normal">{{ person.email }}</a>
+          <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900 dark:text-gray-100">{{ person.name }}</h3>
+          <p class="text-sm leading-6 text-gray-600 dark:text-gray-200 whitespace-normal">{{ person.role }}</p>
+          <a :href="`tel:${person.phone}`" class="text-sm leading-6 text-gray-600 dark:text-gray-200 whitespace-normal">{{ person.phone }}</a>
+          <a :href="`mailto:${person.email}`" class="text-sm leading-6 text-gray-600 dark:text-gray-200 whitespace-normal">{{ person.email }}</a>
         </li>
       </ul>
     </div>
   </section>
+ </div>
 </template>
 
 <script setup lang="ts">
