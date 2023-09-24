@@ -35,8 +35,8 @@ export const useRent = defineStore('rent', () => {
     watch( selected_day, (newDay) => {
       rent.value.startDay = newDay[0]
       rent.value.end_day = newDay[1]
-      rent.value.count_days = differenceInDays(newDay[1],newDay[0])   
-      total.value = rent.value.count_days* rent.value.total_per_day         
+      rent.value.count_days =  Math.abs(differenceInDays(newDay[1],newDay[0]))
+      total.value = Math.abs(rent.value.count_days)* rent.value.total_per_day         
       rent.value.total_all_days = isDriver.value ? total.value+deliveryFee.value:total.value       
     })
 

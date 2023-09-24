@@ -159,6 +159,7 @@ import TheQuestion from '@/components/Card/TheQuestion.vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import { vi } from 'date-fns/locale';
 import { useRouter } from 'vue-router';
+import { addDays } from 'date-fns';
 const router = useRouter()
 
 const rentStore = useRent()
@@ -171,10 +172,8 @@ const checkout = () =>{
 }
 
 onMounted(() => {
-    const now = new Date();
-    const seven_day = new Date().setDate(now.getDate() + 7)
-    const startDate = new Date(props.data.isInstant ? now : seven_day);
-    const endDate = new Date(new Date().setDate(startDate.getDate() + 7));
+    const startDate = addDays(new Date,props.data.isInstant ? 7:0)
+    const endDate = addDays(startDate,7)
 
     rentStore.selected_day = [startDate, endDate];
     rentStore.rent.total_per_day = props.data.isInsurance ? props.data?.price * 1.1 : props.data?.price

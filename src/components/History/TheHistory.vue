@@ -6,23 +6,25 @@
             </div>
         </div>
     </section>
-    <TheCalendar/>
+    <TheCalendar :car="findCar"/>
 </template>
 
 <script setup lang="ts">
 import { URL } from '@/lib/fetch';
 import { useFetch } from '@vueuse/core';
-import { inject ,ref} from 'vue';
+import { inject,ref} from 'vue';
 import HistoryItem from './HistoryItem.vue';
 import TheCalendar from './TheCalendar.vue';
 const {user} = inject<any>('user')
 const history = ref([])
+const findCar =ref([])
 const fetchHistory = async ()=>{
     const {data} = await useFetch(URL+`/rent?user_id=${user.value.id}`).get().json()
-    console.log(data.value);
-    history.value = data.value.data
+    history.value = data.value.data    
+    findCar.value = history.value.find((item:any)=>item.status==0) ?? []
 }
 fetchHistory()
+
 </script>
 
 <style scoped>

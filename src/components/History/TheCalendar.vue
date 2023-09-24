@@ -1,230 +1,98 @@
 <template>
-    <section class="py-10 dark:bg-zinc-950 dark:text-gray-100">
-        <div class="max-w-screen-xl mx-4 md:mx-8 lg:mx-auto">
-            <div class="lg:flex lg:h-full lg:flex-col">
-      <header class="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
-        <h1 class="text-base font-semibold leading-6 text-gray-900">
-          <time datetime="2022-01">January 2022</time>
-        </h1>
-        <div class="flex items-center">
-          <div class="relative flex items-center rounded-md bg-white dark:bg-zinc-700 shadow-sm md:items-stretch">
-            <button type="button" class="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-gray-300 pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50">
-              <span class="sr-only">Previous month</span>
-              <ChevronLeftIcon class="h-5 w-5" aria-hidden="true" />
-            </button>
-            <button type="button" class="hidden border-y border-gray-300 px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block">Today</button>
-            <span class="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
-            <button type="button" class="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50">
-              <span class="sr-only">Next month</span>
-              <ChevronRightIcon class="h-5 w-5" aria-hidden="true" />
-            </button>
+  <section class="py-10 dark:bg-zinc-950 dark:text-gray-100">
+    <div class="max-w-screen-xl mx-4 md:mx-8 lg:mx-auto">
+      <div class="lg:flex lg:h-full lg:flex-col">
+        <header class="flex items-center justify-between border-b border-gray-200 py-4 lg:flex-none">
+          <h1 class="text-base font-semibold leading-6 text-gray-900">
+            <div class="text-gray-900 dark:text-gray-100 capitalize">{{ format(new Date(`${selectedMonth}/01/${selectedYear}`),'MMMM yyyy',{locale:vi}) }}</div>
+          </h1>
+          <div class="flex flex-col md:flex-row items-center gap-3">
+              <select class="bg-gray-100 border-y border-gray-300 px-3.5 py-2 rounded-md border-none text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative"
+                id="month" v-model="selectedMonth" @change="()=>selectedDay=new Date(`${selectedMonth}/01/${selectedYear}`)">
+                  <option value="null">Vui lòng chọn tháng</option>
+                  <option v-for="month in 12" :value="month">Tháng {{ month }}</option>
+                </select>
+              <select class="bg-gray-100 border-y border-gray-300 px-3.5 py-2 rounded-md border-none text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative"
+              id="year" v-model="selectedYear" @change="()=>selectedDay=new Date(`${selectedMonth}/01/${selectedYear}`)">
+                <option value="-1">Vui lòng chọn năm</option>
+                <option v-for="year in 40" :value="year+1990">Năm {{ year+1990 }}</option>
+              </select>
           </div>
-          <div class="hidden md:ml-4 md:flex md:items-center">
-            <Menu as="div" class="relative">
-              <MenuButton type="button" class="flex items-center gap-x-1.5 rounded-md bg-white dark:bg-zinc-700 px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-                Month view
-                <ChevronDownIcon class="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
-              </MenuButton>
-  
-              <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-                <MenuItems class="absolute right-0 z-10 mt-3 w-36 origin-top-right overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                  <div class="py-1">
-                    <MenuItem v-slot="{ active }">
-                      <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Day view</a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active }">
-                      <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Week view</a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active }">
-                      <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Month view</a>
-                    </MenuItem>
-                    <MenuItem v-slot="{ active }">
-                      <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Year view</a>
-                    </MenuItem>
-                  </div>
-                </MenuItems>
-              </transition>
-            </Menu>
-            <div class="ml-6 h-6 w-px bg-gray-300 dark:bg-zinc-700" />
-            <button type="button" class="ml-6 rounded-md bg-amber-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500">Add event</button>
-          </div>
-          <Menu as="div" class="relative ml-6 md:hidden">
-            <MenuButton class="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500">
-              <span class="sr-only">Open menu</span>
-              <EllipsisHorizontalIcon class="h-5 w-5" aria-hidden="true" />
-            </MenuButton>
-  
-            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-              <MenuItems class="absolute right-0 z-10 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Create event</a>
-                  </MenuItem>
-                </div>
-                <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Go to today</a>
-                  </MenuItem>
-                </div>
-                <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Day view</a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Week view</a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Month view</a>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <a href="#" :class="[active ? 'bg-gray-100 dark:bg-zinc-700 text-gray-900' : 'text-gray-700', 'block px-4 py-2 text-sm']">Year view</a>
-                  </MenuItem>
-                </div>
-              </MenuItems>
-            </transition>
-          </Menu>
-        </div>
-      </header>
-      <div class="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
-        <div class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">M<span class="sr-only sm:not-sr-only">on</span></div>
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">T<span class="sr-only sm:not-sr-only">ue</span></div>
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">W<span class="sr-only sm:not-sr-only">ed</span></div>
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">T<span class="sr-only sm:not-sr-only">hu</span></div>
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">F<span class="sr-only sm:not-sr-only">ri</span></div>
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">S<span class="sr-only sm:not-sr-only">at</span></div>
-          <div class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2">S<span class="sr-only sm:not-sr-only">un</span></div>
-        </div>
-        <div class="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
-          <div class="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
-            <div v-for="day in days" :key="day.date" :class="[day.isCurrentMonth ? 'bg-white dark:bg-zinc-700 dark:text-gray-100' : 'bg-gray-50 text-gray-500 dark:bg-zinc-800 dark:text-gray-300', 'relative px-3 py-2']">
-              <time :datetime="day.date" :class="day.isToday ? 'flex h-6 w-6 items-center justify-center rounded-full bg-amber-600 font-semibold text-white' : ''">{{ day.date }}</time>
-              <ol v-if="day.events.length > 0" class="mt-2">
-                <li v-for="event in day.events.slice(0, 2)" :key="event.id">
-                  <a :href="event.href" class="group flex">
-                    <p class="flex-auto truncate font-medium text-gray-900 dark:text-gray-100 group-hover:text-amber-600">
-                      {{ event.name }}
-                    </p>
-                    <time :datetime="event.datetime" class="ml-3 hidden flex-none text-gray-500 dark:text-gray-300 group-hover:text-amber-600 xl:block">{{ event.time }}</time>
-                  </a>
-                </li>
-                <li v-if="day.events.length > 2" class="text-gray-500">+ {{ day.events.length - 2 }} more</li>
-              </ol>
+        </header>
+        <div class="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
+          <div
+            class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
+            <div v-for="week in weeks"
+             class="bg-white dark:bg-zinc-700 dark:text-gray-100 py-2" v-html="week">
             </div>
           </div>
-          <div class="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">
-            <button v-for="day in days" :key="day.date" type="button" :class="[day.isCurrentMonth ? 'bg-white dark:bg-zinc-700' : 'bg-gray-50 dark:bg-zinc-700', (day.isSelected || day.isToday) && 'font-semibold', day.isSelected && 'text-white', !day.isSelected && day.isToday && 'text-amber-600', !day.isSelected && day.isCurrentMonth && !day.isToday && 'text-gray-900', !day.isSelected && !day.isCurrentMonth && !day.isToday && 'text-gray-500', 'flex h-14 flex-col px-3 py-2 hover:bg-gray-100 dark:bg-zinc-700 focus:z-10']">
-              <time :datetime="day.date" :class="[day.isSelected && 'flex h-6 w-6 items-center justify-center rounded-full', day.isSelected && day.isToday && 'bg-amber-600', day.isSelected && !day.isToday && 'bg-gray-900', 'ml-auto']">{{day.date }}</time>
-              <span class="sr-only">{{ day.events.length }} events</span>
-              <span v-if="day.events.length > 0" class="-mx-0.5 mt-auto flex flex-wrap-reverse">
-                <span v-for="event in day.events" :key="event.id" class="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400 dark:bg-zinc-800" ></span>
-              </span>
-            </button>
+          <div class="flex bg-gray-200 text-xs leading-6 text-gray-700 lg:flex-auto">
+            <div class="w-full grid grid-cols-7 grid-rows-6 gap-px">
+              <div v-for="(day, index) in getDaysForCalendarMonth" :key="index">
+                <div class="bg-white py-2 md:py-5 text-center text-base hover:bg-gray-100 duration-300 dark:bg-zinc-700 dark:text-gray-200 dark:hover:bg-gray-700" 
+                :class="{ 'shadow-inner bg-zinc-300 hover:bg-gray-300/90 dark:bg-zinc-800 dark:hover:bg-gray-800': !day.currentMonth,
+                '!bg-sky-600 text-gray-100 hover:bg-sky-600':day.currentDay,
+                '!text-amber-100 !bg-amber-600 mix-blend-multiply':daysRent?.findIndex((d:any)=>compareAsc(d,day.date)==0) != -1 ? true:false
+                }">{{ format(day.date, 'd') }}</div>
+          
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-      <!-- <div v-if="selectedDay.events.length > 0" class="px-4 py-10 sm:px-6 lg:hidden">
-        <ol class="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow ring-1 ring-black ring-opacity-5">
-          <li v-for="event in selectedDay.events" :key="event.id" class="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50">
-            <div class="flex-auto">
-              <p class="font-semibold text-gray-900">{{ event.name }}</p>
-              <time :datetime="event.datetime" class="mt-2 flex items-center text-gray-700">
-                <ClockIcon class="mr-2 h-5 w-5 text-gray-400" aria-hidden="true" />
-                {{ event.time }}
-              </time>
-            </div>
-            <a :href="event.href" class="ml-6 flex-none self-center rounded-md bg-white px-3 py-2 font-semibold text-gray-900 opacity-0 shadow-sm ring-1 ring-inset ring-gray-300 hover:ring-gray-400 focus:opacity-100 group-hover:opacity-100"
-              >Edit<span class="sr-only">, {{ event.name }}</span></a
-            >
-          </li>
-        </ol>
-      </div> -->
     </div>
-        </div>
-    </section>
-    
-  </template>
+  </section>
+</template>
   
-  <script setup lang="ts">
-  import {
-    ChevronDownIcon,
-    ChevronLeftIcon,
-    ChevronRightIcon,
-    ClockIcon,
-    EllipsisHorizontalIcon,
-  } from '@heroicons/vue/20/solid'
-  import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+<script setup lang="ts">
+import { startOfMonth, startOfWeek, endOfMonth, endOfWeek, toDate, isBefore, addDays, format, getMonth, getDate, getYear,eachDayOfInterval, compareAsc, daysInWeek } from 'date-fns'
+import { vi } from 'date-fns/locale';
+import { computed, ref, watch } from 'vue';
+const props = defineProps(['car'])
+const selectedDay = ref(new Date()) 
+const selectedMonth =ref(getMonth(new Date)+1)
+const selectedYear =ref(getYear(new Date))
+const daysRent =ref()
+watch(()=>props.car,(newVal)=>{  
+  daysRent.value = newVal.length ==0 ?[]: eachDayOfInterval({ start: new Date(newVal.start_day), end: new Date(newVal.end_day) })  
+})
+const weeks = [ 'C<span class="hidden md:inline">hủ</span> N<span class="hidden md:inline">hật</span>','Thứ 2','Thứ 3','Thứ 4','Thứ 5','Thứ 6','Thứ 7']
+const getDaysForCalendarMonth = computed(() => {
+  const firstDayOfMonth = startOfMonth(selectedDay.value);
+  const firstDayOfCal = startOfWeek(firstDayOfMonth);
+  const lastDayOfMonth = endOfMonth(firstDayOfMonth);
+  const lastDayOfCal = endOfWeek(lastDayOfMonth);
+  let currentDay = getDate(new Date())
+  let currentMonth = getMonth(new Date())+1
+  let currentYear = getYear(new Date())
+
+  let temp = firstDayOfCal;
+ 
+  let days = [{
+    date: toDate(temp),
+    currentMonth:getMonth(temp)+1 == selectedMonth.value ?? false,
+    currentDay:(getDate(toDate(temp)) == currentDay && getMonth(temp)+1 == currentMonth && getYear(temp) == currentYear) ?? false,
+  }];
+  while (isBefore(temp, lastDayOfCal) && days.length < 42) {
+    temp = addDays(temp, 1);    
+    days.push({
+      date: toDate(temp),
+      currentMonth:getMonth(temp)+1 == selectedMonth.value ?? false,
+      currentDay:(getDate(toDate(temp)) == currentDay && getMonth(temp)+1 == currentMonth && getYear(temp) == currentYear) ?? false,
+    });
+  }
+  while (days.length < 42) {
+    temp = addDays(temp, 1);
+    days.push({
+      date: toDate(temp),
+      currentMonth:getMonth(temp)+1 == selectedMonth.value ?? false,
+      currentDay:(getDate(toDate(temp)) == currentDay && getMonth(temp)+1 == currentMonth && getYear(temp) == currentYear) ?? false,
+
+    });
+  }
   
-  const days = [
-    { date: '2021-12-27', events: [] },
-    { date: '2021-12-28', events: [] },
-    { date: '2021-12-29', events: [] },
-    { date: '2021-12-30', events: [] },
-    { date: '2021-12-31', events: [] },
-    { date: '2022-01-01', isCurrentMonth: true, events: [] },
-    { date: '2022-01-02', isCurrentMonth: true, events: [] },
-    {
-      date: '2022-01-03',
-      isCurrentMonth: true,
-      events: [
-        { id: 1, name: 'Design review', time: '10AM', datetime: '2022-01-03T10:00', href: '#' },
-        { id: 2, name: 'Sales meeting', time: '2PM', datetime: '2022-01-03T14:00', href: '#' },
-      ],
-    },
-    { date: '2022-01-04', isCurrentMonth: true, events: [] },
-    { date: '2022-01-05', isCurrentMonth: true, events: [] },
-    { date: '2022-01-06', isCurrentMonth: true, events: [] },
-    {
-      date: '2022-01-07',
-      isCurrentMonth: true,
-      events: [{ id: 3, name: 'Date night', time: '6PM', datetime: '2022-01-08T18:00', href: '#' }],
-    },
-    { date: '2022-01-08', isCurrentMonth: true, events: [] },
-    { date: '2022-01-09', isCurrentMonth: true, events: [] },
-    { date: '2022-01-10', isCurrentMonth: true, events: [] },
-    { date: '2022-01-11', isCurrentMonth: true, events: [] },
-    {
-      date: '2022-01-12',
-      isCurrentMonth: true,
-      isToday: true,
-      events: [{ id: 6, name: "Sam's birthday party", time: '2PM', datetime: '2022-01-25T14:00', href: '#' }],
-    },
-    { date: '2022-01-13', isCurrentMonth: true, events: [] },
-    { date: '2022-01-14', isCurrentMonth: true, events: [] },
-    { date: '2022-01-15', isCurrentMonth: true, events: [] },
-    { date: '2022-01-16', isCurrentMonth: true, events: [] },
-    { date: '2022-01-17', isCurrentMonth: true, events: [] },
-    { date: '2022-01-18', isCurrentMonth: true, events: [] },
-    { date: '2022-01-19', isCurrentMonth: true, events: [] },
-    { date: '2022-01-20', isCurrentMonth: true, events: [] },
-    { date: '2022-01-21', isCurrentMonth: true, events: [] },
-    {
-      date: '2022-01-22',
-      isCurrentMonth: true,
-      isSelected: true,
-      events: [
-        { id: 4, name: 'Maple syrup museum', time: '3PM', datetime: '2022-01-22T15:00', href: '#' },
-        { id: 5, name: 'Hockey game', time: '7PM', datetime: '2022-01-22T19:00', href: '#' },
-      ],
-    },
-    { date: '2022-01-23', isCurrentMonth: true, events: [] },
-    { date: '2022-01-24', isCurrentMonth: true, events: [] },
-    { date: '2022-01-25', isCurrentMonth: true, events: [] },
-    { date: '2022-01-26', isCurrentMonth: true, events: [] },
-    { date: '2022-01-27', isCurrentMonth: true, events: [] },
-    { date: '2022-01-28', isCurrentMonth: true, events: [] },
-    { date: '2022-01-29', isCurrentMonth: true, events: [] },
-    { date: '2022-01-30', isCurrentMonth: true, events: [] },
-    { date: '2022-01-31', isCurrentMonth: true, events: [] },
-    { date: '2022-02-01', events: [] },
-    { date: '2022-02-02', events: [] },
-    { date: '2022-02-03', events: [] },
-    {
-      date: '2022-02-04',
-      events: [{ id: 7, name: 'Cinema with friends', time: '9PM', datetime: '2022-02-04T21:00', href: '#' }],
-    },
-    { date: '2022-02-05', events: [] },
-    { date: '2022-02-06', events: [] },
-  ]
-  const selectedDay = days.find((day) => day.isSelected)
-  </script>
+  return days;
+})
+
+</script>
