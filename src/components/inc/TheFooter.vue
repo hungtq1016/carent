@@ -76,10 +76,10 @@
       { name: 'API Status', href: '#' },
     ],
     company: [
-      { name: 'Thông Tin', href: 'about-us' },
+      { name: 'Thông Tin', href: '/about-us' },
       { name: 'Bài Viết', href: '/' },
-      { name: 'Tìm Xe', href: 'find' },
-      { name: 'FaQ', href: 'faq' },
+      { name: 'Tìm Xe', href: '/find' },
+      { name: 'FaQ', href: '/faq' },
     ],
     legal: [
       { name: 'Claim', href: '#' },

@@ -17,8 +17,8 @@
       <div class="hidden lg:flex lg:gap-x-12">
         <RouterLink to="/" class="text-sm md:text-base xl:text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100 px-2 py-1 nav-item">Trang Chủ</RouterLink>
         <RouterLink to="/find" class="text-sm md:text-base xl:text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100 px-2 py-1 nav-item">Tìm Xe</RouterLink>
-        <RouterLink to="about-us" class="text-sm md:text-base xl:text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100 px-2 py-1 nav-item">Về Chúng Tôi</RouterLink>
-        <RouterLink to="faq" class="text-sm md:text-base xl:text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100 px-2 py-1 nav-item">Hỏi Đáp</RouterLink>
+        <RouterLink to="/about-us" class="text-sm md:text-base xl:text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100 px-2 py-1 nav-item">Về Chúng Tôi</RouterLink>
+        <RouterLink to="/faq" class="text-sm md:text-base xl:text-lg font-semibold leading-6 text-gray-900 dark:text-gray-100 px-2 py-1 nav-item">Hỏi Đáp</RouterLink>
       </div>
       <TheAuthen/>   
     </nav>
@@ -41,8 +41,8 @@
             <div class="space-y-2 py-6">
               <RouterLink to="/" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200">Trang Chủ</RouterLink>
               <RouterLink to="/find" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200">Tìm Xe</RouterLink>
-              <RouterLink to="about-us" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200">Về Chúng Tôi</RouterLink>
-              <RouterLink to="faq" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200">Hỏi Đáp</RouterLink>
+              <RouterLink to="/about-us" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200">Về Chúng Tôi</RouterLink>
+              <RouterLink to="/faq" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-gray-200">Hỏi Đáp</RouterLink>
             </div>
             <div class="py-6">
               <TheAuthenMobile/>
